@@ -1,3 +1,3 @@
 Sloan
-Tran Hoang
-|Bryan Herrera
+ | Tran Hoang
+ | Bryan Herrera
