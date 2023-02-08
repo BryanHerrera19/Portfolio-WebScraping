@@ -8,7 +8,7 @@ class Automator:
     def get_vehicle_urls(self):
         browser = webdriver.Chrome()
         browser.get(self.website_url)
-        elems = self.browser.find_elements(By.XPATH,'//a[contains(@href,"/vehicle/")]')
+        elems = browser.find_elements(By.XPATH,'//a[contains(@href,"/vehicle/")]')
         
         for elem in elems:
             self.urls.append(elem.get_attribute("href"))

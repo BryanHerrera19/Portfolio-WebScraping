@@ -5,14 +5,22 @@ from selenium.webdriver.common.by import By
 
 
 class Scraper(automator.Automator):
+    Automator = automator.Automator()
     website_url = "https://www.carvana.com/vehicle/2543527"
+    website_urls = []
     vehicles = []
+    
+    def feed_urls(self):
+        self.Automator.get_vehicle_urls()
+        self.website_urls = self.Automator.urls
+        for url in self.website_urls:
+            self.scrape_no_vin_info(url)
 
-    def scrape_no_vin_info(self):
+    def scrape_no_vin_info(self, url):
         browser = webdriver.Chrome()
         browser.maximize_window() # For maximizing window
         browser.implicitly_wait(20) # gives an implicit wait for 20 seconds
-        browser.get(self.website_url)
+        browser.get(url)
         browser.execute_script("window.scrollTo(0, 6177)") 
         elem = browser.find_element(By.ID,'inspection-150-point')
         elems = elem.find_elements(By.TAG_NAME, 'p')
@@ -24,5 +32,8 @@ class Scraper(automator.Automator):
         self.vehicles.append(vehicle.Vehicle(year, company, model))
 
 Scraper = Scraper()
-Scraper.scrape_no_vin_info()
-print(Scraper.vehicles[0].model)
+Scraper.feed_urls()
+for vehicle in Scraper.vehicles:
+    print("year: " + vehicle.year)
+    print("company: "+ vehicle.company)
+    print("model: "+ vehicle.model)
