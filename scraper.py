@@ -10,13 +10,14 @@ class Scraper(automator.Automator):
     website_urls = []
     vehicles = []
     
-    def feed_urls(self):
-        self.Automator.get_vehicle_urls()
+    def feed_urls_imgs(self):
+        self.Automator.get_vehicle_urls_imgs()
         self.website_urls = self.Automator.urls
-        for url in self.website_urls:
-            self.scrape_no_vin_info(url)
+        images = self.Automator.images
+        for i, url in enumerate(self.website_urls):
+            self.scrape_no_vin_info(url, images[i])
 
-    def scrape_no_vin_info(self, url):
+    def scrape_no_vin_info(self, url, image):
         browser = webdriver.Chrome()
         browser.maximize_window() # For maximizing window
         browser.implicitly_wait(20) # gives an implicit wait for 20 seconds
@@ -33,12 +34,14 @@ class Scraper(automator.Automator):
         year = words[1]
         company = words[2]
         model = words[3]
-        self.vehicles.append(vehicle.Vehicle(year, company, model, vin_history_url))
+        self.vehicles.append(vehicle.Vehicle(url, year, company, model, vin_history_url, image))
 
 Scraper = Scraper()
-Scraper.feed_urls()
+Scraper.feed_urls_imgs()
 for vehicle in Scraper.vehicles:
+    print("vehicle url: " + vehicle.url)
     print("year: " + vehicle.year)
     print("company: "+ vehicle.company)
     print("model: "+ vehicle.model)
     print("vin history url: " + vehicle.vin_history_url)
+    print("image url: " + vehicle.image)
