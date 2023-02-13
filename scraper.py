@@ -36,6 +36,10 @@ class Scraper(automator.Automator):
         model = words[3]
         self.vehicles.append(vehicle.Vehicle(url, year, company, model, vin_history_url, image))
 
+#Can use dictionary function to simplify
+#Format: newDict = dict(manufacturer = x, modelName = y, vin = z, color = a, year = b, currentMileage = c)
+#Above can then be imported directly to DB
+
 Scraper = Scraper()
 Scraper.feed_urls_imgs()
 for vehicle in Scraper.vehicles:
