@@ -14,3 +14,6 @@ User can search and filter used cars without knowing the vin number. For example
 - Database
 - GUI Application
 - Automated Scraper Application
+
+## Project Plan
+[Jira](https://web-scraping.atlassian.net/jira/software/c/projects/CSPWS/boards/1/roadmap?shared=&atlOrigin=eyJpIjoiNDM2ZDE0NDI2YzU2NDVjYzgyODU3NzdlYzI5MmVmOWYiLCJwIjoiaiJ9)
