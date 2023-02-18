@@ -4,14 +4,14 @@ import re
 import time
 import automator
 
-url = "https://www.carvana.com/vehicle/2473964"
+url = "https://www.carvana.com/vehicle/2491477"
 browser = webdriver.Chrome()
 browser.maximize_window() # For maximizing window
 
 browser.get(url)
 
 browser.execute_script("window.scrollTo(0, 500)") 
-time.sleep(5)
+time.sleep(3)
 # elems = browser.find_elements(By.TAG_NAME, 'p')
 # elems_p_texts = []
 # for elem in elems:
@@ -56,13 +56,29 @@ time.sleep(5)
 
 browser.execute_script("window.scrollTo(0, 2194)") 
 elems_li = browser.find_elements(By.CLASS_NAME, 'sc-4436f562-5')
-if(re.match(r'.*Electric.*',elems_li[0].text)):
-    transmission_type = elems_li[6].text.split(',')[0]
+elems_li_texts = []
+for elem in elems_li:
+    elems_li_texts.append(elem.text)
+print(elems_li_texts)
+
+if list(filter(lambda v: re.match(r'^Auto.*', v), elems_li_texts)) == []:
+    if list(filter(lambda v: re.match(r'^Manual.*', v), elems_li_texts)) == []:
+        if list(filter(lambda v: re.match(r'^CVT.*', v), elems_li_texts)) == []:
+            transmission_type = None
+        else:
+            transmission_type = 'CVT'
+    else:
+        transmission_type = 'Manual'
 else:
-    transmission_type = elems_li[5].text.split(',')[0]
-if (re.match(r'Auto.*',transmission_type)):
     transmission_type = 'Automatic'
 print(transmission_type)
+# if(re.match(r'.*Electric.*',elems_li[0].text)):
+#     transmission_type = elems_li[6].text.split(',')[0]
+# else:
+#     transmission_type = elems_li[5].text.split(',')[0]
+# if (re.match(r'Auto.*',transmission_type)):
+#     transmission_type = 'Automatic'
+# print(transmission_type)
 # transmission_type = elems_li[8]
 # elems = browser.find_elements(By.CLASS_NAME, 'sc-4436f562-5')
 # for elem in elems:
