@@ -1,5 +1,6 @@
 from automator import Automator
 import vehicle
+from mongoDB import *
 import re
 import time
 from selenium import webdriver
@@ -77,3 +78,5 @@ for vehicle in Scraper.vehicles:
     print("transmission type : " + vehicle.transmission_type)
     print("Exterior color: " + vehicle.color)
     print("fuel type: " + vehicle.fuel)
+    newCarDict = createCarInfoDict(vehicle)
+    insertCarInfo(newCarDict)
