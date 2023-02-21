@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="background_frame_2">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>10</number>
+    </property>
+    <property name="topMargin">
+     <number>10</number>
+    </property>
+    <property name="rightMargin">
+     <number>10</number>
+    </property>
+    <property name="bottomMargin">
+     <number>10</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="background_frame">
+      <property name="styleSheet">
+       <string notr="true">QFrame {
+	background-color: #27062D;
+	border-radius: 7px; 
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="quit_button">
+       <property name="geometry">
+        <rect>
+         <x>1160</x>
+         <y>5</y>
+         <width>16</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>17</width>
+         <height>17</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	background-color: rgb(255, 11, 68);
+	border-radius: 8px; 
+	border: none;
+}
+
+QPushButton:hover {
+	background-color: rgba(255, 11, 68, 150);
+}
+	</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="SearchBar">
+       <property name="geometry">
+        <rect>
+         <x>200</x>
+         <y>20</y>
+         <width>750</width>
+         <height>35</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit {
+	background-color: rgb(144,104,140);
+	border-radius: 8px;
+	font-size: 30px;
+	color:white	;
+	font-family: Open Sans;
+}
+
+</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="search_button">
+       <property name="geometry">
+        <rect>
+         <x>960</x>
+         <y>20</y>
+         <width>35</width>
+         <height>35</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	background-color: rgb(181, 84, 215);
+	border-radius: 8px;
+}
+
+QPushButton:hover {
+	background-color: rgba(181, 84, 215,150);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QFrame" name="Seach_Icon">
+       <property name="geometry">
+        <rect>
+         <x>965</x>
+         <y>25</y>
+         <width>15</width>
+         <height>15</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>15</width>
+         <height>15</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>15</width>
+         <height>15</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QFrame {
+	background-color: rgb(181,84,215);
+	border: 2px solid rgb(255, 255, 255);
+	border-radius: 7px; 
+}
+
+QFrame:hover{
+	background-color: rgba(181,84,215,150);
+	border: 2px solid rgba(181,84,215,150);
+}
+
+
+</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QScrollArea" name="FIlterBarArea">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>110</y>
+         <width>320</width>
+         <height>550</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QScrollArea {
+	background-color: rgb(144,104,140);
+	border-radius: 8px; 
+} </string>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="main_scroll_wheel">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>320</width>
+          <height>550</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(144,104,140);
+border-radius: 10px; 
+</string>
+        </property>
+        <widget class="QLabel" name="price_bar">
+         <property name="geometry">
+          <rect>
+           <x>15</x>
+           <y>10</y>
+           <width>290</width>
+           <height>25</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+	background-color: #B554D7;
+	border-radius: 8px; 
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Open Sans; 
+	color:white
+} </string>
+         </property>
+         <property name="text">
+          <string>   PRICE</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="miles_bar">
+         <property name="geometry">
+          <rect>
+           <x>15</x>
+           <y>225</y>
+           <width>290</width>
+           <height>25</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+	background-color: #B554D7;
+	border-radius: 8px; 
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Open Sans; 
+	color:white;
+} </string>
+         </property>
+         <property name="text">
+          <string>MILES DRIVEN</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="year_bar">
+         <property name="geometry">
+          <rect>
+           <x>15</x>
+           <y>440</y>
+           <width>290</width>
+           <height>25</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+	background-color: #B554D7;
+	border-radius: 8px; 
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Open Sans; 
+	color:white;
+} </string>
+         </property>
+         <property name="text">
+          <string>YEAR</string>
+         </property>
+        </widget>
+        <widget class="QScrollArea" name="price_area">
+         <property name="geometry">
+          <rect>
+           <x>15</x>
+           <y>40</y>
+           <width>290</width>
+           <height>180</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QScrollArea {
+	background-color: red;;
+	border-radius: 8px; 
+} </string>
+         </property>
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="price_scroll_wheel">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>290</width>
+            <height>180</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QWidget {
+	background-color: rgb(164,104,140);
+}</string>
+          </property>
+          <widget class="QCheckBox" name="price_check1">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>231</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="tabletTracking">
+            <bool>true</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}</string>
+           </property>
+           <property name="text">
+            <string>&lt;$5000</string>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="price_check2">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>50</y>
+             <width>241</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="tabletTracking">
+            <bool>true</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}</string>
+           </property>
+           <property name="text">
+            <string>$5000-10000</string>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="price_check3">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>90</y>
+             <width>251</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="tabletTracking">
+            <bool>true</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}</string>
+           </property>
+           <property name="text">
+            <string>$10000-15000</string>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="price_check4">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>130</y>
+             <width>251</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="tabletTracking">
+            <bool>true</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}</string>
+           </property>
+           <property name="text">
+            <string>$15000-25000</string>
+           </property>
+          </widget>
+         </widget>
+        </widget>
+        <widget class="QScrollArea" name="miles_area">
+         <property name="geometry">
+          <rect>
+           <x>15</x>
+           <y>255</y>
+           <width>290</width>
+           <height>180</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QScrollArea {
+	background-color: red;;
+	border-radius: 8px; 
+} </string>
+         </property>
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="miles_scroll_wheel">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>290</width>
+            <height>180</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QWidget {
+	background-color: rgb(164,104,140);
+}</string>
+          </property>
+          <widget class="QCheckBox" name="miles_check1">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>241</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="tabletTracking">
+            <bool>true</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}</string>
+           </property>
+           <property name="text">
+            <string>&lt;5000 Miles</string>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="miles_check2">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>50</y>
+             <width>261</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="tabletTracking">
+            <bool>true</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}</string>
+           </property>
+           <property name="text">
+            <string>5000-10000 Miles</string>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="miles_check3">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>90</y>
+             <width>271</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="tabletTracking">
+            <bool>true</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}</string>
+           </property>
+           <property name="text">
+            <string>10000-15000 Miles</string>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="miles_check4">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>130</y>
+             <width>201</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="tabletTracking">
+            <bool>true</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}</string>
+           </property>
+           <property name="text">
+            <string>&gt;15000 Miles</string>
+           </property>
+          </widget>
+         </widget>
+        </widget>
+        <widget class="QScrollArea" name="year_area">
+         <property name="geometry">
+          <rect>
+           <x>15</x>
+           <y>470</y>
+           <width>290</width>
+           <height>180</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QScrollArea {
+	background-color: red;;
+	border-radius: 8px; 
+} </string>
+         </property>
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="year_scroll_wheel">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>290</width>
+            <height>180</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QWidget {
+	background-color: rgb(164,104,140);
+}</string>
+          </property>
+          <widget class="QCheckBox" name="year_check1">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>201</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="tabletTracking">
+            <bool>true</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}</string>
+           </property>
+           <property name="text">
+            <string>2000</string>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="year_check2">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>50</y>
+             <width>201</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="tabletTracking">
+            <bool>true</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}</string>
+           </property>
+           <property name="text">
+            <string>2001</string>
+           </property>
+          </widget>
+         </widget>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QLabel" name="FilterBar">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>70</y>
+         <width>320</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+	background-color: #B554D7;
+	border-radius: 8px; 
+	font-size: 27px;
+	font-weight: bold;
+	font-family: Open Sans; 
+	color:white;
+} </string>
+       </property>
+       <property name="text">
+        <string>              FILTER</string>
+       </property>
+      </widget>
+      <widget class="QScrollArea" name="Car_Infor_Area">
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>70</y>
+         <width>821</width>
+         <height>591</height>
+        </rect>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="car_scroll_wheel">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>821</width>
+          <height>591</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget {
+	background-color: rgb(167, 105, 171);
+}</string>
+        </property>
+       </widget>
+      </widget>
+      <zorder>quit_button</zorder>
+      <zorder>SearchBar</zorder>
+      <zorder>search_button</zorder>
+      <zorder>FIlterBarArea</zorder>
+      <zorder>FilterBar</zorder>
+      <zorder>Seach_Icon</zorder>
+      <zorder>Car_Infor_Area</zorder>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
