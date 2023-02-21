@@ -1,3 +1,4 @@
+import vehicle
 import pymongo
 from pymongo import MongoClient
 
@@ -9,7 +10,11 @@ ownerCol = wsdb["Owner_History"]
 
 def insertCarInfo(carInfoDict):
     carInfo = carCol.insert_one(carInfoDict)
-def insertHistInfo(carHistDict):
-    carHist = histCol.insert_one(carHistDict)
-def insertOwnerInfo(ownerHistDict):
-    ownerHist = ownerCol.insert_one(ownerHistDict)
+
+#Can use dictionary function to simplify
+#Format: newDict = dict(manufacturer = x, modelName = y, vin = z, color = a, year = b, currentMileage = c)
+#Above can then be imported directly to DB
+
+def createCarInfoDict(vehicleInfo):
+    tempCarDict = dict(manufacturer = vehicle.company, modelName = vehicle.model, vin = vehicle.vin,
+    color = vehicle.color, year = vehicle.year, mileage = vehicle.mileage)
