@@ -16,3 +16,9 @@ def createCarInfoDict(vehicleInfo):
         color = vehicleInfo.color, year = vehicleInfo.year, mileage = vehicleInfo.miles, transType = vehicleInfo.transmission_type,
         price = vehicleInfo.price, fuelType = vehicleInfo.fuel, image = vehicleInfo.image, url = vehicleInfo.url)
         return tempCarDict
+
+def alreadyExists(carURL):
+        if carCol.find({'url': {"$in": carURL}}).count() > 0:
+                return True
+        else:
+                return False

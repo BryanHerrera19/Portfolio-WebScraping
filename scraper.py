@@ -78,5 +78,6 @@ for vehicle in Scraper.vehicles:
     print("transmission type : " + vehicle.transmission_type)
     print("Exterior color: " + vehicle.color)
     print("fuel type: " + vehicle.fuel)
-    #newCarDict = createCarInfoDict(vehicle)
-    #insertCarInfo(newCarDict)
+    #if(not alreadyExists(vehicle.url)):
+        #newCarDict = createCarInfoDict(vehicle)
+        #insertCarInfo(newCarDict)
