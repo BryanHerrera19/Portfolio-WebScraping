@@ -1,5 +1,6 @@
 from automator import Automator
 import vehicle
+from mongoDB import *
 import re
 import time
 from selenium import webdriver
@@ -65,9 +66,11 @@ class Scraper(Automator):
         vin_history_url = elem_vin.get_attribute("href")
         newVehicle.transmission_color_vinHistoryURL_setter(transmission_type, color, vin_history_url)
 
-        self.scrape_vin_info(vin_history_url)
+        time.sleep(4)
+        # self.scrape_vin_info(vin_history_url)
 
         self.vehicles.append(newVehicle)
+        # self.browser.close()
 
     def scrape_vin_info(self, vin_history_url):
         self.browser.get(vin_history_url)
@@ -89,3 +92,7 @@ for vehicle in Scraper.vehicles:
     print("transmission type : " + vehicle.transmission_type)
     print("Exterior color: " + vehicle.color)
     print("fuel type: " + vehicle.fuel)
+    
+    #if(not alreadyExists(vehicle.url)):
+        #newCarDict = createCarInfoDict(vehicle)
+        #insertCarInfo(newCarDict)
