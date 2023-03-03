@@ -22,6 +22,8 @@ class Scraper(Automator):
 
 
     def scrape_no_vin_info(self, url, image, fuel):
+        newVehicle = vehicle.Vehicle(url, image, fuel)
+
         self.browser.get(url)
         self.browser.execute_script("window.scrollTo(0, 500)") 
         time.sleep(5)
@@ -39,6 +41,7 @@ class Scraper(Automator):
         miles = int(miles_text.replace(',',''))
         price_text = list(filter(lambda v: re.match(r'\$\d+,\d+', v), elems_p_texts))[0]
         price = int(price_text.strip('$').replace(',',''))
+        newVehicle.model_year_company_miles_price_setter(model, year, company, miles, price)
 
         # Basic information
         self.browser.execute_script("window.scrollTo(0, 2194)") 
@@ -60,9 +63,14 @@ class Scraper(Automator):
         color = color_text.split()[0]
         elem_vin = self.browser.find_element(By.XPATH,'//a[contains(@href,"/VehicleHistory/")]')
         vin_history_url = elem_vin.get_attribute("href")
-        
-        self.vehicles.append(vehicle.Vehicle(url, year, company, model, vin_history_url, image, miles, price, transmission_type, color, fuel))
+        newVehicle.transmission_color_vinHistoryURL_setter(transmission_type, color, vin_history_url)
 
+        self.scrape_vin_info(vin_history_url)
+
+        self.vehicles.append(newVehicle)
+
+    def scrape_vin_info(self, vin_history_url):
+        self.browser.get(vin_history_url)
 #Can use dictionary function to simplify
 #Format: newDict = dict(manufacturer = x, modelName = y, vin = z, color = a, year = b, currentMileage = c)
 #Above can then be imported directly to DB
