@@ -74,9 +74,6 @@ class Scraper(Automator):
 
     def scrape_vin_info(self, vin_history_url):
         self.browser.get(vin_history_url)
-#Can use dictionary function to simplify
-#Format: newDict = dict(manufacturer = x, modelName = y, vin = z, color = a, year = b, currentMileage = c)
-#Above can then be imported directly to DB
 
 Scraper = Scraper()
 Scraper.feed_urls_imgs()
