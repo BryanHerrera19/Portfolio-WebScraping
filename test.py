@@ -2,11 +2,18 @@ import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+
 import chromedriver_autoinstaller
 import subprocess
 import vehicle
 import re
 import shutil
+
+from mongoDB import *
+import vehicle
+import re
+import time
+import automator
 
 # using debugger and cookie (by not deleting them), trick the system to get undetected as a bot
 # however, after few times, gets blocked
@@ -27,9 +34,11 @@ except FileNotFoundError:
 
 option = Options()
 
+
 option.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
 option.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36')
 option.add_extension(r'C:\Users\gkim5\OneDrive\문서\2023 Spring\COMP 195\senior-project-spring-2023-web-scraping\extension.crx')
+
 
 chrome_ver = chromedriver_autoinstaller.get_chrome_version().split('.')[0]
 try:
@@ -98,16 +107,40 @@ elems_div_texts = []
 for elem in elems_div:
        elems_div_texts.append(elem.text)
 
-num_owners = list(filter(lambda v: re.match(r'.* Previous owners', v), elems_div_texts))[0]
-accidents = list(filter(lambda v: re.match(r'.*accidents.*', v), elems_div_texts))[0]
-last_state = list(filter(lambda v: re.match(r'.*owned in.*', v), elems_div_texts))[0]
-regular_oil_changes = list(filter(lambda v: re.match(r'Regular oil changes', v), elems_div_texts))[0]
-usage = list(filter(lambda v: re.match(r'*.vehicle', v), elems_div_texts))[0]
 
-print(num_owners)
-print(accidents)
-print(last_state)
-print(regular_oil_changes)
-print(usage)
-time.sleep(100)
+try:
+    text = list(filter(lambda v: re.match(r'.* Previous owners', v), elems_div_texts))[0]
+    num_text = re.findall('\d+', text)[0]
+    num_owners = int(num_text)
+except IndexError:
+    num_owners = 0
+
+accidents_text = list(filter(lambda v: re.match(r'.*accident.*', v), elems_div_texts))[0]
+if re.findall('No', accidents_text)[0]:
+    accidents = False
+else: 
+    accidents = True
+
+try:
+    last_state_text = list(filter(lambda v: re.match(r'Last owned in.*', v), elems_div_texts))[0]
+    last_state = re.findall(r'Last owned in (.*)', last_state_text)[0]
+except IndexError:
+    last_state = ''
+      
+try:
+    if list(filter(lambda v: re.match(r'Regular oil changes', v), elems_div_texts))[0]:
+        regular_oil_changes = True
+except IndexError:
+    regular_oil_changes = False
+
+try:
+    usage = list(filter(lambda v: re.match(r'.*vehicle', v), elems_div_texts))[0]
+except IndexError:
+    usage = ''
+
+newVehicle.vin_history_setter(num_owners, accidents, last_state, regular_oil_changes, usage)
+
+if(alreadyExists(newVehicle.url) == False):
+        newCarDict = createCarInfoDict(newVehicle)
+        insertCarInfo(newCarDict)
 browser.close()
