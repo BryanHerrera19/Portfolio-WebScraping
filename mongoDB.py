@@ -25,3 +25,8 @@ def alreadyExists(carURL):
         else:
                 print("Car not in database")
                 return False
+        
+def updateDB(carURL, newInfo):
+        myQuery = {'url': {"$in": [carURL]}}
+        newCarHist = {"$set": {"carHist": newInfo}}
+        carCol.update_one(myQuery, newCarHist)
