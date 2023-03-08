@@ -1,12 +1,14 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from mongoDB import *
 import vehicle
 import re
 import time
 import automator
 from selenium.webdriver.common.proxy import Proxy, ProxyType
-import undetected_chromedriver as uc
-from selenium_stealth import stealth
+#import undetected_chromedriver as uc
+#from selenium_stealth import stealth
+
 
 
 options = webdriver.ChromeOptions()
@@ -21,14 +23,14 @@ url = "https://www.carvana.com/vehicle/2644429"
 
 browser = webdriver.Chrome(options=options)
 
-stealth(browser,
-        languages=["en-US", "en"],
-        vendor="Google Inc.",
-        platform="Win32",
-        webgl_vendor="Intel Inc.",
-        renderer="Intel Iris OpenGL Engine",
-        fix_hairline=True,
-        )
+#stealth(browser,
+        #languages=["en-US", "en"],
+        #vendor="Google Inc.",
+        #platform="Win32",
+        #webgl_vendor="Intel Inc.",
+        #renderer="Intel Iris OpenGL Engine",
+        #fix_hairline=True,
+        #)
 
 image = ''
 fuel = 'Diesel'
@@ -87,6 +89,10 @@ print("price : " + str(newVehicle.price))
 print("transmission type : " + newVehicle.transmission_type)
 print("Exterior color: " + newVehicle.color)
 print("fuel type: " + newVehicle.fuel)
+
+if(alreadyExists(newVehicle.url) == False):
+        newCarDict = createCarInfoDict(newVehicle)
+        insertCarInfo(newCarDict)
 
 
 

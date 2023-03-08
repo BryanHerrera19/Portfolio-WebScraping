@@ -18,7 +18,10 @@ def createCarInfoDict(vehicleInfo):
         return tempCarDict
 
 def alreadyExists(carURL):
-        if carCol.find({'url': {"$in": carURL}}).count() > 0:
+        numdocs = carCol.count_documents({'url': {"$in": [carURL]}})
+        if numdocs > 0:
+                print("Car already in database")
                 return True
         else:
+                print("Car not in database")
                 return False
