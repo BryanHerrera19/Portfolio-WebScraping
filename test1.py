@@ -2,58 +2,31 @@ import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-
-import chromedriver_autoinstaller
-import subprocess
 import vehicle
 import re
-import shutil
 
-from mongoDB import *
-import vehicle
-import re
-import time
-import automator
-
-# using debugger and cookie (by not deleting them), trick the system to get undetected as a bot
-# however, after few times, gets blocked
-# attempted to delete the cookie and use extension to solve captcha but debugger mode does not support chrom extension
-
-try:
-    shutil.rmtree(r"C:\chrometemp")  # remove Cookie, Cache files
-except FileNotFoundError:
-    pass
-
-try:
-    subprocess.Popen(r'C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 '
-                     r'--user-data-dir="C:\chrometemp"')   # Open the debugger chrome
-    
-except FileNotFoundError:
-    subprocess.Popen(r'C:\Users\binsu\AppData\Local\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 '
-                     r'--user-data-dir="C:\chrometemp"')
+# using chrome extension, solve captcha
+# there is a quota for api, so created personal api key
+# have to input the api key first
 
 option = Options()
 
-
-option.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
-option.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36')
 option.add_extension(r'C:\Users\gkim5\OneDrive\문서\2023 Spring\COMP 195\senior-project-spring-2023-web-scraping\extension.crx')
 
-
-chrome_ver = chromedriver_autoinstaller.get_chrome_version().split('.')[0]
-try:
-    browser = webdriver.Chrome(options=option)
+browser = webdriver.Chrome(options=option)
     
-except:
-    chromedriver_autoinstaller.install(True)
-    browser = webdriver.Chrome(options=option)
-browser.implicitly_wait(10)
+url = 'chrome-extension://mpbjkejclgfgadiemmefgebjfooflfhl/src/options/index.html'
 
-url = 'https://www.carvana.com/vehicle/2452937'
+# api key = OXSGUTEI6GOUXRLQZVFT2Z7HWXMDFWBW
+browser.maximize_window()
+browser.get(url)
+time.sleep(30)
+
+url = 'https://www.carvana.com/vehicle/2651229'
 image = ''
 fuel = 'Gas'
 
-browser.maximize_window()
+
 browser.get(url)
 newVehicle = vehicle.Vehicle(url, image, fuel)
 
@@ -97,15 +70,18 @@ elem_vin = browser.find_element(By.XPATH,'//a[contains(@href,"/VehicleHistory/")
 vin_history_url = elem_vin.get_attribute("href")
 newVehicle.transmission_color_vinHistoryURL_setter(transmission_type, color, vin_history_url)
 
-time.sleep(10)
+browser.execute_script("window.scrollTo(0, 2900)") 
+time.sleep(2)
+# click the link to history
 browser.find_element(By.XPATH,'//a[contains(@data-analytics-id, "Specifications - Previous Use Disclaimer")]').click()
-# click vin history link
-time.sleep(10)
+
+# manually click captcha
+time.sleep(30)
 browser.switch_to.window(browser.window_handles[1])
 elems_div = browser.find_elements(By.CLASS_NAME,'history-overview-cell')
-elems_div_texts = []
-for elem in elems_div:
-       elems_div_texts.append(elem.text)
+elems_div_texts = [x.text for x in elems_div]
+# for elem in elems_div:
+#        elems_div_texts.append(elem.text)
 
 
 try:
@@ -140,15 +116,21 @@ except IndexError:
 
 newVehicle.vin_history_setter(num_owners, accidents, last_state, regular_oil_changes, usage)
 
-if(alreadyExists(newVehicle.url) == False):
-        newCarDict = createCarInfoDict(newVehicle)
-        insertCarInfo(newCarDict)
+print("vehicle url: " + newVehicle.url)
+print("year: " + str(newVehicle.year))
+print("company: "+ newVehicle.company)
+print("model: "+ newVehicle.model)
+print("vin history url: " + newVehicle.vin_history_url)
+print("image url: " + newVehicle.image)
+print("miles : " + str(newVehicle.miles))
+print("price : " + str(newVehicle.price))
+print("transmission type : " + newVehicle.transmission_type)
+print("Exterior color: " + newVehicle.color)
+print("fuel type: " + newVehicle.fuel)
+print("number of owners : " + str(newVehicle.num_owners))
+print("accidents : " + str(newVehicle.accidents))
+print("last_state: " + newVehicle.last_state)
+print("regular oil changes: " + str(newVehicle.regular_oil_changes))
+print("usage: " + newVehicle.usage)
 
-#records = getRecords(1)
-#for x in records:
-        #print(x)
-
-
-browser.quit()
-
-
+browser.close()
