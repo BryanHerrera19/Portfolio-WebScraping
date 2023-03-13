@@ -90,9 +90,13 @@ print("transmission type : " + newVehicle.transmission_type)
 print("Exterior color: " + newVehicle.color)
 print("fuel type: " + newVehicle.fuel)
 
-if(alreadyExists(newVehicle.url) == False):
-        newCarDict = createCarInfoDict(newVehicle)
-        insertCarInfo(newCarDict)
+#if(alreadyExists(newVehicle.url) == False):
+        #newCarDict = createCarInfoDict(newVehicle)
+        #insertCarInfo(newCarDict)
+
+#records = getRecords(1)
+#for x in records:
+        #print(x)
 
 
 
