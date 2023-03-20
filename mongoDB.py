@@ -33,3 +33,7 @@ def updateDB(carURL, newInfo): #updates database record with any new info
 
 def getRecords(numRecords): #returns the number of records from top of database
        return carCol.find().limit(numRecords)
+
+records = getRecords(5)
+for x in records:
+        print(x)
