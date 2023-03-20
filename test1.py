@@ -80,8 +80,6 @@ time.sleep(30)
 browser.switch_to.window(browser.window_handles[1])
 elems_div = browser.find_elements(By.CLASS_NAME,'history-overview-cell')
 elems_div_texts = [x.text for x in elems_div]
-# for elem in elems_div:
-#        elems_div_texts.append(elem.text)
 
 
 try:
