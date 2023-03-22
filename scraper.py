@@ -148,6 +148,9 @@ for vehicle in Scraper.vehicles:
     print("regular oil changes: " + str(vehicle.regular_oil_changes))
     print("usage: " + vehicle.usage)
 
-    #if(not alreadyExists(vehicle.url)):
-        #newCarDict = createCarInfoDict(vehicle)
-        #insertCarInfo(newCarDict)
+    if(not alreadyExists(vehicle.url)):
+        newCarDict = createCarInfoDict(vehicle, createVINHistInfoDict(vehicle))
+        insertCarInfo(newCarDict)
+    else:
+        updatedDict = createCarInfoDict(vehicle, createVINHistInfoDict(vehicle))
+        updateDB(vehicle.url, updatedDict)
