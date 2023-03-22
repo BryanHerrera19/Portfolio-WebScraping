@@ -11,10 +11,9 @@ class Scraper(Automator):
     website_urls = []
     vehicles = []
     
-    
-    
     def feed_urls_imgs(self):
         self.automate_website()
+        # reduced number of car urls
         self.website_urls = self.urls
         images = self.images
         fuels = self.fuels
@@ -60,20 +59,74 @@ class Scraper(Automator):
                 transmission_type = 'Manual'
         else:
             transmission_type = 'Automatic'
-        color_text = list(filter(lambda v: re.match(r'.* Exterior Color', v), elems_li_texts))[0]
-        color = color_text.split()[0]
-        elem_vin = self.browser.find_element(By.XPATH,'//a[contains(@href,"/VehicleHistory/")]')
+        color_texts = list(filter(lambda v: re.match(r'.* Exterior Color', v), elems_li_texts))
+        if color_texts != []:
+            color_text = color_texts[0]
+            color = color_text.split()[0]
+        else:
+            color = ''
+        
+        self.browser.execute_script("window.scrollTo(0, 2700)") 
+        time.sleep(2)
+        
+        elem_vin = self.browser.find_element(By.XPATH,'//a[contains(@data-analytics-id, "Specifications - Previous Use Disclaimer")]')
         vin_history_url = elem_vin.get_attribute("href")
         newVehicle.transmission_color_vinHistoryURL_setter(transmission_type, color, vin_history_url)
 
-        time.sleep(4)
-        # self.scrape_vin_info(vin_history_url)
+        # click the link to history
+        elem_vin.click()
+        self.scrape_vin_info(newVehicle)
+
+    def scrape_vin_info(self, newVehicle):
+        # manually click captcha
+        self.browser.switch_to.window(self.browser.window_handles[1])
+        time.sleep(30)
+        elems_div = self.browser.find_elements(By.CLASS_NAME,'history-overview-cell')
+        elems_div_texts = [x.text for x in elems_div]
+
+
+        try:
+            text = list(filter(lambda v: re.match(r'.* Previous owners', v), elems_div_texts))[0]
+            num_text = re.findall('\d+', text)[0]
+            num_owners = int(num_text)
+        except IndexError:
+            try: 
+                text = list(filter(lambda v: re.match(r'CARFAX 1-Owner vehicle', v), elems_div_texts))[0]
+                num_owners = 1
+            except IndexError:
+                num_owners = 0
+
+        accidents_text = list(filter(lambda v: re.match(r'.*accident.*', v), elems_div_texts))[0]
+        if re.findall('No', accidents_text)[0]:
+            accidents = False
+        else: 
+            accidents = True
+
+        try:
+            last_state_text = list(filter(lambda v: re.match(r'Last owned in.*', v), elems_div_texts))[0]
+            last_state = re.findall(r'Last owned in (.*)', last_state_text)[0]
+        except IndexError:
+            last_state = ''
+            
+        try:
+            if list(filter(lambda v: re.match(r'Regular oil changes', v), elems_div_texts))[0]:
+                regular_oil_changes = True
+        except IndexError:
+            regular_oil_changes = False
+
+
+        try:
+            usage_text = list(filter(lambda v: re.match(r'Types of owners: .*', v), elems_div_texts))[0]
+            usage = re.findall(r'Types of owners: (.*)', usage_text)[0]
+        except IndexError:
+            usage = 'Personal'
+
+        newVehicle.vin_history_setter(num_owners, accidents, last_state, regular_oil_changes, usage)
 
         self.vehicles.append(newVehicle)
-        # self.browser.close()
-
-    def scrape_vin_info(self, vin_history_url):
-        self.browser.get(vin_history_url)
+        print("appended")
+        self.browser.close()
+        self.browser.switch_to.window(self.browser.window_handles[0])
 
 Scraper = Scraper()
 Scraper.feed_urls_imgs()
@@ -89,7 +142,12 @@ for vehicle in Scraper.vehicles:
     print("transmission type : " + vehicle.transmission_type)
     print("Exterior color: " + vehicle.color)
     print("fuel type: " + vehicle.fuel)
-    
+    print("number of owners : " + str(vehicle.num_owners))
+    print("accidents : " + str(vehicle.accidents))
+    print("last_state: " + vehicle.last_state)
+    print("regular oil changes: " + str(vehicle.regular_oil_changes))
+    print("usage: " + vehicle.usage)
+
     #if(not alreadyExists(vehicle.url)):
         #newCarDict = createCarInfoDict(vehicle)
         #insertCarInfo(newCarDict)
