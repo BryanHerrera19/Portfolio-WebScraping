@@ -211,7 +211,7 @@ QPushButton:hover{
 }</string>
        </property>
        <property name="text">
-        <string>URC</string>
+        <string>UCR</string>
        </property>
       </widget>
      </widget>
