@@ -78,9 +78,3 @@ widget.setWindowFlag(QtCore.Qt.WindowType.FramelessWindowHint)
 widget.setAttribute(QtCore.Qt.WA_TranslucentBackground, True)
 widget.show()
 sys.exit(app.exec())
-
-
-
-
-
-
