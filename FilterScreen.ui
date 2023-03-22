@@ -804,6 +804,36 @@ QCheckBox {
         </property>
        </widget>
       </widget>
+      <widget class="QPushButton" name="Hbutton">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>0</y>
+         <width>151</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton { 
+	border:none;
+	background-color: #27062D;
+	font-size: 60px; 
+	font-weight: bold; 
+	font-family: Segoe Print;
+	color: white;
+} 
+
+QPushButton:hover {
+	color: rgb(156,39,176);
+}</string>
+       </property>
+       <property name="text">
+        <string>UCR</string>
+       </property>
+      </widget>
       <zorder>quit_button</zorder>
       <zorder>SearchBar</zorder>
       <zorder>search_button</zorder>
@@ -811,6 +841,7 @@ QCheckBox {
       <zorder>FilterBar</zorder>
       <zorder>Seach_Icon</zorder>
       <zorder>Car_Infor_Area</zorder>
+      <zorder>Hbutton</zorder>
      </widget>
     </item>
    </layout>
