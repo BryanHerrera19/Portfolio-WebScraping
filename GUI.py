@@ -37,6 +37,23 @@ class FilterScreen(QMainWindow):
         self.Hbutton.clicked.connect(self.gotoHomeScreen)
         self.quit_button.clicked.connect(self.quit_func)
 
+        # Car display(random 5, no filter)
+        records = getRecords(5)
+        # Set row
+        row_count = len(records)
+        col_count = len(records[0])
+        self.cdt.setRowCount(row_count)
+        self.cdt.setColumnCount(col_count)
+        self.cdt.setHorizontalHeaderLabels((records[0].keys()))
+
+        for row in range(row_count):
+            for col in range(col_count):
+                values = (list(records[row].values())[col])
+                self.cdt.setItem(row, col, QtWidgets.QTableWidgetItem(values))
+
+
+
+
     def quit_func(self):
         sys.exit(app.exec())
 
@@ -59,6 +76,7 @@ class CarInfo(QMainWindow):
     def quit_func(self):
         sys.exit(app.exec())
 
+#Data base
 
 # Create application
 app = QApplication(sys.argv)
