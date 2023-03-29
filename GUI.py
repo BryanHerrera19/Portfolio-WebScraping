@@ -46,11 +46,21 @@ class FilterScreen(QMainWindow):
         self.cdt.setColumnCount(col_count)
         self.cdt.setHorizontalHeaderLabels((records[0].keys()))
 
-        for row in range(row_count):
-            for col in range(col_count):
-                values = (list(records[row].values())[col])
-                self.cdt.setItem(row, col, QtWidgets.QTableWidgetItem(values))
-
+        idx = 0;
+        # Adding/Showing data to the table
+        for x in records:
+            self.cdt.setItem(idx,1, QtWidgets.QTableWidgetItem(x['manufacturer']))
+            self.cdt.setItem(idx, 2, QtWidgets.QTableWidgetItem(x['modelName']))
+            self.cdt.setItem(idx, 3, QtWidgets.QTableWidgetItem(x['vin']))
+            self.cdt.setItem(idx, 4, QtWidgets.QTableWidgetItem(x['color']))
+            self.cdt.setItem(idx, 5, QtWidgets.QTableWidgetItem(str(x['year'])))
+            self.cdt.setItem(idx, 6, QtWidgets.QTableWidgetItem(str(x['mileage'])))
+            self.cdt.setItem(idx, 7, QtWidgets.QTableWidgetItem(x['transType']))
+            self.cdt.setItem(idx, 8, QtWidgets.QTableWidgetItem(str(x['price'])))
+            self.cdt.setItem(idx, 9, QtWidgets.QTableWidgetItem(x['fuelType']))
+            self.cdt.setItem(idx, 10, QtWidgets.QTableWidgetItem(x['image']))
+            self.cdt.setItem(idx, 11, QtWidgets.QTableWidgetItem(x['url']))
+            idx +=1
 
 
 
