@@ -11,11 +11,18 @@ ownerCol = wsdb["Owner_History"]
 def insertCarInfo(carInfoDict): #inserts a dictionary into database as a record
         carInfo = carCol.insert_one(carInfoDict)
 
-def createCarInfoDict(vehicleInfo): #gets a vehicle and turns it into a dictionary
+def createCarInfoDict(vehicleInfo, vinDict): #gets a vehicle and turns it into a dictionary
         tempCarDict = dict(manufacturer = vehicleInfo.company, modelName = vehicleInfo.model, vin = vehicleInfo.vin_history_url,
         color = vehicleInfo.color, year = vehicleInfo.year, mileage = vehicleInfo.miles, transType = vehicleInfo.transmission_type,
-        price = vehicleInfo.price, fuelType = vehicleInfo.fuel, image = vehicleInfo.image, url = vehicleInfo.url)
+        price = vehicleInfo.price, fuelType = vehicleInfo.fuel, image = vehicleInfo.image, url = vehicleInfo.url,
+        VINHist = vinDict)
         return tempCarDict
+
+def createVINHistInfoDict(vehicleInfo): #gets new updated info from scraper
+        tempVINHistDict = dict(numberOfOwners = vehicleInfo.num_owners, numberOfAccidents = vehicleInfo.accidents,
+                               lastState = vehicleInfo.last_state, regularOilChanges = vehicleInfo.regular_oil_changes,
+                               usage = vehicleInfo.usage)
+        return tempVINHistDict
 
 def alreadyExists(carURL): #checks if vehicle is in database
         numdocs = carCol.count_documents({'url': {"$in": [carURL]}})
@@ -32,8 +39,10 @@ def updateDB(carURL, newInfo): #updates database record with any new info
         carCol.update_one(myQuery, newCarHist)
 
 def getRecords(numRecords): #returns the number of records from top of database
-       return carCol.find().limit(numRecords)
+       return list(carCol.find().limit(numRecords))
 
-records = getRecords(5)
-for x in records:
-        print(x)
+
+
+
+
+
