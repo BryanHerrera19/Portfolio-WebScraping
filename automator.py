@@ -17,7 +17,7 @@ class Automator:
     options.add_argument('--disable-blink-features=AutomationControlled')
     options.add_argument("--window-size=1920x1080")
 
-    options.add_extension(r'C:\Users\gkim5\OneDrive\문서\2023 Spring\COMP 195\senior-project-spring-2023-web-scraping\extension.crx')
+    options.add_extension(r'.\extension.crx')
 
     options.binary_location="C:\Program Files\Google\Chrome\Application\chrome.exe"
     browser = webdriver.Chrome(options=options)

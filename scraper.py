@@ -6,6 +6,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+# api key = OXSGUTEI6GOUXRLQZVFT2Z7HWXMDFWBW
 
 class Scraper(Automator):
     website_urls = []
