@@ -286,13 +286,7 @@ border-radius: 10px;
                 <bool>true</bool>
                </property>
                <property name="styleSheet">
-                <string notr="true">QCheckBox::indicator{ 
-	width:25px;
-	height:25px; 
-	background-color:white;
-	border-radius: 8px; 
-}
-
+                <string notr="true">
 QCheckBox {
 	font-size: 25px;
 	spacing:15px;
@@ -467,7 +461,7 @@ QCheckBox::indicator:checked {
             <property name="geometry">
              <rect>
               <x>0</x>
-              <y>-4</y>
+              <y>0</y>
               <width>253</width>
               <height>156</height>
              </rect>
@@ -668,7 +662,7 @@ QCheckBox::indicator:checked {
             <property name="geometry">
              <rect>
               <x>0</x>
-              <y>-12</y>
+              <y>0</y>
               <width>253</width>
               <height>156</height>
              </rect>
@@ -824,6 +818,281 @@ QCheckBox::indicator:checked {
                </property>
                <property name="text">
                 <string>2017 - 2022</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="brand_bar">
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+	background-color: #B554D7;
+	border-radius: 8px; 
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Open Sans; 
+	color:white;
+} </string>
+           </property>
+           <property name="text">
+            <string>BRAND</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QScrollArea" name="brand_area">
+           <property name="styleSheet">
+            <string notr="true">QScrollArea {
+	background-color: red;;
+	border-radius: 8px; 
+} </string>
+           </property>
+           <property name="verticalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
+           </property>
+           <property name="horizontalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
+           </property>
+           <property name="widgetResizable">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="year_scroll_wheel_2">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>253</width>
+              <height>228</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QWidget {
+	background-color: rgb(164,104,140);
+}</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_6">
+             <item>
+              <widget class="QCheckBox" name="brand_check1">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="tabletTracking">
+                <bool>true</bool>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	image:url(:/Icons/Icons/uncheckbox.png);
+}
+
+QCheckBox::indicator:checked {
+	image:url(:/Icons/Icons/checkbox.png);
+}</string>
+               </property>
+               <property name="text">
+                <string>Chevrolet</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="brand_check">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="tabletTracking">
+                <bool>true</bool>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	image:url(:/Icons/Icons/uncheckbox.png);
+}
+
+QCheckBox::indicator:checked {
+	image:url(:/Icons/Icons/checkbox.png);
+}</string>
+               </property>
+               <property name="text">
+                <string>Ford</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="brand_check5">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="tabletTracking">
+                <bool>true</bool>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	image:url(:/Icons/Icons/uncheckbox.png);
+}
+
+QCheckBox::indicator:checked {
+	image:url(:/Icons/Icons/checkbox.png);
+}</string>
+               </property>
+               <property name="text">
+                <string>Cadillac</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="brand_check2">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="tabletTracking">
+                <bool>true</bool>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	image:url(:/Icons/Icons/uncheckbox.png);
+}
+
+QCheckBox::indicator:checked {
+	image:url(:/Icons/Icons/checkbox.png);
+}</string>
+               </property>
+               <property name="text">
+                <string>BMW</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="brand_check4">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="tabletTracking">
+                <bool>true</bool>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	image:url(:/Icons/Icons/uncheckbox.png);
+}
+
+QCheckBox::indicator:checked {
+	image:url(:/Icons/Icons/checkbox.png);
+}</string>
+               </property>
+               <property name="text">
+                <string>Nissan</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="brand_check3">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="tabletTracking">
+                <bool>true</bool>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	image:url(:/Icons/Icons/uncheckbox.png);
+}
+
+QCheckBox::indicator:checked {
+	image:url(:/Icons/Icons/checkbox.png);
+}</string>
+               </property>
+               <property name="text">
+                <string>Lexus</string>
                </property>
               </widget>
              </item>
