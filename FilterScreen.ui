@@ -286,7 +286,13 @@ border-radius: 10px;
                 <bool>true</bool>
                </property>
                <property name="styleSheet">
-                <string notr="true">
+                <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
 QCheckBox {
 	font-size: 25px;
 	spacing:15px;
@@ -296,11 +302,11 @@ QCheckBox {
 }
 
 QCheckBox::indicator:unchecked {
-	image:url(:/Icons/Icons/uncheckbox.png);
+	background-color: white;
 }
 
 QCheckBox::indicator:checked {
-	image:url(:/Icons/Icons/checkbox.png);
+	background-color:rgb(255, 108, 235)
 }</string>
                </property>
                <property name="text">
@@ -333,11 +339,11 @@ QCheckBox {
 }
 
 QCheckBox::indicator:unchecked {
-	image:url(:/Icons/Icons/uncheckbox.png);
+	background-color: white;
 }
 
 QCheckBox::indicator:checked {
-	image:url(:/Icons/Icons/checkbox.png);
+	background-color:rgb(255, 108, 235)
 }</string>
                </property>
                <property name="text">
@@ -370,11 +376,11 @@ QCheckBox {
 }
 
 QCheckBox::indicator:unchecked {
-	image:url(:/Icons/Icons/uncheckbox.png);
+	background-color: white;
 }
 
 QCheckBox::indicator:checked {
-	image:url(:/Icons/Icons/checkbox.png);
+	background-color:rgb(255, 108, 235)
 }</string>
                </property>
                <property name="text">
@@ -407,11 +413,11 @@ QCheckBox {
 }
 
 QCheckBox::indicator:unchecked {
-	image:url(:/Icons/Icons/uncheckbox.png);
+	background-color: white;
 }
 
 QCheckBox::indicator:checked {
-	image:url(:/Icons/Icons/checkbox.png);
+	background-color:rgb(255, 108, 235)
 }</string>
                </property>
                <property name="text">
@@ -497,11 +503,11 @@ QCheckBox {
 }
 
 QCheckBox::indicator:unchecked {
-	image:url(:/Icons/Icons/uncheckbox.png);
+	background-color: white;
 }
 
 QCheckBox::indicator:checked {
-	image:url(:/Icons/Icons/checkbox.png);
+	background-color:rgb(255, 108, 235)
 }</string>
                </property>
                <property name="text">
@@ -534,11 +540,11 @@ QCheckBox {
 }
 
 QCheckBox::indicator:unchecked {
-	image:url(:/Icons/Icons/uncheckbox.png);
+	background-color: white;
 }
 
 QCheckBox::indicator:checked {
-	image:url(:/Icons/Icons/checkbox.png);
+	background-color:rgb(255, 108, 235)
 }</string>
                </property>
                <property name="text">
@@ -571,11 +577,11 @@ QCheckBox {
 }
 
 QCheckBox::indicator:unchecked {
-	image:url(:/Icons/Icons/uncheckbox.png);
+	background-color: white;
 }
 
 QCheckBox::indicator:checked {
-	image:url(:/Icons/Icons/checkbox.png);
+	background-color:rgb(255, 108, 235)
 }</string>
                </property>
                <property name="text">
@@ -608,11 +614,11 @@ QCheckBox {
 }
 
 QCheckBox::indicator:unchecked {
-	image:url(:/Icons/Icons/uncheckbox.png);
+	background-color: white;
 }
 
 QCheckBox::indicator:checked {
-	image:url(:/Icons/Icons/checkbox.png);
+	background-color:rgb(255, 108, 235)
 }</string>
                </property>
                <property name="text">
@@ -698,11 +704,11 @@ QCheckBox {
 }
 
 QCheckBox::indicator:unchecked {
-	image:url(:/Icons/Icons/uncheckbox.png);
+	background-color: white;
 }
 
 QCheckBox::indicator:checked {
-	image:url(:/Icons/Icons/checkbox.png);
+	background-color:rgb(255, 108, 235)
 }</string>
                </property>
                <property name="text">
@@ -735,11 +741,11 @@ QCheckBox {
 }
 
 QCheckBox::indicator:unchecked {
-	image:url(:/Icons/Icons/uncheckbox.png);
+	background-color: white;
 }
 
 QCheckBox::indicator:checked {
-	image:url(:/Icons/Icons/checkbox.png);
+	background-color:rgb(255, 108, 235)
 }</string>
                </property>
                <property name="text">
@@ -772,11 +778,11 @@ QCheckBox {
 }
 
 QCheckBox::indicator:unchecked {
-	image:url(:/Icons/Icons/uncheckbox.png);
+	background-color: white;
 }
 
 QCheckBox::indicator:checked {
-	image:url(:/Icons/Icons/checkbox.png);
+	background-color:rgb(255, 108, 235)
 }</string>
                </property>
                <property name="text">
@@ -809,11 +815,11 @@ QCheckBox {
 }
 
 QCheckBox::indicator:unchecked {
-	image:url(:/Icons/Icons/uncheckbox.png);
+	background-color: white;
 }
 
 QCheckBox::indicator:checked {
-	image:url(:/Icons/Icons/checkbox.png);
+	background-color:rgb(255, 108, 235)
 }</string>
                </property>
                <property name="text">
@@ -899,11 +905,11 @@ QCheckBox {
 }
 
 QCheckBox::indicator:unchecked {
-	image:url(:/Icons/Icons/uncheckbox.png);
+	background-color: white;
 }
 
 QCheckBox::indicator:checked {
-	image:url(:/Icons/Icons/checkbox.png);
+	background-color:rgb(255, 108, 235)
 }</string>
                </property>
                <property name="text">
@@ -936,11 +942,11 @@ QCheckBox {
 }
 
 QCheckBox::indicator:unchecked {
-	image:url(:/Icons/Icons/uncheckbox.png);
+	background-color: white;
 }
 
 QCheckBox::indicator:checked {
-	image:url(:/Icons/Icons/checkbox.png);
+	background-color:rgb(255, 108, 235)
 }</string>
                </property>
                <property name="text">
@@ -973,11 +979,11 @@ QCheckBox {
 }
 
 QCheckBox::indicator:unchecked {
-	image:url(:/Icons/Icons/uncheckbox.png);
+	background-color: white;
 }
 
 QCheckBox::indicator:checked {
-	image:url(:/Icons/Icons/checkbox.png);
+	background-color:rgb(255, 108, 235)
 }</string>
                </property>
                <property name="text">
@@ -1010,11 +1016,11 @@ QCheckBox {
 }
 
 QCheckBox::indicator:unchecked {
-	image:url(:/Icons/Icons/uncheckbox.png);
+	background-color: white;
 }
 
 QCheckBox::indicator:checked {
-	image:url(:/Icons/Icons/checkbox.png);
+	background-color:rgb(255, 108, 235)
 }</string>
                </property>
                <property name="text">
@@ -1047,11 +1053,11 @@ QCheckBox {
 }
 
 QCheckBox::indicator:unchecked {
-	image:url(:/Icons/Icons/uncheckbox.png);
+	background-color: white;
 }
 
 QCheckBox::indicator:checked {
-	image:url(:/Icons/Icons/checkbox.png);
+	background-color:rgb(255, 108, 235)
 }</string>
                </property>
                <property name="text">
@@ -1084,11 +1090,11 @@ QCheckBox {
 }
 
 QCheckBox::indicator:unchecked {
-	image:url(:/Icons/Icons/uncheckbox.png);
+	background-color: white;
 }
 
 QCheckBox::indicator:checked {
-	image:url(:/Icons/Icons/checkbox.png);
+	background-color:rgb(255, 108, 235)
 }</string>
                </property>
                <property name="text">
