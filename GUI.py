@@ -17,8 +17,9 @@ class MainScreen(QMainWindow):
     def __init__(self):
         super(MainScreen, self).__init__()
         loadUi("MainScreen.ui", self)
-        self.Sbutton.clicked.connect(self.gotoSearchScreen)
-        self.Hbutton.clicked.connect(self.gotoCarInfo)
+        # self.Sbutton.clicked.connect(self.gotoSearchScreen)
+        # self.Hbutton.clicked.connect(self.gotoCarInfo)
+        self.GSbutton.clicked.connect(self.gotoSearchScreen)
         self.quit_button.clicked.connect(self.quit_func)
         self.show()
 
@@ -41,7 +42,7 @@ class FilterScreen(QMainWindow):
     def __init__(self):
         super(FilterScreen, self).__init__()
         loadUi("FilterScreen.ui", self)
-        self.Hbutton.clicked.connect(self.gotoHomeScreen)
+        # self.Hbutton.clicked.connect(self.gotoHomeScreen)
         self.quit_button.clicked.connect(self.quit_func)
 
         # Filter for later use(not for now)
@@ -96,7 +97,7 @@ class CarInfo(QMainWindow):
     def __init__(self):
         super(CarInfo, self).__init__()
         loadUi("CarInfo.ui", self)
-        self.Hbutton.clicked.connect(self.gotoHomeScreen)
+        # self.Hbutton.clicked.connect(self.gotoHomeScreen)
         self.quit_button.clicked.connect(self.quit_func)
 
         # Data
