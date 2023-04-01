@@ -83,6 +83,8 @@ class FilterScreen(QMainWindow):
             self.cdt.setItem(idx, 11, QtWidgets.QTableWidgetItem(x['url']))
             idx += 1
 
+        
+
     def quit_func(self):
         sys.exit(app.exec())
 
@@ -90,6 +92,9 @@ class FilterScreen(QMainWindow):
         hScreen = MainScreen()
         widget.addWidget(hScreen)
         widget.setCurrentIndex(widget.currentIndex() + 1)
+
+
+
 
 
 class CarInfo(QMainWindow):
