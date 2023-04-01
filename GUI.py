@@ -8,6 +8,7 @@ from PyQt5.QtGui import QImage, QPixmap
 import requests
 from PIL import Image
 from io import BytesIO
+from PyQt5 import *
 
 from mongoDB import *
 
@@ -45,6 +46,8 @@ class FilterScreen(QMainWindow):
         # self.Hbutton.clicked.connect(self.gotoHomeScreen)
         self.quit_button.clicked.connect(self.quit_func)
 
+        self.printTest()
+
         # Filter for later use(not for now)
         '''self.price_check1.setStyleSheet("QCheckBox" "{"
                                         "font-size: 25px;"
@@ -62,8 +65,13 @@ class FilterScreen(QMainWindow):
                                         "}")
         '''
 
-        # Car display(random 5, no filter)
+    def printTest(self):
+        self.cdt.setRowCount(0)
+        records = getRecords()
+        row_count = len(records)
+        col_count = len(records[0])
 
+        # Setting the number of rows and cols
         self.cdt.setRowCount(row_count)
         self.cdt.setColumnCount(col_count)
         self.cdt.setHorizontalHeaderLabels((records[0].keys()))
@@ -88,9 +96,11 @@ class FilterScreen(QMainWindow):
             self.cdt.setItem(idx, 5, QtWidgets.QTableWidgetItem(str(x['mileage'])))
             self.cdt.setItem(idx, 6, QtWidgets.QTableWidgetItem(x['fuelType']))
             idx += 1
-            
+
+        #Resizing the rows and cols to match the information
         self.cdt.resizeRowsToContents()
-        # self.cdt.resizeColumnsToContents()
+        self.cdt.resizeColumnsToContents()
+        
         
     def quit_func(self):
         sys.exit(app.exec())
@@ -99,10 +109,6 @@ class FilterScreen(QMainWindow):
         hScreen = MainScreen()
         widget.addWidget(hScreen)
         widget.setCurrentIndex(widget.currentIndex() + 1)
-
-
-
-
 
 class CarInfo(QMainWindow):
     def __init__(self):
@@ -120,12 +126,6 @@ class CarInfo(QMainWindow):
 
     def quit_func(self):
         sys.exit(app.exec())
-
-
-# Data base
-records = getRecords(10)
-row_count = len(records)
-col_count = len(records[0])
 
 # Create application
 app = QApplication(sys.argv)

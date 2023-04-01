@@ -286,7 +286,7 @@ border-radius: 10px;
                 <bool>true</bool>
                </property>
                <property name="accessibleName">
-                <string>lt 5000</string>
+                <string>$lt 5000</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox::indicator{ 
@@ -406,7 +406,7 @@ QCheckBox::indicator:checked {
                 <bool>true</bool>
                </property>
                <property name="accessibleName">
-                <string>gt 15001</string>
+                <string>$gt 15000</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox::indicator{ 
@@ -498,6 +498,9 @@ QCheckBox::indicator:checked {
                <property name="tabletTracking">
                 <bool>true</bool>
                </property>
+               <property name="accessibleName">
+                <string>$lt 5000</string>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox::indicator{ 
 	width:25px;
@@ -534,6 +537,9 @@ QCheckBox::indicator:checked {
                </property>
                <property name="tabletTracking">
                 <bool>true</bool>
+               </property>
+               <property name="accessibleName">
+                <string>5000 10000</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox::indicator{ 
@@ -572,6 +578,9 @@ QCheckBox::indicator:checked {
                <property name="tabletTracking">
                 <bool>true</bool>
                </property>
+               <property name="accessibleName">
+                <string>10001 15000</string>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox::indicator{ 
 	width:25px;
@@ -608,6 +617,9 @@ QCheckBox::indicator:checked {
                </property>
                <property name="tabletTracking">
                 <bool>true</bool>
+               </property>
+               <property name="accessibleName">
+                <string>$gt 15000</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox::indicator{ 

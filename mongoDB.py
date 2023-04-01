@@ -40,8 +40,9 @@ def updateDB(carURL, newInfo): #updates database record with any new info
         newCarHist = {"$set": {"carHist": newInfo}}
         carCol.update_one(myQuery, newCarHist)
 
-def getRecords(numRecords): #returns the number of records from top of database
-       return list(carCol.find().limit(numRecords))
+def getRecords(): #returns the number of records from top of database
+       return list(carCol.find())
 
-def setPriceQuery():
+def setPriceQuery(priceQuery):
+        list = priceQuery.split()
         return list(carCol.find())
