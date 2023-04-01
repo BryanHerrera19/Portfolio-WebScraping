@@ -4,7 +4,7 @@ from PyQt5 import QtWidgets, QtGui
 from PyQt5 import QtCore
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
-
+from PyQt5.QtGui import QImage, QPixmap
 import requests
 from PIL import Image
 from io import BytesIO
@@ -71,19 +71,27 @@ class FilterScreen(QMainWindow):
         idx = 0;
         # Adding/Showing data to the table
         for x in records:
+            r = requests.get(x['image'],stream=True)
+            assert r.status_code == 200
+            img = QImage()
+            assert img.loadFromData(r.content)
+            pixel_img = img.scaled(160,120,Qt.KeepAspectRatio)
+            w = QLabel()
+            w.setPixmap(QPixmap(pixel_img))
+
+            # will have to change column names
+            self.cdt.setCellWidget(idx, 0, w)
             self.cdt.setItem(idx, 1, QtWidgets.QTableWidgetItem(x['manufacturer']))
             self.cdt.setItem(idx, 2, QtWidgets.QTableWidgetItem(x['modelName']))
-            self.cdt.setItem(idx, 3, QtWidgets.QTableWidgetItem(x['vin']))
-            self.cdt.setItem(idx, 4, QtWidgets.QTableWidgetItem(x['color']))
-            self.cdt.setItem(idx, 5, QtWidgets.QTableWidgetItem(str(x['year'])))
-            self.cdt.setItem(idx, 6, QtWidgets.QTableWidgetItem(str(x['mileage'])))
-            self.cdt.setItem(idx, 7, QtWidgets.QTableWidgetItem(x['transType']))
-            self.cdt.setItem(idx, 8, QtWidgets.QTableWidgetItem(str(x['price'])))
-            self.cdt.setItem(idx, 9, QtWidgets.QTableWidgetItem(x['fuelType']))
-            self.cdt.setItem(idx, 10, QtWidgets.QTableWidgetItem(x['image']))
-            self.cdt.setItem(idx, 11, QtWidgets.QTableWidgetItem(x['url']))
+            self.cdt.setItem(idx, 3, QtWidgets.QTableWidgetItem(str(x['year'])))
+            self.cdt.setItem(idx, 4, QtWidgets.QTableWidgetItem(str(x['price'])))
+            self.cdt.setItem(idx, 5, QtWidgets.QTableWidgetItem(str(x['mileage'])))
+            self.cdt.setItem(idx, 6, QtWidgets.QTableWidgetItem(x['fuelType']))
             idx += 1
-
+            
+        self.cdt.resizeRowsToContents()
+        # self.cdt.resizeColumnsToContents()
+        
     def quit_func(self):
         sys.exit(app.exec())
 
