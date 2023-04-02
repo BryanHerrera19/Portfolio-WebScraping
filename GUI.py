@@ -4,24 +4,24 @@ from PyQt5 import QtWidgets, QtGui
 from PyQt5 import QtCore
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
-
+from PyQt5.QtGui import QImage, QPixmap
 import requests
 from PIL import Image
 from io import BytesIO
+from PyQt5 import *
 
 from mongoDB import *
 
 
+# Main Screen
 class MainScreen(QMainWindow):
     def __init__(self):
         super(MainScreen, self).__init__()
         loadUi("MainScreen.ui", self)
-        self.oldPosition = QtCore.QPoint()
-        self.bg.mouseMoveEvent = self.mouseMoveEvent
-        self.Sbutton.clicked.connect(self.gotoSearchScreen)
-        self.Hbutton.clicked.connect(self.gotoCarInfo)
+        # self.Sbutton.clicked.connect(self.gotoSearchScreen)
+        # self.Hbutton.clicked.connect(self.gotoCarInfo)
+        self.GSbutton.clicked.connect(self.gotoSearchScreen)
         self.quit_button.clicked.connect(self.quit_func)
-
         self.show()
 
     def gotoSearchScreen(self):
@@ -34,19 +34,6 @@ class MainScreen(QMainWindow):
         widget.addWidget(cScreen)
         widget.setCurrentIndex(widget.currentIndex() + 2)
 
-    def mousePress(self, event):
-        self.oldPosition = event.globalPos()
-
-    def mouseMoveEvent(self, event):
-        if event.buttons() == QtCore.Qt.LeftButton:
-            print("yes")
-            dis = QPoint(event.globalPos() - self.oldPosition)
-            self.move(self.x() + dis.x(), self.y() + dis.y())
-            self.oldPosition = event.globalPos()
-
-
-
-
     def quit_func(self):
         sys.exit(app.exec())
 
@@ -56,8 +43,10 @@ class FilterScreen(QMainWindow):
     def __init__(self):
         super(FilterScreen, self).__init__()
         loadUi("FilterScreen.ui", self)
-        self.Hbutton.clicked.connect(self.gotoHomeScreen)
+        # self.Hbutton.clicked.connect(self.gotoHomeScreen)
         self.quit_button.clicked.connect(self.quit_func)
+
+        self.printTest()
 
         # Filter for later use(not for now)
         '''self.price_check1.setStyleSheet("QCheckBox" "{"
@@ -76,8 +65,13 @@ class FilterScreen(QMainWindow):
                                         "}")
         '''
 
-        # Car display(random 5, no filter)
+    def printTest(self):
+        self.cdt.setRowCount(0)
+        records = getRecordLimit(5)
+        row_count = len(records)
+        col_count = len(records[0])
 
+        # Setting the number of rows and cols
         self.cdt.setRowCount(row_count)
         self.cdt.setColumnCount(col_count)
         self.cdt.setHorizontalHeaderLabels((records[0].keys()))
@@ -85,19 +79,29 @@ class FilterScreen(QMainWindow):
         idx = 0;
         # Adding/Showing data to the table
         for x in records:
+            r = requests.get(x['image'],stream=True)
+            assert r.status_code == 200
+            img = QImage()
+            assert img.loadFromData(r.content)
+            pixel_img = img.scaled(160,120,Qt.KeepAspectRatio)
+            w = QLabel()
+            w.setPixmap(QPixmap(pixel_img))
+
+            # will have to change column names
+            self.cdt.setCellWidget(idx, 0, w)
             self.cdt.setItem(idx, 1, QtWidgets.QTableWidgetItem(x['manufacturer']))
             self.cdt.setItem(idx, 2, QtWidgets.QTableWidgetItem(x['modelName']))
-            self.cdt.setItem(idx, 3, QtWidgets.QTableWidgetItem(x['vin']))
-            self.cdt.setItem(idx, 4, QtWidgets.QTableWidgetItem(x['color']))
-            self.cdt.setItem(idx, 5, QtWidgets.QTableWidgetItem(str(x['year'])))
-            self.cdt.setItem(idx, 6, QtWidgets.QTableWidgetItem(str(x['mileage'])))
-            self.cdt.setItem(idx, 7, QtWidgets.QTableWidgetItem(x['transType']))
-            self.cdt.setItem(idx, 8, QtWidgets.QTableWidgetItem(str(x['price'])))
-            self.cdt.setItem(idx, 9, QtWidgets.QTableWidgetItem(x['fuelType']))
-            self.cdt.setItem(idx, 10, QtWidgets.QTableWidgetItem(x['image']))
-            self.cdt.setItem(idx, 11, QtWidgets.QTableWidgetItem(x['url']))
+            self.cdt.setItem(idx, 3, QtWidgets.QTableWidgetItem(str(x['year'])))
+            self.cdt.setItem(idx, 4, QtWidgets.QTableWidgetItem(str(x['price'])))
+            self.cdt.setItem(idx, 5, QtWidgets.QTableWidgetItem(str(x['mileage'])))
+            self.cdt.setItem(idx, 6, QtWidgets.QTableWidgetItem(x['fuelType']))
             idx += 1
 
+        #Resizing the rows and cols to match the information
+        self.cdt.resizeRowsToContents()
+        self.cdt.resizeColumnsToContents()
+        
+        
     def quit_func(self):
         sys.exit(app.exec())
 
@@ -106,12 +110,11 @@ class FilterScreen(QMainWindow):
         widget.addWidget(hScreen)
         widget.setCurrentIndex(widget.currentIndex() + 1)
 
-
 class CarInfo(QMainWindow):
     def __init__(self):
         super(CarInfo, self).__init__()
         loadUi("CarInfo.ui", self)
-        self.Hbutton.clicked.connect(self.gotoHomeScreen)
+        # self.Hbutton.clicked.connect(self.gotoHomeScreen)
         self.quit_button.clicked.connect(self.quit_func)
 
         # Data
@@ -123,12 +126,6 @@ class CarInfo(QMainWindow):
 
     def quit_func(self):
         sys.exit(app.exec())
-
-
-# Data base
-records = getRecords(10)
-row_count = len(records)
-col_count = len(records[0])
 
 # Create application
 app = QApplication(sys.argv)
