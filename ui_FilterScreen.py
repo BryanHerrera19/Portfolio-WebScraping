@@ -554,33 +554,6 @@ class Ui_MainWindow(object):
         self.year_scroll_wheel_2.setObjectName("year_scroll_wheel_2")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.year_scroll_wheel_2)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
-        self.brand_check1 = QtWidgets.QCheckBox(self.year_scroll_wheel_2)
-        self.brand_check1.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.brand_check1.setTabletTracking(True)
-        self.brand_check1.setStyleSheet("QCheckBox::indicator{ \n"
-"    width:25px;\n"
-"    height:25px; \n"
-"    background-color:white;\n"
-"    border-radius: 8px; \n"
-"}\n"
-"\n"
-"QCheckBox {\n"
-"    font-size: 25px;\n"
-"    spacing:15px;\n"
-"    color:white;\n"
-"    font-weight:bold;\n"
-"    font-family: Open Sans; \n"
-"}\n"
-"\n"
-"QCheckBox::indicator:unchecked {\n"
-"    background-color: white;\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:checked {\n"
-"    background-color:rgb(255, 108, 235)\n"
-"}")
-        self.brand_check1.setObjectName("brand_check1")
-        self.verticalLayout_6.addWidget(self.brand_check1)
         self.brand_check = QtWidgets.QCheckBox(self.year_scroll_wheel_2)
         self.brand_check.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.brand_check.setTabletTracking(True)
@@ -608,6 +581,33 @@ class Ui_MainWindow(object):
 "}")
         self.brand_check.setObjectName("brand_check")
         self.verticalLayout_6.addWidget(self.brand_check)
+        self.brand_check1 = QtWidgets.QCheckBox(self.year_scroll_wheel_2)
+        self.brand_check1.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.brand_check1.setTabletTracking(True)
+        self.brand_check1.setStyleSheet("QCheckBox::indicator{ \n"
+"    width:25px;\n"
+"    height:25px; \n"
+"    background-color:white;\n"
+"    border-radius: 8px; \n"
+"}\n"
+"\n"
+"QCheckBox {\n"
+"    font-size: 25px;\n"
+"    spacing:15px;\n"
+"    color:white;\n"
+"    font-weight:bold;\n"
+"    font-family: Open Sans; \n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-color: white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color:rgb(255, 108, 235)\n"
+"}")
+        self.brand_check1.setObjectName("brand_check1")
+        self.verticalLayout_6.addWidget(self.brand_check1)
         self.brand_check5 = QtWidgets.QCheckBox(self.year_scroll_wheel_2)
         self.brand_check5.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.brand_check5.setTabletTracking(True)
@@ -809,11 +809,17 @@ class Ui_MainWindow(object):
         self.year_check4.setAccessibleName(_translate("MainWindow", "2017 2022"))
         self.year_check4.setText(_translate("MainWindow", "2017 - 2022"))
         self.brand_bar.setText(_translate("MainWindow", "BRAND"))
-        self.brand_check1.setText(_translate("MainWindow", "Chevrolet"))
+        self.brand_check.setAccessibleName(_translate("MainWindow", "FORD"))
         self.brand_check.setText(_translate("MainWindow", "Ford"))
+        self.brand_check1.setAccessibleName(_translate("MainWindow", "CHEVROLET"))
+        self.brand_check1.setText(_translate("MainWindow", "Chevrolet"))
+        self.brand_check5.setAccessibleName(_translate("MainWindow", "CADILLAC"))
         self.brand_check5.setText(_translate("MainWindow", "Cadillac"))
+        self.brand_check2.setAccessibleName(_translate("MainWindow", "BMW"))
         self.brand_check2.setText(_translate("MainWindow", "BMW"))
+        self.brand_check4.setAccessibleName(_translate("MainWindow", "NISSAN"))
         self.brand_check4.setText(_translate("MainWindow", "Nissan"))
+        self.brand_check3.setAccessibleName(_translate("MainWindow", "LEXUS"))
         self.brand_check3.setText(_translate("MainWindow", "Lexus"))
         self.FilterBar.setText(_translate("MainWindow", "          FILTER"))
         self.Hbutton.setText(_translate("MainWindow", "UCR"))

@@ -56,7 +56,7 @@ def setPriceQuery(priceQuery):#Sets a query in order for use in queries
                                       {"price" : { "$gt" : int(stringList[0]) }}]}
         return list(carCol.find(myQuery))
 
-def setPriceQuery(mileQuery):#Sets a query in order for use in queries
+def setMileQuery(mileQuery):#Sets a query in order for use in queries
         print("Reached Here!")
         stringList = mileQuery.split()
         if(stringList[0] == "$lt" or stringList[0] == "$gt"):
@@ -66,8 +66,12 @@ def setPriceQuery(mileQuery):#Sets a query in order for use in queries
                                       {"mileage" : { "$gt" : int(stringList[0]) }}]}
         return list(carCol.find(myQuery))
 
-def setPriceQuery(mileQuery):#Sets a query in order for use in queries
-        stringList = mileQuery.split()
+def setYearQuery(yearQuery):#Sets a query in order for use in queries
+        stringList = yearQuery.split()
         myQuery = { "$and" : [{"year" : { "$lt" : int(stringList[1]) }},
                                 {"year" : { "$gt" : int(stringList[0]) }}]}
+        return list(carCol.find(myQuery))
+
+def setBrandQuery(brandQuery):#Sets a query in order for use in queries
+        myQuery = { "manufacturer" : brandQuery }
         return list(carCol.find(myQuery))

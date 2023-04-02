@@ -75,6 +75,12 @@ class FilterScreen(QMainWindow):
         self.year_check2.stateChanged.connect(self.yearChange)
         self.year_check3.stateChanged.connect(self.yearChange)
         self.year_check4.stateChanged.connect(self.yearChange)
+        self.brand_check.stateChanged.connect(self.brandChange)
+        self.brand_check1.stateChanged.connect(self.brandChange)
+        self.brand_check2.stateChanged.connect(self.brandChange)
+        self.brand_check3.stateChanged.connect(self.brandChange)
+        self.brand_check4.stateChanged.connect(self.brandChange)
+        self.brand_check5.stateChanged.connect(self.brandChange)
 
 
     #Pastes cars onto a table to view
@@ -146,16 +152,16 @@ class FilterScreen(QMainWindow):
            self.miles_check4.checkState() == 0):
             self.pasteCars(5, None)
         if(self.miles_check1.checkState() == 2):
-            tempList = setPriceQuery(self.miles_check1.accessibleName())
+            tempList = setMileQuery(self.miles_check1.accessibleName())
             self.pasteCars(len(tempList), tempList)
         if(self.miles_check2.checkState() == 2):
-            tempList = setPriceQuery(self.miles_check2.accessibleName())
+            tempList = setMileQuery(self.miles_check2.accessibleName())
             self.pasteCars(len(tempList), tempList)
         if(self.miles_check3.checkState() == 2):
-            tempList = setPriceQuery(self.miles_check3.accessibleName())
+            tempList = setMileQuery(self.miles_check3.accessibleName())
             self.pasteCars(len(tempList), tempList)
         if(self.miles_check4.checkState() == 2):
-            tempList = setPriceQuery(self.miles_check4.accessibleName())
+            tempList = setMileQuery(self.miles_check4.accessibleName())
             self.pasteCars(len(tempList), tempList)
 
     def yearChange(self):
@@ -165,16 +171,43 @@ class FilterScreen(QMainWindow):
            self.year_check4.checkState() == 0):
             self.pasteCars(5, None)
         if(self.year_check1.checkState() == 2):
-            tempList = setPriceQuery(self.year_check1.accessibleName())
+            tempList = setYearQuery(self.year_check1.accessibleName())
             self.pasteCars(len(tempList), tempList)
         if(self.year_check2.checkState() == 2):
-            tempList = setPriceQuery(self.year_check2.accessibleName())
+            tempList = setYearQuery(self.year_check2.accessibleName())
             self.pasteCars(len(tempList), tempList)
         if(self.year_check3.checkState() == 2):
-            tempList = setPriceQuery(self.year_check3.accessibleName())
+            tempList = setYearQuery(self.year_check3.accessibleName())
             self.pasteCars(len(tempList), tempList)
         if(self.year_check4.checkState() == 2):
-            tempList = setPriceQuery(self.year_check4.accessibleName())
+            tempList = setYearQuery(self.year_check4.accessibleName())
+            self.pasteCars(len(tempList), tempList)
+
+    def brandChange(self):
+        if(self.brand_check.checkState() == 0 or
+           self.brand_check1.checkState() == 0 or
+           self.brand_check2.checkState() == 0 or
+           self.brand_check3.checkState() == 0 or
+           self.brand_check4.checkState() == 0 or
+           self.brand_check5.checkState() == 0):
+            self.pasteCars(5, None)
+        if(self.brand_check.checkState() == 2):
+            tempList = setBrandQuery(self.brand_check.accessibleName())
+            self.pasteCars(len(tempList), tempList)
+        if(self.brand_check1.checkState() == 2):
+            tempList = setBrandQuery(self.brand_check1.accessibleName())
+            self.pasteCars(len(tempList), tempList)
+        if(self.brand_check2.checkState() == 2):
+            tempList = setBrandQuery(self.brand_check2.accessibleName())
+            self.pasteCars(len(tempList), tempList)
+        if(self.brand_check3.checkState() == 2):
+            tempList = setBrandQuery(self.brand_check3.accessibleName())
+            self.pasteCars(len(tempList), tempList)
+        if(self.brand_check4.checkState() == 2):
+            tempList = setBrandQuery(self.brand_check4.accessibleName())
+            self.pasteCars(len(tempList), tempList)
+        if(self.brand_check5.checkState() == 2):
+            tempList = setBrandQuery(self.brand_check5.accessibleName())
             self.pasteCars(len(tempList), tempList)
         
     #Quits the application
