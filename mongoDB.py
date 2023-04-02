@@ -43,6 +43,9 @@ def updateDB(carURL, newInfo): #updates database record with any new info
 def getRecords(): #returns the number of records from top of database
        return list(carCol.find())
 
+def getRecordLimit(limitSize):
+        return list(carCol.find().limit(limitSize))
+
 def setPriceQuery(priceQuery):
         list = priceQuery.split()
         return list(carCol.find())

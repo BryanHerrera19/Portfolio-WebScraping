@@ -67,7 +67,7 @@ class FilterScreen(QMainWindow):
 
     def printTest(self):
         self.cdt.setRowCount(0)
-        records = getRecords()
+        records = getRecordLimit(5)
         row_count = len(records)
         col_count = len(records[0])
 
