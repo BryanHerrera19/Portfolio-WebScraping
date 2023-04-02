@@ -539,7 +539,7 @@ QCheckBox::indicator:checked {
                 <bool>true</bool>
                </property>
                <property name="accessibleName">
-                <string>5000 10000</string>
+                <string>5000 9999</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox::indicator{ 
@@ -566,7 +566,7 @@ QCheckBox::indicator:checked {
 }</string>
                </property>
                <property name="text">
-                <string>5000-10000 </string>
+                <string>5000 -9999</string>
                </property>
               </widget>
              </item>
@@ -579,7 +579,7 @@ QCheckBox::indicator:checked {
                 <bool>true</bool>
                </property>
                <property name="accessibleName">
-                <string>10001 15000</string>
+                <string>10000 15000</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox::indicator{ 
@@ -606,7 +606,7 @@ QCheckBox::indicator:checked {
 }</string>
                </property>
                <property name="text">
-                <string>10000-15000 </string>
+                <string>10000 -15000 </string>
                </property>
               </widget>
              </item>

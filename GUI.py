@@ -12,7 +12,6 @@ from PyQt5 import *
 
 from mongoDB import *
 
-
 # Main Screen
 class MainScreen(QMainWindow):
     def __init__(self):
@@ -64,10 +63,14 @@ class FilterScreen(QMainWindow):
 	                                    "background-color:red;"
                                         "}")
         '''
-        self.price_check1.stateChanged.connect(self.priceChange1)
-        self.price_check2.stateChanged.connect(self.priceChange2)
-        self.price_check3.stateChanged.connect(self.priceChange3)
-        self.price_check4.stateChanged.connect(self.priceChange4)
+        self.price_check1.stateChanged.connect(self.priceChange)
+        self.price_check2.stateChanged.connect(self.priceChange)
+        self.price_check3.stateChanged.connect(self.priceChange)
+        self.price_check4.stateChanged.connect(self.priceChange)
+        self.miles_check1.stateChanged.connect(self.milesChange)
+        self.miles_check2.stateChanged.connect(self.milesChange)
+        self.miles_check3.stateChanged.connect(self.milesChange)
+        self.miles_check4.stateChanged.connect(self.milesChange)
 
     #Pastes cars onto a table to view
     def pasteCars(self, startVal, queriedList):
@@ -111,32 +114,43 @@ class FilterScreen(QMainWindow):
         self.cdt.resizeRowsToContents()
         self.cdt.resizeColumnsToContents()
 
-    def priceChange1(self):
-        if(self.price_check1.checkState() == 0):
+    #Outputs the queried list from filter when clicking checkbox
+    def priceChange(self):
+        if(self.price_check1.checkState() == 0 or
+           self.price_check2.checkState() == 0 or
+           self.price_check3.checkState() == 0 or
+           self.price_check4.checkState() == 0):
             self.pasteCars(5, None)
-        elif(self.price_check1.checkState() == 2):
+        if(self.price_check1.checkState() == 2):
             tempList = setPriceQuery(self.price_check1.accessibleName())
             self.pasteCars(len(tempList), tempList)
-
-    def priceChange2(self):
-        if(self.price_check2.checkState() == 0):
-            self.pasteCars(5, None)
-        elif(self.price_check2.checkState() == 2):
+        if(self.price_check2.checkState() == 2):
             tempList = setPriceQuery(self.price_check2.accessibleName())
             self.pasteCars(len(tempList), tempList)
-
-    def priceChange3(self):
-        if(self.price_check3.checkState() == 0):
-            self.pasteCars(5, None)
-        elif(self.price_check3.checkState() == 2):
+        if(self.price_check3.checkState() == 2):
             tempList = setPriceQuery(self.price_check3.accessibleName())
             self.pasteCars(len(tempList), tempList)
-
-    def priceChange4(self):
-        if(self.price_check4.checkState() == 0):
-            self.pasteCars(5, None)
-        elif(self.price_check4.checkState() == 2):
+        if(self.price_check4.checkState() == 2):
             tempList = setPriceQuery(self.price_check4.accessibleName())
+            self.pasteCars(len(tempList), tempList)
+
+    def milesChange(self):
+        if(self.miles_check1.checkState() == 0 or
+           self.miles_check2.checkState() == 0 or
+           self.miles_check3.checkState() == 0 or
+           self.miles_check4.checkState() == 0):
+            self.pasteCars(5, None)
+        if(self.miles_check1.checkState() == 2):
+            tempList = setPriceQuery(self.miles_check1.accessibleName())
+            self.pasteCars(len(tempList), tempList)
+        if(self.miles_check2.checkState() == 2):
+            tempList = setPriceQuery(self.miles_check2.accessibleName())
+            self.pasteCars(len(tempList), tempList)
+        if(self.miles_check3.checkState() == 2):
+            tempList = setPriceQuery(self.miles_check3.accessibleName())
+            self.pasteCars(len(tempList), tempList)
+        if(self.miles_check4.checkState() == 2):
+            tempList = setPriceQuery(self.miles_check4.accessibleName())
             self.pasteCars(len(tempList), tempList)
         
     #Quits the application

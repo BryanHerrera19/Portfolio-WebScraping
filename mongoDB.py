@@ -55,3 +55,13 @@ def setPriceQuery(priceQuery):#Sets a query in order for use in queries
                 myQuery = { "$and" : [{"price" : { "$lt" : int(stringList[1]) }},
                                       {"price" : { "$gt" : int(stringList[0]) }}]}
         return list(carCol.find(myQuery))
+
+def setPriceQuery(mileQuery):#Sets a query in order for use in queries
+        print("Reached Here!")
+        stringList = mileQuery.split()
+        if(stringList[0] == "$lt" or stringList[0] == "$gt"):
+            myQuery = { "mileage" : { stringList[0] : int(stringList[1])}}  
+        else:
+                myQuery = { "$and" : [{"mileage" : { "$lt" : int(stringList[1]) }},
+                                      {"mileage" : { "$gt" : int(stringList[0]) }}]}
+        return list(carCol.find(myQuery))
