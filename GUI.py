@@ -46,7 +46,7 @@ class FilterScreen(QMainWindow):
         # self.Hbutton.clicked.connect(self.gotoHomeScreen)
         self.quit_button.clicked.connect(self.quit_func)
 
-        self.printTest()
+        self.pasteCars(5)
 
         # Filter for later use(not for now)
         '''self.price_check1.setStyleSheet("QCheckBox" "{"
@@ -64,10 +64,12 @@ class FilterScreen(QMainWindow):
 	                                    "background-color:red;"
                                         "}")
         '''
+        self.price_check1.stateChanged.connect(self.priceChange)
 
-    def printTest(self):
+    #Pastes cars onto a table to view
+    def pasteCars(self, startVal):
         self.cdt.setRowCount(0)
-        records = getRecordLimit(5)
+        records = getRecordLimit(startVal)
         row_count = len(records)
         col_count = len(records[0])
 
@@ -87,24 +89,31 @@ class FilterScreen(QMainWindow):
             w = QLabel()
             w.setPixmap(QPixmap(pixel_img))
 
-            # will have to change column names
+            # Will have to change column names
             self.cdt.setCellWidget(idx, 0, w)
             self.cdt.setItem(idx, 1, QtWidgets.QTableWidgetItem(x['manufacturer']))
             self.cdt.setItem(idx, 2, QtWidgets.QTableWidgetItem(x['modelName']))
             self.cdt.setItem(idx, 3, QtWidgets.QTableWidgetItem(str(x['year'])))
-            self.cdt.setItem(idx, 4, QtWidgets.QTableWidgetItem(str(x['price'])))
-            self.cdt.setItem(idx, 5, QtWidgets.QTableWidgetItem(str(x['mileage'])))
+            self.cdt.setItem(idx, 4, QtWidgets.QTableWidgetItem(str(x['mileage'])))
+            self.cdt.setItem(idx, 5, QtWidgets.QTableWidgetItem(str(x['price'])))
             self.cdt.setItem(idx, 6, QtWidgets.QTableWidgetItem(x['fuelType']))
             idx += 1
 
         #Resizing the rows and cols to match the information
         self.cdt.resizeRowsToContents()
         self.cdt.resizeColumnsToContents()
+
+    def priceChange(self):
+        if(self.price_check1.checkState() == 0):
+            self.pasteCars(5)
+        elif(self.price_check1.checkState() == 2):
+            self.pasteCars(10)
         
-        
+    #Quits the application
     def quit_func(self):
         sys.exit(app.exec())
 
+    #Takes user to the homescreen
     def gotoHomeScreen(self):
         hScreen = MainScreen()
         widget.addWidget(hScreen)
