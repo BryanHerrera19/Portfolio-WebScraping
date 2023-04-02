@@ -71,12 +71,13 @@ class FilterScreen(QMainWindow):
         self.cdt.setRowCount(0)
         records = getRecordLimit(startVal)
         row_count = len(records)
-        col_count = len(records[0])
+        col_count = 7
 
         # Setting the number of rows and cols
         self.cdt.setRowCount(row_count)
         self.cdt.setColumnCount(col_count)
-        self.cdt.setHorizontalHeaderLabels((records[0].keys()))
+
+        self.cdt.setHorizontalHeaderLabels(['Images','Manufacturer','Model Name','Year','Price','Mileage','Fuel Type'])
 
         idx = 0;
         # Adding/Showing data to the table
