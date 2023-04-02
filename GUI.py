@@ -12,14 +12,16 @@ from io import BytesIO
 from mongoDB import *
 
 
-# Main Screen
 class MainScreen(QMainWindow):
     def __init__(self):
         super(MainScreen, self).__init__()
         loadUi("MainScreen.ui", self)
+        self.oldPosition = QtCore.QPoint()
+        self.bg.mouseMoveEvent = self.mouseMoveEvent
         self.Sbutton.clicked.connect(self.gotoSearchScreen)
         self.Hbutton.clicked.connect(self.gotoCarInfo)
         self.quit_button.clicked.connect(self.quit_func)
+
         self.show()
 
     def gotoSearchScreen(self):
@@ -31,6 +33,19 @@ class MainScreen(QMainWindow):
         cScreen = CarInfo()
         widget.addWidget(cScreen)
         widget.setCurrentIndex(widget.currentIndex() + 2)
+
+    def mousePress(self, event):
+        self.oldPosition = event.globalPos()
+
+    def mouseMoveEvent(self, event):
+        if event.buttons() == QtCore.Qt.LeftButton:
+            print("yes")
+            dis = QPoint(event.globalPos() - self.oldPosition)
+            self.move(self.x() + dis.x(), self.y() + dis.y())
+            self.oldPosition = event.globalPos()
+
+
+
 
     def quit_func(self):
         sys.exit(app.exec())
