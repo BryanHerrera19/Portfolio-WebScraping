@@ -47,8 +47,9 @@ def getRecordLimit(limitSize):#Set a limit on the number of records you want ret
         return list(carCol.find().limit(limitSize))
 
 def setPriceQuery(priceQuery):#Sets a query in order for use in queries
+        print("Reached Here!")
         stringList = priceQuery.split()
-        if(isinstance(stringList[0], str)):
+        if(stringList[0] == "$lt" or stringList[0] == "$gt"):
             myQuery = { "price" : { stringList[0] : int(stringList[1])}}  
         else:
                 myQuery = { "$and" : [{"price" : { "$lt" : int(stringList[1]) }},

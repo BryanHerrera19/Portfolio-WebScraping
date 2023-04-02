@@ -46,7 +46,7 @@ class FilterScreen(QMainWindow):
         # self.Hbutton.clicked.connect(self.gotoHomeScreen)
         self.quit_button.clicked.connect(self.quit_func)
 
-        self.pasteCars(5)
+        self.pasteCars(5, None)
 
         # Filter for later use(not for now)
         '''self.price_check1.setStyleSheet("QCheckBox" "{"
@@ -64,12 +64,19 @@ class FilterScreen(QMainWindow):
 	                                    "background-color:red;"
                                         "}")
         '''
-        self.price_check1.stateChanged.connect(self.priceChange)
+        self.price_check1.stateChanged.connect(self.priceChange1)
+        self.price_check2.stateChanged.connect(self.priceChange2)
+        self.price_check3.stateChanged.connect(self.priceChange3)
+        self.price_check4.stateChanged.connect(self.priceChange4)
 
     #Pastes cars onto a table to view
-    def pasteCars(self, startVal):
+    def pasteCars(self, startVal, queriedList):
         self.cdt.setRowCount(0)
-        records = getRecordLimit(startVal)
+        if(queriedList == None):
+            records = getRecordLimit(startVal)
+        else:
+            records = queriedList
+
         row_count = len(records)
         col_count = 7
 
@@ -77,7 +84,7 @@ class FilterScreen(QMainWindow):
         self.cdt.setRowCount(row_count)
         self.cdt.setColumnCount(col_count)
 
-        self.cdt.setHorizontalHeaderLabels(['Images','Manufacturer','Model Name','Year','Price','Mileage','Fuel Type'])
+        self.cdt.setHorizontalHeaderLabels(['Images','Manufacturer','Model Name','Year','Mileage','Price','Fuel Type'])
 
         idx = 0;
         # Adding/Showing data to the table
@@ -104,11 +111,33 @@ class FilterScreen(QMainWindow):
         self.cdt.resizeRowsToContents()
         self.cdt.resizeColumnsToContents()
 
-    def priceChange(self):
+    def priceChange1(self):
         if(self.price_check1.checkState() == 0):
-            self.pasteCars(5)
+            self.pasteCars(5, None)
         elif(self.price_check1.checkState() == 2):
-            self.pasteCars(10)
+            tempList = setPriceQuery(self.price_check1.accessibleName())
+            self.pasteCars(len(tempList), tempList)
+
+    def priceChange2(self):
+        if(self.price_check2.checkState() == 0):
+            self.pasteCars(5, None)
+        elif(self.price_check2.checkState() == 2):
+            tempList = setPriceQuery(self.price_check2.accessibleName())
+            self.pasteCars(len(tempList), tempList)
+
+    def priceChange3(self):
+        if(self.price_check3.checkState() == 0):
+            self.pasteCars(5, None)
+        elif(self.price_check3.checkState() == 2):
+            tempList = setPriceQuery(self.price_check3.accessibleName())
+            self.pasteCars(len(tempList), tempList)
+
+    def priceChange4(self):
+        if(self.price_check4.checkState() == 0):
+            self.pasteCars(5, None)
+        elif(self.price_check4.checkState() == 2):
+            tempList = setPriceQuery(self.price_check4.accessibleName())
+            self.pasteCars(len(tempList), tempList)
         
     #Quits the application
     def quit_func(self):
