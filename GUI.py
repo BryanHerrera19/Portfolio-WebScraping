@@ -71,6 +71,11 @@ class FilterScreen(QMainWindow):
         self.miles_check2.stateChanged.connect(self.milesChange)
         self.miles_check3.stateChanged.connect(self.milesChange)
         self.miles_check4.stateChanged.connect(self.milesChange)
+        self.year_check1.stateChanged.connect(self.yearChange)
+        self.year_check2.stateChanged.connect(self.yearChange)
+        self.year_check3.stateChanged.connect(self.yearChange)
+        self.year_check4.stateChanged.connect(self.yearChange)
+
 
     #Pastes cars onto a table to view
     def pasteCars(self, startVal, queriedList):
@@ -151,6 +156,25 @@ class FilterScreen(QMainWindow):
             self.pasteCars(len(tempList), tempList)
         if(self.miles_check4.checkState() == 2):
             tempList = setPriceQuery(self.miles_check4.accessibleName())
+            self.pasteCars(len(tempList), tempList)
+
+    def yearChange(self):
+        if(self.year_check1.checkState() == 0 or
+           self.year_check2.checkState() == 0 or
+           self.year_check3.checkState() == 0 or
+           self.year_check4.checkState() == 0):
+            self.pasteCars(5, None)
+        if(self.year_check1.checkState() == 2):
+            tempList = setPriceQuery(self.year_check1.accessibleName())
+            self.pasteCars(len(tempList), tempList)
+        if(self.year_check2.checkState() == 2):
+            tempList = setPriceQuery(self.year_check2.accessibleName())
+            self.pasteCars(len(tempList), tempList)
+        if(self.year_check3.checkState() == 2):
+            tempList = setPriceQuery(self.year_check3.accessibleName())
+            self.pasteCars(len(tempList), tempList)
+        if(self.year_check4.checkState() == 2):
+            tempList = setPriceQuery(self.year_check4.accessibleName())
             self.pasteCars(len(tempList), tempList)
         
     #Quits the application
