@@ -41,11 +41,20 @@ class MainScreen(QMainWindow):
 class FilterScreen(QMainWindow):
     def __init__(self):
         super(FilterScreen, self).__init__()
-        loadUi("FilterScreen.ui", self)
+        loadUi("filter.ui", self)
         # self.Hbutton.clicked.connect(self.gotoHomeScreen)
         self.quit_button.clicked.connect(self.quit_func)
-
+        self.price_slider.valueChanged.connect(self.price_change)
+        self.miles_slider.valueChanged.connect(self.mile_change)
         self.pasteCars(5, None)
+
+    def price_change(self):
+        num_price = str(self.price_slider.value())
+        self.price_label.setText(num_price)
+
+    def mile_change(self):
+        num_mile = str(self.miles_slider.value())
+        self.mile_label.setText(num_mile)
 
         # Filter for later use(not for now)
         '''self.price_check1.setStyleSheet("QCheckBox" "{"
@@ -62,6 +71,7 @@ class FilterScreen(QMainWindow):
                                         "}" "QCheckBox::indicator:unchecked" "{"
 	                                    "background-color:red;"
                                         "}")
+        '''
         '''
         self.price_check1.stateChanged.connect(self.priceChange)
         self.price_check2.stateChanged.connect(self.priceChange)
@@ -80,7 +90,7 @@ class FilterScreen(QMainWindow):
         self.brand_check2.stateChanged.connect(self.brandChange)
         self.brand_check3.stateChanged.connect(self.brandChange)
         self.brand_check4.stateChanged.connect(self.brandChange)
-        self.brand_check5.stateChanged.connect(self.brandChange)
+        self.brand_check5.stateChanged.connect(self.brandChange)'''
 
 
     #Pastes cars onto a table to view
