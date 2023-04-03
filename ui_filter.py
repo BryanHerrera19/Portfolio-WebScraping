@@ -171,7 +171,7 @@ class Ui_MainWindow(object):
 "}")
         self.year_brand_dropdown.setObjectName("year_brand_dropdown")
         self.page = QtWidgets.QWidget()
-        self.page.setGeometry(QtCore.QRect(0, 0, 279, 303))
+        self.page.setGeometry(QtCore.QRect(0, -103, 279, 303))
         self.page.setObjectName("page")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.page)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
@@ -386,7 +386,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addWidget(self.frame_2)
         self.year_brand_dropdown.addItem(self.page, "")
         self.page_2 = QtWidgets.QWidget()
-        self.page_2.setGeometry(QtCore.QRect(0, 0, 132, 443))
+        self.page_2.setGeometry(QtCore.QRect(0, -174, 279, 443))
         self.page_2.setObjectName("page_2")
         self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.page_2)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
@@ -755,6 +755,26 @@ class Ui_MainWindow(object):
         self.search_button.setText("")
         self.search_button.setObjectName("search_button")
         self.horizontalLayout_2.addWidget(self.search_button)
+        self.refresh_button = QtWidgets.QFrame(self.upper_frame)
+        self.refresh_button.setMinimumSize(QtCore.QSize(38, 38))
+        self.refresh_button.setMaximumSize(QtCore.QSize(38, 38))
+        self.refresh_button.setStyleSheet("QFrame {\n"
+"    background-color: rgb(181,84,215);\n"
+"    border: 2px solid rgb(255, 255, 255);\n"
+"    border-radius: 7px; \n"
+"}\n"
+"\n"
+"QFrame:hover{\n"
+"    background-color: rgba(181,84,215,150);\n"
+"    border: 2px solid rgba(181,84,215,150);\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.refresh_button.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.refresh_button.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.refresh_button.setObjectName("refresh_button")
+        self.horizontalLayout_2.addWidget(self.refresh_button)
         self.quit_button = QtWidgets.QPushButton(self.upper_frame)
         self.quit_button.setMinimumSize(QtCore.QSize(16, 16))
         self.quit_button.setMaximumSize(QtCore.QSize(17, 17))
@@ -805,9 +825,9 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.Hbutton.setText(_translate("MainWindow", "UCR"))
-        self.price_bar.setText(_translate("MainWindow", "PRICE"))
+        self.price_bar.setText(_translate("MainWindow", " PRICE"))
         self.price_label.setText(_translate("MainWindow", "$ 0"))
-        self.miles_bar.setText(_translate("MainWindow", "MILES DRIVEN"))
+        self.miles_bar.setText(_translate("MainWindow", " MILES DRIVEN"))
         self.mile_label.setText(_translate("MainWindow", "0 Miles"))
         self.nis_check.setText(_translate("MainWindow", "Nissan"))
         self.lex_check.setText(_translate("MainWindow", "Lexus"))
