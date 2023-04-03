@@ -63,6 +63,7 @@ class FilterScreen(QMainWindow):
 	                                    "background-color:red;"
                                         "}")
         '''
+        
         self.price_check1.stateChanged.connect(self.priceChange)
         self.price_check2.stateChanged.connect(self.priceChange)
         self.price_check3.stateChanged.connect(self.priceChange)
