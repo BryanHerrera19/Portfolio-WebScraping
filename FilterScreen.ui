@@ -366,7 +366,7 @@ QCheckBox::indicator:checked {
                 <bool>true</bool>
                </property>
                <property name="accessibleName">
-                <string>10001 15000</string>
+                <string>10000 15000</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox::indicator{ 
@@ -433,7 +433,7 @@ QCheckBox::indicator:checked {
 }</string>
                </property>
                <property name="text">
-                <string>$15000-25000</string>
+                <string>&gt;$15000</string>
                </property>
               </widget>
              </item>
@@ -539,7 +539,7 @@ QCheckBox::indicator:checked {
                 <bool>true</bool>
                </property>
                <property name="accessibleName">
-                <string>5000 10000</string>
+                <string>5000 9999</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox::indicator{ 
@@ -566,7 +566,7 @@ QCheckBox::indicator:checked {
 }</string>
                </property>
                <property name="text">
-                <string>5000-10000 </string>
+                <string>5000 -9999</string>
                </property>
               </widget>
              </item>
@@ -579,7 +579,7 @@ QCheckBox::indicator:checked {
                 <bool>true</bool>
                </property>
                <property name="accessibleName">
-                <string>10001 15000</string>
+                <string>10000 15000</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox::indicator{ 
@@ -606,7 +606,7 @@ QCheckBox::indicator:checked {
 }</string>
                </property>
                <property name="text">
-                <string>10000-15000 </string>
+                <string>10000 -15000 </string>
                </property>
               </widget>
              </item>
@@ -917,49 +917,15 @@ QCheckBox::indicator:checked {
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_6">
              <item>
-              <widget class="QCheckBox" name="brand_check1">
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="tabletTracking">
-                <bool>true</bool>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QCheckBox::indicator{ 
-	width:25px;
-	height:25px; 
-	background-color:white;
-	border-radius: 8px; 
-}
-
-QCheckBox {
-	font-size: 25px;
-	spacing:15px;
-	color:white;
-	font-weight:bold;
-	font-family: Open Sans; 
-}
-
-QCheckBox::indicator:unchecked {
-	background-color: white;
-}
-
-QCheckBox::indicator:checked {
-	background-color:rgb(255, 108, 235)
-}</string>
-               </property>
-               <property name="text">
-                <string>Chevrolet</string>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QCheckBox" name="brand_check">
                <property name="cursor">
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="tabletTracking">
                 <bool>true</bool>
+               </property>
+               <property name="accessibleName">
+                <string>FORD</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox::indicator{ 
@@ -991,12 +957,55 @@ QCheckBox::indicator:checked {
               </widget>
              </item>
              <item>
+              <widget class="QCheckBox" name="brand_check1">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="tabletTracking">
+                <bool>true</bool>
+               </property>
+               <property name="accessibleName">
+                <string>CHEVROLET</string>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+               </property>
+               <property name="text">
+                <string>Chevrolet</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <widget class="QCheckBox" name="brand_check5">
                <property name="cursor">
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="tabletTracking">
                 <bool>true</bool>
+               </property>
+               <property name="accessibleName">
+                <string>CADILLAC</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox::indicator{ 
@@ -1035,6 +1044,9 @@ QCheckBox::indicator:checked {
                <property name="tabletTracking">
                 <bool>true</bool>
                </property>
+               <property name="accessibleName">
+                <string>BMW</string>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox::indicator{ 
 	width:25px;
@@ -1072,6 +1084,9 @@ QCheckBox::indicator:checked {
                <property name="tabletTracking">
                 <bool>true</bool>
                </property>
+               <property name="accessibleName">
+                <string>NISSAN</string>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox::indicator{ 
 	width:25px;
@@ -1108,6 +1123,9 @@ QCheckBox::indicator:checked {
                </property>
                <property name="tabletTracking">
                 <bool>true</bool>
+               </property>
+               <property name="accessibleName">
+                <string>LEXUS</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox::indicator{ 

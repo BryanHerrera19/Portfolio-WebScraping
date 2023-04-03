@@ -40,13 +40,38 @@ def updateDB(carURL, newInfo): #updates database record with any new info
         newCarHist = {"$set": {"carHist": newInfo}}
         carCol.update_one(myQuery, newCarHist)
 
-def getRecords(): #returns the number of records from top of database
+def getRecords():#Returns all records in the database
        return list(carCol.find())
 
-def getRecordLimit(limitSize):
+def getRecordLimit(limitSize):#Set a limit on the number of records you want returned
         return list(carCol.find().limit(limitSize))
 
-def setPriceQuery(priceQuery):
-        list = priceQuery.split()
-        return list(carCol.find())
+def setPriceQuery(priceQuery):#Sets a query in order for use in queries
+        print("Reached Here!")
+        stringList = priceQuery.split()
+        if(stringList[0] == "$lt" or stringList[0] == "$gt"):
+            myQuery = { "price" : { stringList[0] : int(stringList[1])}}  
+        else:
+                myQuery = { "$and" : [{"price" : { "$lt" : int(stringList[1]) }},
+                                      {"price" : { "$gt" : int(stringList[0]) }}]}
+        return list(carCol.find(myQuery))
 
+def setMileQuery(mileQuery):#Sets a query in order for use in queries
+        print("Reached Here!")
+        stringList = mileQuery.split()
+        if(stringList[0] == "$lt" or stringList[0] == "$gt"):
+            myQuery = { "mileage" : { stringList[0] : int(stringList[1])}}  
+        else:
+                myQuery = { "$and" : [{"mileage" : { "$lt" : int(stringList[1]) }},
+                                      {"mileage" : { "$gt" : int(stringList[0]) }}]}
+        return list(carCol.find(myQuery))
+
+def setYearQuery(yearQuery):#Sets a query in order for use in queries
+        stringList = yearQuery.split()
+        myQuery = { "$and" : [{"year" : { "$lt" : int(stringList[1]) }},
+                                {"year" : { "$gt" : int(stringList[0]) }}]}
+        return list(carCol.find(myQuery))
+
+def setBrandQuery(brandQuery):#Sets a query in order for use in queries
+        myQuery = { "manufacturer" : brandQuery }
+        return list(carCol.find(myQuery))
