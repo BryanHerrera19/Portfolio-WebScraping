@@ -89,7 +89,7 @@ class FilterScreen(QMainWindow):
         self.brand_check2.stateChanged.connect(self.brandChange)
         self.brand_check3.stateChanged.connect(self.brandChange)
         self.brand_check4.stateChanged.connect(self.brandChange)
-        self.brand_check5.stateChanged.connect(self.brandChange)'''
+        self.brand_check5.stateChanged.connect(self.brandChange)
 
 
     #Pastes cars onto a table to view
