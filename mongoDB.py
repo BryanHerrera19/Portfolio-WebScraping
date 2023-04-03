@@ -49,3 +49,4 @@ def getRecordLimit(limitSize):
 def setPriceQuery(priceQuery):
         list = priceQuery.split()
         return list(carCol.find())
+

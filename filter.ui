@@ -1,0 +1,1243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="background_frame_2">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>10</number>
+    </property>
+    <property name="topMargin">
+     <number>10</number>
+    </property>
+    <property name="rightMargin">
+     <number>10</number>
+    </property>
+    <property name="bottomMargin">
+     <number>10</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="background_frame">
+      <property name="styleSheet">
+       <string notr="true">QFrame {
+	background-color: #27062D;
+	border-radius: 7px; 
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QFrame" name="left_main_frame">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QFrame{
+	background-color:rgb(183, 122, 194);
+}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0,0">
+          <property name="spacing">
+           <number>5</number>
+          </property>
+          <property name="leftMargin">
+           <number>2</number>
+          </property>
+          <property name="topMargin">
+           <number>5</number>
+          </property>
+          <property name="rightMargin">
+           <number>2</number>
+          </property>
+          <property name="bottomMargin">
+           <number>5</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="logo_frame">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QFrame{
+	background-color: rgb(144,104,140);
+}</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_6">
+             <item>
+              <widget class="QPushButton" name="Hbutton">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>1000</width>
+                 <height>1000</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton { 
+	border:none;
+	background-color: rgb(144,104,140);
+	font-size: 50px; 
+	font-weight: bold; 
+	font-family: Segoe Print;
+	color: white;
+} 
+
+QPushButton:hover {
+	color: rgb(156,39,176);
+}
+
+</string>
+               </property>
+               <property name="text">
+                <string>UCR</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="price_frame">
+            <property name="styleSheet">
+             <string notr="true">QFrame {
+	background-color: rgb(105, 50, 126);
+}</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_9">
+             <item alignment="Qt::AlignTop">
+              <widget class="QLabel" name="price_bar">
+               <property name="styleSheet">
+                <string notr="true">QLabel {
+	background-color: #B554D7;
+	border-radius: 8px; 
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Open Sans; 
+	color:white
+} </string>
+               </property>
+               <property name="text">
+                <string>PRICE</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSlider" name="price_slider">
+               <property name="maximum">
+                <number>50000</number>
+               </property>
+               <property name="pageStep">
+                <number>1</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="tickPosition">
+                <enum>QSlider::NoTicks</enum>
+               </property>
+               <property name="tickInterval">
+                <number>1</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="price_label">
+               <property name="styleSheet">
+                <string notr="true">QLabel {
+	color:white;
+	font-size:20pt;
+	font-weight:bold;
+}</string>
+               </property>
+               <property name="text">
+                <string>$ 0</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="mile_frame">
+            <property name="styleSheet">
+             <string notr="true">QFrame {
+	background-color: rgb(105, 50, 126);
+}</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_10">
+             <item alignment="Qt::AlignTop">
+              <widget class="QLabel" name="miles_bar">
+               <property name="styleSheet">
+                <string notr="true">QLabel {
+	background-color: #B554D7;
+	border-radius: 8px; 
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Open Sans; 
+	color:white;
+} </string>
+               </property>
+               <property name="text">
+                <string>MILES DRIVEN</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSlider" name="miles_slider">
+               <property name="maximum">
+                <number>100000</number>
+               </property>
+               <property name="pageStep">
+                <number>1</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="tickPosition">
+                <enum>QSlider::NoTicks</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="mile_label">
+               <property name="styleSheet">
+                <string notr="true">QLabel {
+	color:white;
+	font-size:20pt;
+	font-weight:bold;
+}</string>
+               </property>
+               <property name="text">
+                <string>0 Miles</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="drop_down_frame">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>300</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QFrame{
+	background-color: rgb(144,104,140);
+}</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QToolBox" name="year_brand_dropdown">
+               <property name="styleSheet">
+                <string notr="true">QToolBox {
+	background-color: #B554D7;
+	border-radius: 8px; 
+	font-size: 30px;
+	font-weight: bold;
+	font-family: Open Sans; 
+	color:white;
+}</string>
+               </property>
+               <property name="currentIndex">
+                <number>0</number>
+               </property>
+               <widget class="QWidget" name="page">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>279</width>
+                  <height>303</height>
+                 </rect>
+                </property>
+                <attribute name="label">
+                 <string>BRAND</string>
+                </attribute>
+                <layout class="QVBoxLayout" name="verticalLayout_4">
+                 <item>
+                  <widget class="QFrame" name="frame_2">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_7">
+                    <property name="spacing">
+                     <number>5</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>5</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>5</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>5</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>5</number>
+                    </property>
+                    <item>
+                     <widget class="QCheckBox" name="nis_check">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>Nissan</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="lex_check">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>Lexus</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="chev_check">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>Chevrolet</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="ford_check">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>Ford</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="tesla_check">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>Tesla</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="bmw_check">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>BMW</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="cad_check">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>Cadillac</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="honda_check">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>Honda</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="page_2">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>132</width>
+                  <height>443</height>
+                 </rect>
+                </property>
+                <attribute name="label">
+                 <string>YEAR</string>
+                </attribute>
+                <layout class="QVBoxLayout" name="verticalLayout_8">
+                 <item>
+                  <widget class="QFrame" name="frame_4">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_11">
+                    <property name="spacing">
+                     <number>5</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>5</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>5</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>5</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>5</number>
+                    </property>
+                    <item>
+                     <widget class="QCheckBox" name="year_check">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>2000</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="year_check1">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>2001</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="year_check2">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>2002</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="year_check3">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>2003</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="year_check4">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>2004</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="year_check5">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>2005</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="year_check6">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>2006</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="year_check7">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>2007</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="year_check8">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>2008</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="year_check9">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>2009</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="year_check10">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>2010</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="year_check11">
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox::indicator{ 
+	width:25px;
+	height:25px; 
+	background-color:white;
+	border-radius: 8px; 
+}
+
+QCheckBox {
+	font-size: 25px;
+	spacing:15px;
+	color:white;
+	font-weight:bold;
+	font-family: Open Sans; 
+}
+
+QCheckBox::indicator:unchecked {
+	background-color: white;
+}
+
+QCheckBox::indicator:checked {
+	background-color:rgb(255, 108, 235)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>2011</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="right_main_frame">
+         <property name="maximumSize">
+          <size>
+           <width>900</width>
+           <height>800</height>
+          </size>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QFrame{
+	background-color: #27062D;
+}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <property name="spacing">
+           <number>2</number>
+          </property>
+          <property name="leftMargin">
+           <number>2</number>
+          </property>
+          <property name="topMargin">
+           <number>2</number>
+          </property>
+          <property name="rightMargin">
+           <number>2</number>
+          </property>
+          <property name="bottomMargin">
+           <number>2</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="upper_frame">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QFrame{
+	background-color: #27062D;
+}</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QLineEdit" name="SearchBar">
+               <property name="styleSheet">
+                <string notr="true">QLineEdit {
+	background-color: rgb(144,104,140);
+	border-radius: 8px;
+	font-size: 30px;
+	color:white	;
+	font-family: Open Sans;
+}
+
+</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="search_button">
+               <property name="minimumSize">
+                <size>
+                 <width>38</width>
+                 <height>38</height>
+                </size>
+               </property>
+               <property name="sizeIncrement">
+                <size>
+                 <width>16</width>
+                 <height>16</height>
+                </size>
+               </property>
+               <property name="baseSize">
+                <size>
+                 <width>16</width>
+                 <height>16</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+	background-color: rgb(181, 84, 215);
+	border-radius: 8px;
+}
+
+QPushButton:hover {
+	background-color: rgba(181, 84, 215,150);
+}</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item alignment="Qt::AlignRight|Qt::AlignTop">
+              <widget class="QPushButton" name="quit_button">
+               <property name="minimumSize">
+                <size>
+                 <width>16</width>
+                 <height>16</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>17</width>
+                 <height>17</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::RightToLeft</enum>
+               </property>
+               <property name="autoFillBackground">
+                <bool>false</bool>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+	background-color: rgb(255, 11, 68);
+	border-radius: 8px; 
+	border: none;
+}
+
+QPushButton:hover {
+	background-color: rgba(255, 11, 68, 150);
+}
+	</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QScrollArea" name="Car_Infor_Area">
+            <property name="widgetResizable">
+             <bool>true</bool>
+            </property>
+            <widget class="QWidget" name="car_scroll_wheel">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>852</width>
+               <height>600</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QWidget {
+	background-color: rgb(167, 105, 171);
+}</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <item>
+               <widget class="QTableWidget" name="cdt"/>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>

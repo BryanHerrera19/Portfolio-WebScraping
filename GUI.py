@@ -42,11 +42,21 @@ class MainScreen(QMainWindow):
 class FilterScreen(QMainWindow):
     def __init__(self):
         super(FilterScreen, self).__init__()
-        loadUi("FilterScreen.ui", self)
+        loadUi("filter.ui", self)
         # self.Hbutton.clicked.connect(self.gotoHomeScreen)
         self.quit_button.clicked.connect(self.quit_func)
-
+        self.price_slider.valueChanged.connect(self.price_change)
+        self.miles_slider.valueChanged.connect(self.mile_change)
         self.printTest()
+
+
+    def price_change(self):
+        price = str(self.price_slider.value())
+        self.price_label.setText(price)
+
+    def mile_change(self):
+        mile = str(self.miles_slider.value())
+        self.mile_label.setText(mile)
 
         # Filter for later use(not for now)
         '''self.price_check1.setStyleSheet("QCheckBox" "{"
@@ -66,7 +76,6 @@ class FilterScreen(QMainWindow):
         '''
 
     def printTest(self):
-        self.cdt.setRowCount(0)
         records = getRecordLimit(5)
         row_count = len(records)
         col_count = 7
