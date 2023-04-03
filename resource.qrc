@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="Icons">
-    <file>Icons/checkbox.png</file>
-    <file>Icons/uncheckbox.png</file>
-  </qresource>
-</RCC>
