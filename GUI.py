@@ -16,8 +16,6 @@ class MainScreen(QMainWindow):
     def __init__(self):
         super(MainScreen, self).__init__()
         loadUi("MainScreen.ui", self)
-        # self.Sbutton.clicked.connect(self.gotoSearchScreen)
-        # self.Hbutton.clicked.connect(self.gotoCarInfo)
         self.GSbutton.clicked.connect(self.gotoSearchScreen)
         self.quit_button.clicked.connect(self.quit_func)
         self.show()
@@ -41,34 +39,42 @@ class FilterScreen(QMainWindow):
     def __init__(self):
         super(FilterScreen, self).__init__()
         loadUi("filter.ui", self)
+        # Go to home screen
         self.Hbutton.clicked.connect(self.gotoHomeScreen)
         self.quit_button.clicked.connect(self.quit_func)
         self.filter_button.setIcon(QtGui.QIcon("filter.png"))
         self.search_button.setIcon(QtGui.QIcon("search.png"))
         self.refresh_button.setIcon(QtGui.QIcon("refresh.png"))
+
+        # Linked value to the slider
         self.price_slider.valueChanged.connect(self.price_change)
         self.miles_slider.valueChanged.connect(self.mile_change)
         self.filter_button.clicked.connect(self.show_filter)
 
         self.pasteCars(5, None)
 
+    # Text for price slider
     def price_change(self):
         num_price = str(self.price_slider.value())
         self.price_label.setText(num_price)
 
+    # Text for mile slider
     def mile_change(self):
         num_mile = str(self.miles_slider.value())
         self.mile_label.setText(num_mile)
 
+    # Side filter animation
     def show_filter(self):
         width = self.left_main_frame.width()
 
+        # For slide in and out
         if width == 0:
             newWidth = 285
 
         else:
             newWidth = 0;
 
+        # Animation
         self.animation = QPropertyAnimation(self.left_main_frame, b"maximumWidth")
         self.animation.setDuration(250)
         self.animation.setStartValue(width)
@@ -250,7 +256,7 @@ class FilterScreen(QMainWindow):
     def gotoHomeScreen(self):
         hScreen = MainScreen()
         widget.addWidget(hScreen)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
+        widget.setCurrentIndex(widget.currentIndex() + 2)
 
 class CarInfo(QMainWindow):
     def __init__(self):
