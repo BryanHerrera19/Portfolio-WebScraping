@@ -6,8 +6,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QImage, QPixmap
 import requests
-from PIL import Image
-from io import BytesIO
+
 from PyQt5 import *
 
 from mongoDB import *
@@ -42,10 +41,14 @@ class FilterScreen(QMainWindow):
     def __init__(self):
         super(FilterScreen, self).__init__()
         loadUi("filter.ui", self)
-        # self.Hbutton.clicked.connect(self.gotoHomeScreen)
+        self.Hbutton.clicked.connect(self.gotoHomeScreen)
         self.quit_button.clicked.connect(self.quit_func)
+        self.filter_button.setIcon(QtGui.QIcon("filter.png"))
+        self.search_button.setIcon(QtGui.QIcon("search.png"))
         self.price_slider.valueChanged.connect(self.price_change)
         self.miles_slider.valueChanged.connect(self.mile_change)
+        self.filter_button.clicked.connect(self.show_filter)
+
         self.pasteCars(5, None)
 
     def price_change(self):
@@ -55,6 +58,24 @@ class FilterScreen(QMainWindow):
     def mile_change(self):
         num_mile = str(self.miles_slider.value())
         self.mile_label.setText(num_mile)
+
+    def show_filter(self):
+        width = self.left_main_frame.width()
+
+        if width == 0:
+            newWidth = 285
+
+        else:
+            newWidth = 0;
+
+        self.animation = QPropertyAnimation(self.left_main_frame, b"maximumWidth")
+        self.animation.setDuration(250)
+        self.animation.setStartValue(width)
+        self.animation.setEndValue(newWidth)
+        self.animation.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
+        self.animation.start()
+
+
 
         # Filter for later use(not for now)
         '''self.price_check1.setStyleSheet("QCheckBox" "{"
