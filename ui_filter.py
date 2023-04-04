@@ -14,6 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
+        MainWindow.setWindowModality(QtCore.Qt.NonModal)
         MainWindow.resize(1200, 700)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -75,6 +76,29 @@ class Ui_MainWindow(object):
         self.Hbutton.setObjectName("Hbutton")
         self.verticalLayout_6.addWidget(self.Hbutton)
         self.verticalLayout_2.addWidget(self.logo_frame)
+        self.submit_frame = QtWidgets.QFrame(self.left_main_frame)
+        self.submit_frame.setStyleSheet("QFrame {\n"
+"    background-color: rgb(105, 50, 126);\n"
+"}")
+        self.submit_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.submit_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.submit_frame.setObjectName("submit_frame")
+        self.verticalLayout_12 = QtWidgets.QVBoxLayout(self.submit_frame)
+        self.verticalLayout_12.setObjectName("verticalLayout_12")
+        self.filter_button = QtWidgets.QPushButton(self.submit_frame)
+        self.filter_button.setEnabled(True)
+        self.filter_button.setAutoFillBackground(False)
+        self.filter_button.setStyleSheet("QPushButtonl {\n"
+"    background-color: #B554D7;\n"
+"    border-radius: 8px; \n"
+"    font-size: 20px;\n"
+"    font-weight: bold;\n"
+"    font-family: Open Sans; \n"
+"    color:white;\n"
+"} ")
+        self.filter_button.setObjectName("filter_button")
+        self.verticalLayout_12.addWidget(self.filter_button)
+        self.verticalLayout_2.addWidget(self.submit_frame)
         self.price_frame = QtWidgets.QFrame(self.left_main_frame)
         self.price_frame.setStyleSheet("QFrame {\n"
 "    background-color: rgb(105, 50, 126);\n"
@@ -96,11 +120,15 @@ class Ui_MainWindow(object):
         self.price_bar.setObjectName("price_bar")
         self.verticalLayout_9.addWidget(self.price_bar, 0, QtCore.Qt.AlignTop)
         self.price_slider = QtWidgets.QSlider(self.price_frame)
+        self.price_slider.setMouseTracking(False)
         self.price_slider.setMaximum(50000)
         self.price_slider.setPageStep(1)
+        self.price_slider.setProperty("value", 0)
+        self.price_slider.setSliderPosition(0)
+        self.price_slider.setTracking(False)
         self.price_slider.setOrientation(QtCore.Qt.Horizontal)
         self.price_slider.setTickPosition(QtWidgets.QSlider.NoTicks)
-        self.price_slider.setTickInterval(1)
+        self.price_slider.setTickInterval(0)
         self.price_slider.setObjectName("price_slider")
         self.verticalLayout_9.addWidget(self.price_slider)
         self.price_label = QtWidgets.QLabel(self.price_frame)
@@ -133,8 +161,10 @@ class Ui_MainWindow(object):
         self.miles_bar.setObjectName("miles_bar")
         self.verticalLayout_10.addWidget(self.miles_bar, 0, QtCore.Qt.AlignTop)
         self.miles_slider = QtWidgets.QSlider(self.mile_frame)
+        self.miles_slider.setMouseTracking(True)
         self.miles_slider.setMaximum(100000)
         self.miles_slider.setPageStep(1)
+        self.miles_slider.setTracking(False)
         self.miles_slider.setOrientation(QtCore.Qt.Horizontal)
         self.miles_slider.setTickPosition(QtWidgets.QSlider.NoTicks)
         self.miles_slider.setObjectName("miles_slider")
@@ -171,7 +201,7 @@ class Ui_MainWindow(object):
 "}")
         self.year_brand_dropdown.setObjectName("year_brand_dropdown")
         self.page = QtWidgets.QWidget()
-        self.page.setGeometry(QtCore.QRect(0, -103, 279, 303))
+        self.page.setGeometry(QtCore.QRect(0, 0, 279, 303))
         self.page.setObjectName("page")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.page)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
@@ -386,7 +416,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addWidget(self.frame_2)
         self.year_brand_dropdown.addItem(self.page, "")
         self.page_2 = QtWidgets.QWidget()
-        self.page_2.setGeometry(QtCore.QRect(0, -174, 279, 443))
+        self.page_2.setGeometry(QtCore.QRect(0, 0, 279, 443))
         self.page_2.setObjectName("page_2")
         self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.page_2)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
@@ -818,13 +848,14 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.year_brand_dropdown.setCurrentIndex(0)
+        self.year_brand_dropdown.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.Hbutton.setText(_translate("MainWindow", "UCR"))
+        self.filter_button.setText(_translate("MainWindow", "Filter"))
         self.price_bar.setText(_translate("MainWindow", " PRICE"))
         self.price_label.setText(_translate("MainWindow", "$ 0"))
         self.miles_bar.setText(_translate("MainWindow", " MILES DRIVEN"))

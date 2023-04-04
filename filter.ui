@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -70,7 +73,7 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0,0">
+         <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0,0,0">
           <property name="spacing">
            <number>5</number>
           </property>
@@ -148,6 +151,46 @@ QPushButton:hover {
            </widget>
           </item>
           <item>
+           <widget class="QFrame" name="submit_frame">
+            <property name="styleSheet">
+             <string notr="true">QFrame {
+	background-color: rgb(105, 50, 126);
+}</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_12">
+             <item>
+              <widget class="QPushButton" name="filter_button">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="autoFillBackground">
+                <bool>false</bool>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButtonl {
+	background-color: #B554D7;
+	border-radius: 8px; 
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Open Sans; 
+	color:white;
+} </string>
+               </property>
+               <property name="text">
+                <string>Filter</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
            <widget class="QFrame" name="price_frame">
             <property name="styleSheet">
              <string notr="true">QFrame {
@@ -180,11 +223,23 @@ QPushButton:hover {
              </item>
              <item>
               <widget class="QSlider" name="price_slider">
+               <property name="mouseTracking">
+                <bool>false</bool>
+               </property>
                <property name="maximum">
                 <number>50000</number>
                </property>
                <property name="pageStep">
                 <number>1</number>
+               </property>
+               <property name="value">
+                <number>0</number>
+               </property>
+               <property name="sliderPosition">
+                <number>0</number>
+               </property>
+               <property name="tracking">
+                <bool>false</bool>
                </property>
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
@@ -193,7 +248,7 @@ QPushButton:hover {
                 <enum>QSlider::NoTicks</enum>
                </property>
                <property name="tickInterval">
-                <number>1</number>
+                <number>0</number>
                </property>
               </widget>
              </item>
@@ -247,11 +302,17 @@ QPushButton:hover {
              </item>
              <item>
               <widget class="QSlider" name="miles_slider">
+               <property name="mouseTracking">
+                <bool>true</bool>
+               </property>
                <property name="maximum">
                 <number>100000</number>
                </property>
                <property name="pageStep">
                 <number>1</number>
+               </property>
+               <property name="tracking">
+                <bool>false</bool>
                </property>
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
@@ -326,13 +387,13 @@ QPushButton:hover {
 }</string>
                </property>
                <property name="currentIndex">
-                <number>0</number>
+                <number>1</number>
                </property>
                <widget class="QWidget" name="page">
                 <property name="geometry">
                  <rect>
                   <x>0</x>
-                  <y>-103</y>
+                  <y>0</y>
                   <width>279</width>
                   <height>303</height>
                  </rect>
@@ -622,7 +683,7 @@ QCheckBox::indicator:checked {
                 <property name="geometry">
                  <rect>
                   <x>0</x>
-                  <y>-174</y>
+                  <y>0</y>
                   <width>279</width>
                   <height>443</height>
                  </rect>
