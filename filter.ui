@@ -2,9 +2,6 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
-  <property name="windowModality">
-   <enum>Qt::NonModal</enum>
-  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -58,7 +55,7 @@
          </property>
          <property name="maximumSize">
           <size>
-           <width>0</width>
+           <width>285</width>
            <height>16777215</height>
           </size>
          </property>
@@ -74,11 +71,7 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-<<<<<<< HEAD
-         <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0,0,0">
-=======
          <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0">
->>>>>>> 51e56b421742f3c1305171d6b5de10fef38506c5
           <property name="spacing">
            <number>0</number>
           </property>
@@ -172,51 +165,7 @@ QPushButton:hover {
            </widget>
           </item>
           <item>
-<<<<<<< HEAD
-           <widget class="QFrame" name="submit_frame">
-            <property name="styleSheet">
-             <string notr="true">QFrame {
-	background-color: rgb(105, 50, 126);
-}</string>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_12">
-             <item>
-              <widget class="QPushButton" name="filter_button">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="autoFillBackground">
-                <bool>false</bool>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButtonl {
-	background-color: #B554D7;
-	border-radius: 8px; 
-	font-size: 20px;
-	font-weight: bold;
-	font-family: Open Sans; 
-	color:white;
-} </string>
-               </property>
-               <property name="text">
-                <string>Filter</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="price_frame">
-=======
            <widget class="QFrame" name="filter_frame">
->>>>>>> 51e56b421742f3c1305171d6b5de10fef38506c5
             <property name="styleSheet">
              <string notr="true">QFrame{
 	background-color: #27062D;
@@ -301,49 +250,6 @@ QPushButton:hover {
 	font-family: Open Sans; 
 	color:white
 } </string>
-<<<<<<< HEAD
-               </property>
-               <property name="text">
-                <string> PRICE</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QSlider" name="price_slider">
-               <property name="mouseTracking">
-                <bool>false</bool>
-               </property>
-               <property name="maximum">
-                <number>50000</number>
-               </property>
-               <property name="pageStep">
-                <number>1</number>
-               </property>
-               <property name="value">
-                <number>0</number>
-               </property>
-               <property name="sliderPosition">
-                <number>0</number>
-               </property>
-               <property name="tracking">
-                <bool>false</bool>
-               </property>
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="tickPosition">
-                <enum>QSlider::NoTicks</enum>
-               </property>
-               <property name="tickInterval">
-                <number>0</number>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="price_label">
-               <property name="styleSheet">
-                <string notr="true">QLabel {
-=======
                      </property>
                      <property name="text">
                       <string> PRICE</string>
@@ -376,7 +282,6 @@ QPushButton:hover {
                     <widget class="QLabel" name="price_label">
                      <property name="styleSheet">
                       <string notr="true">QLabel {
->>>>>>> 51e56b421742f3c1305171d6b5de10fef38506c5
 	color:white;
 	font-size:20pt;
 	font-weight:bold;
@@ -415,40 +320,6 @@ QPushButton:hover {
 	font-family: Open Sans; 
 	color:white;
 } </string>
-<<<<<<< HEAD
-               </property>
-               <property name="text">
-                <string> MILES DRIVEN</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QSlider" name="miles_slider">
-               <property name="mouseTracking">
-                <bool>true</bool>
-               </property>
-               <property name="maximum">
-                <number>100000</number>
-               </property>
-               <property name="pageStep">
-                <number>1</number>
-               </property>
-               <property name="tracking">
-                <bool>false</bool>
-               </property>
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="tickPosition">
-                <enum>QSlider::NoTicks</enum>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="mile_label">
-               <property name="styleSheet">
-                <string notr="true">QLabel {
-=======
                      </property>
                      <property name="text">
                       <string> MILES DRIVEN</string>
@@ -478,7 +349,6 @@ QPushButton:hover {
                     <widget class="QLabel" name="mile_label">
                      <property name="styleSheet">
                       <string notr="true">QLabel {
->>>>>>> 51e56b421742f3c1305171d6b5de10fef38506c5
 	color:white;
 	font-size:20pt;
 	font-weight:bold;
@@ -527,53 +397,6 @@ QToolBox::tab{
 	background-color: white;
 	text-align: left;
 }</string>
-<<<<<<< HEAD
-               </property>
-               <property name="currentIndex">
-                <number>1</number>
-               </property>
-               <widget class="QWidget" name="page">
-                <property name="geometry">
-                 <rect>
-                  <x>0</x>
-                  <y>0</y>
-                  <width>279</width>
-                  <height>303</height>
-                 </rect>
-                </property>
-                <attribute name="label">
-                 <string>BRAND</string>
-                </attribute>
-                <layout class="QVBoxLayout" name="verticalLayout_4">
-                 <item>
-                  <widget class="QFrame" name="frame_2">
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_7">
-                    <property name="spacing">
-                     <number>5</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>5</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>5</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>5</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>5</number>
-                    </property>
-                    <item>
-                     <widget class="QCheckBox" name="nis_check">
-                      <property name="styleSheet">
-                       <string notr="true">QCheckBox::indicator{ 
-=======
                      </property>
                      <property name="currentIndex">
                       <number>1</number>
@@ -583,7 +406,7 @@ QToolBox::tab{
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>228</width>
+                        <width>189</width>
                         <height>303</height>
                        </rect>
                       </property>
@@ -622,7 +445,6 @@ QToolBox::tab{
                             </property>
                             <property name="styleSheet">
                              <string notr="true">QCheckBox::indicator{ 
->>>>>>> 51e56b421742f3c1305171d6b5de10fef38506c5
 	width:25px;
 	height:25px; 
 	background-color:white;
@@ -893,61 +715,12 @@ QCheckBox::indicator:checked {
                        </item>
                       </layout>
                      </widget>
-<<<<<<< HEAD
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-               <widget class="QWidget" name="page_2">
-                <property name="geometry">
-                 <rect>
-                  <x>0</x>
-                  <y>0</y>
-                  <width>279</width>
-                  <height>443</height>
-                 </rect>
-                </property>
-                <attribute name="label">
-                 <string>YEAR</string>
-                </attribute>
-                <layout class="QVBoxLayout" name="verticalLayout_8">
-                 <item>
-                  <widget class="QFrame" name="frame_4">
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_11">
-                    <property name="spacing">
-                     <number>5</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>5</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>5</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>5</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>5</number>
-                    </property>
-                    <item>
-                     <widget class="QCheckBox" name="year_check">
-                      <property name="styleSheet">
-                       <string notr="true">QCheckBox::indicator{ 
-=======
                      <widget class="QWidget" name="year_title">
                       <property name="geometry">
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>132</width>
+                        <width>228</width>
                         <height>443</height>
                        </rect>
                       </property>
@@ -986,7 +759,6 @@ QCheckBox::indicator:checked {
                             </property>
                             <property name="styleSheet">
                              <string notr="true">QCheckBox::indicator{ 
->>>>>>> 51e56b421742f3c1305171d6b5de10fef38506c5
 	width:25px;
 	height:25px; 
 	background-color:white;
