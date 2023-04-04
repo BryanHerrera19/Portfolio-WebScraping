@@ -226,6 +226,13 @@ QPushButton:hover {
                  </widget>
                 </item>
                 <item>
+                 <widget class="QPushButton" name="filter_Button">
+                  <property name="text">
+                   <string>Filter</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
                  <widget class="QFrame" name="price_frame">
                   <property name="styleSheet">
                    <string notr="true">QFrame {
