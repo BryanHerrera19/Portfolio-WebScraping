@@ -50,22 +50,13 @@ def getRecordLimit(limitSize):#Set a limit on the number of records you want ret
 
 def setPriceQuery(priceQuery):#Sets a query in order for use in queries
         print("Reached Here!")
-        stringList = priceQuery.split()
-        if(stringList[0] == "$lt" or stringList[0] == "$gt"):
-            myQuery = { "price" : { stringList[0] : int(stringList[1])}}  
-        else:
-                myQuery = { "$and" : [{"price" : { "$lt" : int(stringList[1]) }},
-                                      {"price" : { "$gt" : int(stringList[0]) }}]}
+        myQuery = { "$and" : [{"price" : { "$lte" : priceQuery }},
+                                {"price" : { "$gte" : 0 }}]}
         return list(carCol.find(myQuery))
 
 def setMileQuery(mileQuery):#Sets a query in order for use in queries
-        print("Reached Here!")
-        stringList = mileQuery.split()
-        if(stringList[0] == "$lt" or stringList[0] == "$gt"):
-            myQuery = { "mileage" : { stringList[0] : int(stringList[1])}}  
-        else:
-                myQuery = { "$and" : [{"mileage" : { "$lt" : int(stringList[1]) }},
-                                      {"mileage" : { "$gt" : int(stringList[0]) }}]}
+        myQuery = { "$and" : [{"mileage" : { "$lt" : mileQuery }},
+                                {"mileage" : { "$gt" : 0 }}]}
         return list(carCol.find(myQuery))
 
 def setYearQuery(yearQuery):#Sets a query in order for use in queries

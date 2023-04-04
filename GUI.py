@@ -164,45 +164,17 @@ class FilterScreen(QMainWindow):
         self.cdt.resizeColumnsToContents()
 
     #Outputs the queried list from filter when clicking checkbox
-    def priceChange(self):
-        if(self.price_check1.checkState() == 0 or
-           self.price_check2.checkState() == 0 or
-           self.price_check3.checkState() == 0 or
-           self.price_check4.checkState() == 0):
-            self.pasteCars(5, None)
-        if(self.price_check1.checkState() == 2):
-            tempList = setPriceQuery(self.price_check1.accessibleName())
-            self.pasteCars(len(tempList), tempList)
-        if(self.price_check2.checkState() == 2):
-            tempList = setPriceQuery(self.price_check2.accessibleName())
-            self.pasteCars(len(tempList), tempList)
-        if(self.price_check3.checkState() == 2):
-            tempList = setPriceQuery(self.price_check3.accessibleName())
-            self.pasteCars(len(tempList), tempList)
-        if(self.price_check4.checkState() == 2):
-            tempList = setPriceQuery(self.price_check4.accessibleName())
-            self.pasteCars(len(tempList), tempList)
+    def filterChange(self):
+        print(self.price_slider.value())
+        '''tempList = setPriceQuery(self.price_slider.value())
+        self.pasteCars(len(tempList), tempList)'''
 
     def milesChange(self):
-        if(self.miles_check1.checkState() == 0 or
-           self.miles_check2.checkState() == 0 or
-           self.miles_check3.checkState() == 0 or
-           self.miles_check4.checkState() == 0):
-            self.pasteCars(5, None)
-        if(self.miles_check1.checkState() == 2):
-            tempList = setMileQuery(self.miles_check1.accessibleName())
-            self.pasteCars(len(tempList), tempList)
-        if(self.miles_check2.checkState() == 2):
-            tempList = setMileQuery(self.miles_check2.accessibleName())
-            self.pasteCars(len(tempList), tempList)
-        if(self.miles_check3.checkState() == 2):
-            tempList = setMileQuery(self.miles_check3.accessibleName())
-            self.pasteCars(len(tempList), tempList)
-        if(self.miles_check4.checkState() == 2):
-            tempList = setMileQuery(self.miles_check4.accessibleName())
-            self.pasteCars(len(tempList), tempList)
+        print(self.miles_slider.value())
+        '''tempList = setMileQuery(self.miles_slider.value())
+        self.pasteCars(len(tempList), tempList)'''
 
-    def yearChange(self):
+    '''def yearChange(self):
         if(self.year_check1.checkState() == 0 or
            self.year_check2.checkState() == 0 or
            self.year_check3.checkState() == 0 or
@@ -246,7 +218,7 @@ class FilterScreen(QMainWindow):
             self.pasteCars(len(tempList), tempList)
         if(self.brand_check5.checkState() == 2):
             tempList = setBrandQuery(self.brand_check5.accessibleName())
-            self.pasteCars(len(tempList), tempList)
+            self.pasteCars(len(tempList), tempList)'''
         
     #Quits the application
     def quit_func(self):
