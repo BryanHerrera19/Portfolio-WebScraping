@@ -45,6 +45,7 @@ class FilterScreen(QMainWindow):
         self.quit_button.clicked.connect(self.quit_func)
         self.filter_button.setIcon(QtGui.QIcon("filter.png"))
         self.search_button.setIcon(QtGui.QIcon("search.png"))
+        self.refresh_button.setIcon(QtGui.QIcon("refresh.png"))
         self.price_slider.valueChanged.connect(self.price_change)
         self.miles_slider.valueChanged.connect(self.mile_change)
         self.filter_button.clicked.connect(self.show_filter)
@@ -93,6 +94,7 @@ class FilterScreen(QMainWindow):
 	                                    "background-color:red;"
                                         "}")
         '''
+        '''
         self.price_check1.stateChanged.connect(self.priceChange)
         self.price_check2.stateChanged.connect(self.priceChange)
         self.price_check3.stateChanged.connect(self.priceChange)
@@ -110,7 +112,7 @@ class FilterScreen(QMainWindow):
         self.brand_check2.stateChanged.connect(self.brandChange)
         self.brand_check3.stateChanged.connect(self.brandChange)
         self.brand_check4.stateChanged.connect(self.brandChange)
-        self.brand_check5.stateChanged.connect(self.brandChange)
+        self.brand_check5.stateChanged.connect(self.brandChange)'''
 
 
     #Pastes cars onto a table to view
