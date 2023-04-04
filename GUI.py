@@ -100,26 +100,8 @@ class FilterScreen(QMainWindow):
 	                                    "background-color:red;"
                                         "}")
         '''
-        '''
-        self.price_check1.stateChanged.connect(self.priceChange)
-        self.price_check2.stateChanged.connect(self.priceChange)
-        self.price_check3.stateChanged.connect(self.priceChange)
-        self.price_check4.stateChanged.connect(self.priceChange)
-        self.miles_check1.stateChanged.connect(self.milesChange)
-        self.miles_check2.stateChanged.connect(self.milesChange)
-        self.miles_check3.stateChanged.connect(self.milesChange)
-        self.miles_check4.stateChanged.connect(self.milesChange)
-        self.year_check1.stateChanged.connect(self.yearChange)
-        self.year_check2.stateChanged.connect(self.yearChange)
-        self.year_check3.stateChanged.connect(self.yearChange)
-        self.year_check4.stateChanged.connect(self.yearChange)
-        self.brand_check.stateChanged.connect(self.brandChange)
-        self.brand_check1.stateChanged.connect(self.brandChange)
-        self.brand_check2.stateChanged.connect(self.brandChange)
-        self.brand_check3.stateChanged.connect(self.brandChange)
-        self.brand_check4.stateChanged.connect(self.brandChange)
-        self.brand_check5.stateChanged.connect(self.brandChange)
-        '''
+        
+        self.submit_button.clicked.connect(lambda: self.filterChange())
 
     #Pastes cars onto a table to view
     def pasteCars(self, startVal, queriedList):
@@ -165,14 +147,9 @@ class FilterScreen(QMainWindow):
 
     #Outputs the queried list from filter when clicking checkbox
     def filterChange(self):
-        print(self.price_slider.value())
-        '''tempList = setPriceQuery(self.price_slider.value())
-        self.pasteCars(len(tempList), tempList)'''
-
-    def milesChange(self):
-        print(self.miles_slider.value())
-        '''tempList = setMileQuery(self.miles_slider.value())
-        self.pasteCars(len(tempList), tempList)'''
+        print("Here!")
+        '''tempList = setPriceQuery(self.price_slider.value(), self.miles_slider.value())
+        self.pasteCars(len(tempList), tempList) '''
 
     '''def yearChange(self):
         if(self.year_check1.checkState() == 0 or

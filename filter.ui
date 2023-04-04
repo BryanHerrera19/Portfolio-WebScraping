@@ -208,27 +208,18 @@ QPushButton:hover {
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_6">
                 <item>
-                 <widget class="QLabel" name="label">
-                  <property name="styleSheet">
-                   <string notr="true">QLabel {
-	background-color: #B554D7;
-	border-radius: 8px; 
-	font-size: 20px;
-	font-weight: bold;
-	font-family: Open Sans; 
-	color:white;
-	text-align: center;
-} </string>
+                 <widget class="QPushButton" name="submit_button">
+                  <property name="contextMenuPolicy">
+                   <enum>Qt::NoContextMenu</enum>
                   </property>
-                  <property name="text">
-                   <string>               FILTER</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="filter_Button">
                   <property name="text">
                    <string>Filter</string>
+                  </property>
+                  <property name="autoRepeatDelay">
+                   <number>500</number>
+                  </property>
+                  <property name="autoRepeatInterval">
+                   <number>0</number>
                   </property>
                  </widget>
                 </item>
@@ -1178,6 +1169,10 @@ QCheckBox::indicator:checked {
                  </widget>
                 </item>
                </layout>
+               <zorder>price_frame</zorder>
+               <zorder>mile_frame</zorder>
+               <zorder>drop_down_frame</zorder>
+               <zorder>submit_button</zorder>
               </widget>
              </item>
             </layout>

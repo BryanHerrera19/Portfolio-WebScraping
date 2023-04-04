@@ -99,21 +99,12 @@ class Ui_MainWindow(object):
         self.inside_filter_frame.setObjectName("inside_filter_frame")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.inside_filter_frame)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
-        self.label = QtWidgets.QLabel(self.inside_filter_frame)
-        self.label.setStyleSheet("QLabel {\n"
-"    background-color: #B554D7;\n"
-"    border-radius: 8px; \n"
-"    font-size: 20px;\n"
-"    font-weight: bold;\n"
-"    font-family: Open Sans; \n"
-"    color:white;\n"
-"    text-align: center;\n"
-"} ")
-        self.label.setObjectName("label")
-        self.verticalLayout_6.addWidget(self.label)
-        self.filter_Button = QtWidgets.QPushButton(self.inside_filter_frame)
-        self.filter_Button.setObjectName("filter_Button")
-        self.verticalLayout_6.addWidget(self.filter_Button)
+        self.submit_button = QtWidgets.QPushButton(self.inside_filter_frame)
+        self.submit_button.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
+        self.submit_button.setAutoRepeatDelay(500)
+        self.submit_button.setAutoRepeatInterval(0)
+        self.submit_button.setObjectName("submit_button")
+        self.verticalLayout_6.addWidget(self.submit_button)
         self.price_frame = QtWidgets.QFrame(self.inside_filter_frame)
         self.price_frame.setStyleSheet("QFrame {\n"
 "    background-color: rgb(105, 50, 126);\n"
@@ -768,6 +759,10 @@ class Ui_MainWindow(object):
         self.year_brand_dropdown.addItem(self.year_title, "")
         self.verticalLayout_16.addWidget(self.year_brand_dropdown)
         self.verticalLayout_6.addWidget(self.drop_down_frame)
+        self.price_frame.raise_()
+        self.mile_frame.raise_()
+        self.drop_down_frame.raise_()
+        self.submit_button.raise_()
         self.verticalLayout_15.addWidget(self.inside_filter_frame)
         self.verticalLayout_2.addWidget(self.filter_frame)
         self.horizontalLayout.addWidget(self.left_main_frame)
@@ -910,8 +905,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.Hbutton.setText(_translate("MainWindow", "UCR"))
-        self.label.setText(_translate("MainWindow", "               FILTER"))
-        self.filter_Button.setText(_translate("MainWindow", "Filter"))
+        self.submit_button.setText(_translate("MainWindow", "Filter"))
         self.price_bar.setText(_translate("MainWindow", " PRICE"))
         self.price_label.setText(_translate("MainWindow", "$ 0"))
         self.miles_bar.setText(_translate("MainWindow", " MILES DRIVEN"))
