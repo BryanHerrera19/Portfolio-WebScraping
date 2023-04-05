@@ -33,7 +33,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.left_main_frame = QtWidgets.QFrame(self.background_frame)
         self.left_main_frame.setMinimumSize(QtCore.QSize(0, 0))
-        self.left_main_frame.setMaximumSize(QtCore.QSize(285, 16777215))
+        self.left_main_frame.setMaximumSize(QtCore.QSize(0, 16777215))
         self.left_main_frame.setStyleSheet("QFrame {\n"
 "    background-color: #27062D;\n"
 "    border-radius: 7px; \n"
@@ -100,7 +100,16 @@ class Ui_MainWindow(object):
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.inside_filter_frame)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.button_submit = QtWidgets.QPushButton(self.inside_filter_frame)
+        self.button_submit.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.button_submit.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
+        self.button_submit.setStyleSheet("QPushButton {\n"
+"    background-color: #B554D7;\n"
+"    border-radius: 5px; \n"
+"    font-size: 26px;\n"
+"    font-weight: bold;\n"
+"    font-family: Open Sans; \n"
+"    color:white\n"
+"}")
         self.button_submit.setAutoRepeatDelay(500)
         self.button_submit.setAutoRepeatInterval(0)
         self.button_submit.setObjectName("button_submit")
@@ -912,7 +921,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.year_brand_dropdown.setCurrentIndex(1)
+        self.year_brand_dropdown.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
