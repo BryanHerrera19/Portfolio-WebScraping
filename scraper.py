@@ -27,11 +27,12 @@ class Scraper(Automator):
 
         self.browser.get(url)
         self.browser.execute_script("window.scrollTo(0, 500)") 
-        time.sleep(5)
+        time.sleep(2)
         elems_p = self.browser.find_elements(By.TAG_NAME, 'p')
         elems_p_texts = []
         for elem in elems_p:
             elems_p_texts.append(elem.text)
+        
         year_model_text = list(filter(lambda v: re.match('\d\d\d\d.*', v), elems_p_texts))[0]
         texts = year_model_text.split()
         year = int(texts[0])
@@ -50,6 +51,7 @@ class Scraper(Automator):
         elems_li_texts = []
         for elem in elems_li:
             elems_li_texts.append(elem.text)
+        
         if list(filter(lambda v: re.match(r'^Auto.*', v), elems_li_texts)) == []:
             if list(filter(lambda v: re.match(r'^Manual.*', v), elems_li_texts)) == []:
                 if list(filter(lambda v: re.match(r'^CVT.*', v), elems_li_texts)) == []:
@@ -67,12 +69,16 @@ class Scraper(Automator):
         else:
             color = ''
         
-        self.browser.execute_script("window.scrollTo(0, 2700)") 
+        self.browser.execute_script("window.scrollTo(0, 2720)") 
         time.sleep(2)
-        
+        try:
+            vin_text = list(filter(lambda v: re.match(r'VIN: .*', v), elems_li_texts))[0]
+            vin = re.findall(r'VIN: (.*)', vin_text)[0]
+        except IndexError:
+            pass
         elem_vin = self.browser.find_element(By.XPATH,'//a[contains(@data-analytics-id, "Specifications - Previous Use Disclaimer")]')
         vin_history_url = elem_vin.get_attribute("href")
-        newVehicle.transmission_color_vinHistoryURL_setter(transmission_type, color, vin_history_url)
+        newVehicle.transmission_color_vinHistoryURL_vin_setter(transmission_type, color, vin_history_url, vin)
 
         # click the link to history
         elem_vin.click()
@@ -148,6 +154,7 @@ for vehicle in Scraper.vehicles:
     print("last_state: " + vehicle.last_state)
     print("regular oil changes: " + str(vehicle.regular_oil_changes))
     print("usage: " + vehicle.usage)
+    print("vin: " + vehicle.vin)
 
     if(not alreadyExists(vehicle.url)):
         newCarDict = createCarInfoDict(vehicle, createVINHistInfoDict(vehicle))

@@ -16,7 +16,7 @@ class Vehicle():
     last_state = ''
     regular_oil_changes = False
     usage = ''
-
+    vin = ''
     def __init__(self, url, image, fuel):
         self.image = image
         self.url = url
@@ -29,10 +29,11 @@ class Vehicle():
         self.miles = miles
         self.price = price
 
-    def transmission_color_vinHistoryURL_setter(self, transmission, color, vinHistoryURL):
+    def transmission_color_vinHistoryURL_vin_setter(self, transmission, color, vinHistoryURL,vin):
         self.transmission_type = transmission
         self.color = color
         self.vin_history_url = vinHistoryURL
+        self.vin = vin
 
     def vin_history_setter(self, num_owners, accidents, last_state, regular_oil_changes, usage):
         self.num_owners = num_owners
