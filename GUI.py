@@ -22,14 +22,7 @@ class MainScreen(QMainWindow):
         # self.show()
 
     def gotoSearchScreen(self):
-        sScreen = FilterScreen()
-        widget.addWidget(sScreen)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
-
-    def gotoCarInfo(self):
-        cScreen = CarInfo()
-        widget.addWidget(cScreen)
-        widget.setCurrentIndex(widget.currentIndex() + 2)
+        widget.setCurrentWidget(sc)
 
     def quit_func(self):
         sys.exit(app.exec())
@@ -41,8 +34,11 @@ class FilterScreen(QMainWindow):
         super(FilterScreen, self).__init__()
         loadUi("filter.ui", self)
         # Go to home screen
+        self.button_refresh.clicked.connect(self.refreshing_page)
         self.button_home.clicked.connect(self.gotoHomeScreen)
         self.button_quit.clicked.connect(self.quit_func)
+
+        # Set Icon for buttons
         self.button_filter.setIcon(QtGui.QIcon("filter.png"))
         self.button_search.setIcon(QtGui.QIcon("search.png"))
         self.button_refresh.setIcon(QtGui.QIcon("refresh.png"))
@@ -71,7 +67,6 @@ class FilterScreen(QMainWindow):
         # For slide in and out
         if width == 0:
             newWidth = 285
-
         else:
             newWidth = 0
 
@@ -85,24 +80,7 @@ class FilterScreen(QMainWindow):
         self.animation.start()
 
 
-
-        # Filter for later use(not for now)
-        '''self.price_check1.setStyleSheet("QCheckBox" "{"
-                                        "font-size: 25px;"
-                                        "spacing:15px;"
-                                        "color:white;"
-                                        "font-weight:bold;"
-                                        "font-family: Open Sans; "
-                                        "}""QCheckBox::indicator" "{"
-                                        "width:25px;"
-                                        "height:25px;"
-                                        "background-color:white;"
-                                        "border-radius: 8px;"
-                                        "}" "QCheckBox::indicator:unchecked" "{"
-	                                    "background-color:red;"
-                                        "}")
-        '''
-
+        # Enable filter
         try:
             self.button_submit.disconnect()
         except:
@@ -170,23 +148,21 @@ class FilterScreen(QMainWindow):
 
     #Takes user to the homescreen
     def gotoHomeScreen(self):
-        hScreen = MainScreen()
-        widget.addWidget(hScreen)
-        widget.setCurrentIndex(widget.currentIndex() + 2)
+        widget.setCurrentWidget(mc)
+
+    def refreshing_page(self):
+        fc = FilterScreen()
+        widget.addWidget(fc)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
+
 
 class CarInfo(QMainWindow):
     def __init__(self):
         super(CarInfo, self).__init__()
         loadUi("CarInfo.ui", self)
         # self.Hbutton.clicked.connect(self.gotoHomeScreen)
-        self.quit_button.clicked.connect(self.quit_func)
+        #self.quit_button.clicked.connect(self.quit_func)
 
-        # Data
-
-    def gotoHomeScreen(self):
-        hScreen = MainScreen()
-        widget.addWidget(hScreen)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
 
     def quit_func(self):
         sys.exit(app.exec())
@@ -195,13 +171,14 @@ class CarInfo(QMainWindow):
 app = QApplication(sys.argv)
 mc = MainScreen()
 sc = FilterScreen()
-ci = CarInfo()
+#ci = CarInfo()
 
 # Creat widgets to stores multiple windows/screens
 widget = QStackedWidget()
 widget.addWidget(mc)
 widget.addWidget(sc)
-widget.addWidget(ci)
+#widget.addWidget(ci)
+widget.setCurrentWidget(mc)
 widget.setFixedSize(1200, 700)
 
 # No windows bar/Status bar
