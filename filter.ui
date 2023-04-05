@@ -260,7 +260,7 @@ QPushButton:hover {
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="maximum">
-                      <number>50000</number>
+                      <number>100000</number>
                      </property>
                      <property name="pageStep">
                       <number>1</number>
@@ -404,7 +404,7 @@ QToolBox::tab{
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>228</width>
+                        <width>189</width>
                         <height>303</height>
                        </rect>
                       </property>
