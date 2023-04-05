@@ -58,11 +58,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_14.setSpacing(0)
         self.verticalLayout_14.setObjectName("verticalLayout_14")
-        self.Hbutton = QtWidgets.QPushButton(self.logo_frame)
-        self.Hbutton.setMinimumSize(QtCore.QSize(0, 0))
-        self.Hbutton.setMaximumSize(QtCore.QSize(1000, 100))
-        self.Hbutton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.Hbutton.setStyleSheet("QPushButton { \n"
+        self.button_home = QtWidgets.QPushButton(self.logo_frame)
+        self.button_home.setMinimumSize(QtCore.QSize(0, 0))
+        self.button_home.setMaximumSize(QtCore.QSize(1000, 100))
+        self.button_home.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.button_home.setStyleSheet("QPushButton { \n"
 "    border:none;\n"
 "    background-color: #27062D;\n"
 "    font-size: 50px; \n"
@@ -76,8 +76,8 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        self.Hbutton.setObjectName("Hbutton")
-        self.verticalLayout_14.addWidget(self.Hbutton, 0, QtCore.Qt.AlignTop)
+        self.button_home.setObjectName("button_home")
+        self.verticalLayout_14.addWidget(self.button_home, 0, QtCore.Qt.AlignTop)
         self.verticalLayout_2.addWidget(self.logo_frame)
         self.filter_frame = QtWidgets.QFrame(self.left_main_frame)
         self.filter_frame.setStyleSheet("QFrame{\n"
@@ -99,12 +99,12 @@ class Ui_MainWindow(object):
         self.inside_filter_frame.setObjectName("inside_filter_frame")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.inside_filter_frame)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
-        self.submit_button = QtWidgets.QPushButton(self.inside_filter_frame)
-        self.submit_button.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
-        self.submit_button.setAutoRepeatDelay(500)
-        self.submit_button.setAutoRepeatInterval(0)
-        self.submit_button.setObjectName("submit_button")
-        self.verticalLayout_6.addWidget(self.submit_button)
+        self.button_submit = QtWidgets.QPushButton(self.inside_filter_frame)
+        self.button_submit.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
+        self.button_submit.setAutoRepeatDelay(500)
+        self.button_submit.setAutoRepeatInterval(0)
+        self.button_submit.setObjectName("button_submit")
+        self.verticalLayout_6.addWidget(self.button_submit)
         self.price_frame = QtWidgets.QFrame(self.inside_filter_frame)
         self.price_frame.setStyleSheet("QFrame {\n"
 "    background-color: rgb(105, 50, 126);\n"
@@ -125,15 +125,15 @@ class Ui_MainWindow(object):
 "} ")
         self.price_bar.setObjectName("price_bar")
         self.verticalLayout_9.addWidget(self.price_bar, 0, QtCore.Qt.AlignTop)
-        self.price_slider = QtWidgets.QSlider(self.price_frame)
-        self.price_slider.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.price_slider.setMaximum(50000)
-        self.price_slider.setPageStep(1)
-        self.price_slider.setOrientation(QtCore.Qt.Horizontal)
-        self.price_slider.setTickPosition(QtWidgets.QSlider.NoTicks)
-        self.price_slider.setTickInterval(1)
-        self.price_slider.setObjectName("price_slider")
-        self.verticalLayout_9.addWidget(self.price_slider)
+        self.slider_price = QtWidgets.QSlider(self.price_frame)
+        self.slider_price.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.slider_price.setMaximum(50000)
+        self.slider_price.setPageStep(1)
+        self.slider_price.setOrientation(QtCore.Qt.Horizontal)
+        self.slider_price.setTickPosition(QtWidgets.QSlider.NoTicks)
+        self.slider_price.setTickInterval(1)
+        self.slider_price.setObjectName("slider_price")
+        self.verticalLayout_9.addWidget(self.slider_price)
         self.price_label = QtWidgets.QLabel(self.price_frame)
         self.price_label.setStyleSheet("QLabel {\n"
 "    color:white;\n"
@@ -163,14 +163,14 @@ class Ui_MainWindow(object):
 "} ")
         self.miles_bar.setObjectName("miles_bar")
         self.verticalLayout_10.addWidget(self.miles_bar, 0, QtCore.Qt.AlignTop)
-        self.miles_slider = QtWidgets.QSlider(self.mile_frame)
-        self.miles_slider.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.miles_slider.setMaximum(100000)
-        self.miles_slider.setPageStep(1)
-        self.miles_slider.setOrientation(QtCore.Qt.Horizontal)
-        self.miles_slider.setTickPosition(QtWidgets.QSlider.NoTicks)
-        self.miles_slider.setObjectName("miles_slider")
-        self.verticalLayout_10.addWidget(self.miles_slider)
+        self.slider_miles = QtWidgets.QSlider(self.mile_frame)
+        self.slider_miles.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.slider_miles.setMaximum(100000)
+        self.slider_miles.setPageStep(1)
+        self.slider_miles.setOrientation(QtCore.Qt.Horizontal)
+        self.slider_miles.setTickPosition(QtWidgets.QSlider.NoTicks)
+        self.slider_miles.setObjectName("slider_miles")
+        self.verticalLayout_10.addWidget(self.slider_miles)
         self.mile_label = QtWidgets.QLabel(self.mile_frame)
         self.mile_label.setStyleSheet("QLabel {\n"
 "    color:white;\n"
@@ -208,7 +208,7 @@ class Ui_MainWindow(object):
 "}")
         self.year_brand_dropdown.setObjectName("year_brand_dropdown")
         self.brand_title = QtWidgets.QWidget()
-        self.brand_title.setGeometry(QtCore.QRect(0, 0, 189, 303))
+        self.brand_title.setGeometry(QtCore.QRect(0, 0, 228, 303))
         self.brand_title.setObjectName("brand_title")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.brand_title)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
@@ -762,7 +762,7 @@ class Ui_MainWindow(object):
         self.price_frame.raise_()
         self.mile_frame.raise_()
         self.drop_down_frame.raise_()
-        self.submit_button.raise_()
+        self.button_submit.raise_()
         self.verticalLayout_15.addWidget(self.inside_filter_frame)
         self.verticalLayout_2.addWidget(self.filter_frame)
         self.horizontalLayout.addWidget(self.left_main_frame)
@@ -792,12 +792,12 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setSpacing(8)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.filter_button = QtWidgets.QPushButton(self.upper_frame)
-        self.filter_button.setMinimumSize(QtCore.QSize(38, 38))
-        self.filter_button.setSizeIncrement(QtCore.QSize(16, 16))
-        self.filter_button.setBaseSize(QtCore.QSize(16, 16))
-        self.filter_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.filter_button.setStyleSheet("QPushButton {\n"
+        self.button_filter = QtWidgets.QPushButton(self.upper_frame)
+        self.button_filter.setMinimumSize(QtCore.QSize(38, 38))
+        self.button_filter.setSizeIncrement(QtCore.QSize(16, 16))
+        self.button_filter.setBaseSize(QtCore.QSize(16, 16))
+        self.button_filter.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.button_filter.setStyleSheet("QPushButton {\n"
 "    background-color: rgb(181, 84, 215);\n"
 "    border-radius: 8px;\n"
 "}\n"
@@ -805,13 +805,13 @@ class Ui_MainWindow(object):
 "QPushButton:hover {\n"
 "    background-color: rgba(181, 84, 215,150);\n"
 "}")
-        self.filter_button.setText("")
+        self.button_filter.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/Icons/Icons/checkbox.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.filter_button.setIcon(icon)
-        self.filter_button.setIconSize(QtCore.QSize(38, 38))
-        self.filter_button.setObjectName("filter_button")
-        self.horizontalLayout_2.addWidget(self.filter_button, 0, QtCore.Qt.AlignRight)
+        self.button_filter.setIcon(icon)
+        self.button_filter.setIconSize(QtCore.QSize(38, 38))
+        self.button_filter.setObjectName("button_filter")
+        self.horizontalLayout_2.addWidget(self.button_filter, 0, QtCore.Qt.AlignRight)
         self.search_bar = QtWidgets.QLineEdit(self.upper_frame)
         self.search_bar.setStyleSheet("QLineEdit {\n"
 "    background-color: rgb(144,104,140);\n"
@@ -824,12 +824,12 @@ class Ui_MainWindow(object):
 "")
         self.search_bar.setObjectName("search_bar")
         self.horizontalLayout_2.addWidget(self.search_bar)
-        self.search_button = QtWidgets.QPushButton(self.upper_frame)
-        self.search_button.setMinimumSize(QtCore.QSize(38, 38))
-        self.search_button.setSizeIncrement(QtCore.QSize(16, 16))
-        self.search_button.setBaseSize(QtCore.QSize(16, 16))
-        self.search_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.search_button.setStyleSheet("QPushButton {\n"
+        self.button_search = QtWidgets.QPushButton(self.upper_frame)
+        self.button_search.setMinimumSize(QtCore.QSize(38, 38))
+        self.button_search.setSizeIncrement(QtCore.QSize(16, 16))
+        self.button_search.setBaseSize(QtCore.QSize(16, 16))
+        self.button_search.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.button_search.setStyleSheet("QPushButton {\n"
 "    background-color: rgb(181, 84, 215);\n"
 "    border-radius: 8px;\n"
 "}\n"
@@ -837,16 +837,16 @@ class Ui_MainWindow(object):
 "QPushButton:hover {\n"
 "    background-color: rgba(181, 84, 215,150);\n"
 "}")
-        self.search_button.setText("")
-        self.search_button.setIconSize(QtCore.QSize(30, 30))
-        self.search_button.setObjectName("search_button")
-        self.horizontalLayout_2.addWidget(self.search_button)
-        self.refresh_button = QtWidgets.QPushButton(self.upper_frame)
-        self.refresh_button.setMinimumSize(QtCore.QSize(38, 38))
-        self.refresh_button.setSizeIncrement(QtCore.QSize(16, 16))
-        self.refresh_button.setBaseSize(QtCore.QSize(16, 16))
-        self.refresh_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.refresh_button.setStyleSheet("QPushButton {\n"
+        self.button_search.setText("")
+        self.button_search.setIconSize(QtCore.QSize(30, 30))
+        self.button_search.setObjectName("button_search")
+        self.horizontalLayout_2.addWidget(self.button_search)
+        self.button_refresh = QtWidgets.QPushButton(self.upper_frame)
+        self.button_refresh.setMinimumSize(QtCore.QSize(38, 38))
+        self.button_refresh.setSizeIncrement(QtCore.QSize(16, 16))
+        self.button_refresh.setBaseSize(QtCore.QSize(16, 16))
+        self.button_refresh.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.button_refresh.setStyleSheet("QPushButton {\n"
 "    background-color: rgb(181, 84, 215);\n"
 "    border-radius: 8px;\n"
 "}\n"
@@ -854,17 +854,17 @@ class Ui_MainWindow(object):
 "QPushButton:hover {\n"
 "    background-color: rgba(181, 84, 215,150);\n"
 "}")
-        self.refresh_button.setText("")
-        self.refresh_button.setIconSize(QtCore.QSize(32, 32))
-        self.refresh_button.setObjectName("refresh_button")
-        self.horizontalLayout_2.addWidget(self.refresh_button)
-        self.quit_button = QtWidgets.QPushButton(self.upper_frame)
-        self.quit_button.setMinimumSize(QtCore.QSize(16, 16))
-        self.quit_button.setMaximumSize(QtCore.QSize(17, 17))
-        self.quit_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.quit_button.setLayoutDirection(QtCore.Qt.RightToLeft)
-        self.quit_button.setAutoFillBackground(False)
-        self.quit_button.setStyleSheet("QPushButton {\n"
+        self.button_refresh.setText("")
+        self.button_refresh.setIconSize(QtCore.QSize(32, 32))
+        self.button_refresh.setObjectName("button_refresh")
+        self.horizontalLayout_2.addWidget(self.button_refresh)
+        self.button_quit = QtWidgets.QPushButton(self.upper_frame)
+        self.button_quit.setMinimumSize(QtCore.QSize(16, 16))
+        self.button_quit.setMaximumSize(QtCore.QSize(17, 17))
+        self.button_quit.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.button_quit.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.button_quit.setAutoFillBackground(False)
+        self.button_quit.setStyleSheet("QPushButton {\n"
 "    background-color: rgb(255, 11, 68);\n"
 "    border-radius: 8px; \n"
 "    border: none;\n"
@@ -874,9 +874,9 @@ class Ui_MainWindow(object):
 "    background-color: rgba(255, 11, 68, 150);\n"
 "}\n"
 "    ")
-        self.quit_button.setText("")
-        self.quit_button.setObjectName("quit_button")
-        self.horizontalLayout_2.addWidget(self.quit_button, 0, QtCore.Qt.AlignRight|QtCore.Qt.AlignTop)
+        self.button_quit.setText("")
+        self.button_quit.setObjectName("button_quit")
+        self.horizontalLayout_2.addWidget(self.button_quit, 0, QtCore.Qt.AlignRight|QtCore.Qt.AlignTop)
         self.verticalLayout.addWidget(self.upper_frame)
         self.car_infor_frame = QtWidgets.QFrame(self.right_main_frame)
         self.car_infor_frame.setStyleSheet("QFrame{ \n"
@@ -904,8 +904,8 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.Hbutton.setText(_translate("MainWindow", "UCR"))
-        self.submit_button.setText(_translate("MainWindow", "Filter"))
+        self.button_home.setText(_translate("MainWindow", "UCR"))
+        self.button_submit.setText(_translate("MainWindow", "Filter"))
         self.price_bar.setText(_translate("MainWindow", " PRICE"))
         self.price_label.setText(_translate("MainWindow", "$ 0"))
         self.miles_bar.setText(_translate("MainWindow", " MILES DRIVEN"))

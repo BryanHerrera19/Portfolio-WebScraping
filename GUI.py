@@ -40,27 +40,27 @@ class FilterScreen(QMainWindow):
         super(FilterScreen, self).__init__()
         loadUi("filter.ui", self)
         # Go to home screen
-        self.Hbutton.clicked.connect(self.gotoHomeScreen)
-        self.quit_button.clicked.connect(self.quit_func)
-        self.filter_button.setIcon(QtGui.QIcon("filter.png"))
-        self.search_button.setIcon(QtGui.QIcon("search.png"))
-        self.refresh_button.setIcon(QtGui.QIcon("refresh.png"))
+        self.button_home.clicked.connect(self.gotoHomeScreen)
+        self.button_quit.clicked.connect(self.quit_func)
+        self.button_filter.setIcon(QtGui.QIcon("filter.png"))
+        self.button_search.setIcon(QtGui.QIcon("search.png"))
+        self.button_refresh.setIcon(QtGui.QIcon("refresh.png"))
 
         # Linked value to the slider
-        self.price_slider.valueChanged.connect(self.price_change)
-        self.miles_slider.valueChanged.connect(self.mile_change)
-        self.filter_button.clicked.connect(self.show_filter)
+        self.slider_price.valueChanged.connect(self.price_change)
+        self.slider_miles.valueChanged.connect(self.mile_change)
+        self.button_filter.clicked.connect(self.show_filter)
 
         self.pasteCars(5, None)
 
     # Text for price slider
     def price_change(self):
-        num_price = str(self.price_slider.value())
+        num_price = str(self.slider_price.value())
         self.price_label.setText(num_price)
 
     # Text for mile slider
     def mile_change(self):
-        num_mile = str(self.miles_slider.value())
+        num_mile = str(self.slider_miles.value())
         self.mile_label.setText(num_mile)
 
     # Side filter animation
@@ -101,7 +101,11 @@ class FilterScreen(QMainWindow):
                                         "}")
         '''
         
-        self.submit_button.clicked.connect(lambda: self.filterChange())
+        try:
+            self.button_submit.disconnect()
+        except:
+            pass
+        self.button_submit.clicked.connect(lambda: self.filterChange())
 
     #Pastes cars onto a table to view
     def pasteCars(self, startVal, queriedList):
@@ -147,9 +151,8 @@ class FilterScreen(QMainWindow):
 
     #Outputs the queried list from filter when clicking checkbox
     def filterChange(self):
-        print("Here!")
-        '''tempList = setPriceQuery(self.price_slider.value(), self.miles_slider.value())
-        self.pasteCars(len(tempList), tempList) '''
+        tempList = setPriceMileQuery(self.slider_price.value(), self.slider_miles.value())
+        self.pasteCars(len(tempList), tempList)
 
     '''def yearChange(self):
         if(self.year_check1.checkState() == 0 or

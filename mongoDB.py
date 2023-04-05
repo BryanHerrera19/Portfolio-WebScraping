@@ -48,7 +48,7 @@ def getRecords():#Returns all records in the database
 def getRecordLimit(limitSize):#Set a limit on the number of records you want returned
         return list(carCol.find().limit(limitSize))
 
-def setPriceQuery(priceQuery, mileQuery):#Sets a query in order for use in queries
+def setPriceMileQuery(priceQuery, mileQuery):#Sets a query in order for use in queries
         print("Reached Here!")
         myQuery = { "$and" : [{"price" : { "$lte" : priceQuery }},
                                 {"price" : { "$gte" : 0 }},

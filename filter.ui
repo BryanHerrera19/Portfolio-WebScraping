@@ -124,7 +124,7 @@
               <number>0</number>
              </property>
              <item alignment="Qt::AlignTop">
-              <widget class="QPushButton" name="Hbutton">
+              <widget class="QPushButton" name="button_home">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -208,7 +208,7 @@ QPushButton:hover {
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_6">
                 <item>
-                 <widget class="QPushButton" name="submit_button">
+                 <widget class="QPushButton" name="button_submit">
                   <property name="contextMenuPolicy">
                    <enum>Qt::NoContextMenu</enum>
                   </property>
@@ -255,7 +255,7 @@ QPushButton:hover {
                     </widget>
                    </item>
                    <item>
-                    <widget class="QSlider" name="price_slider">
+                    <widget class="QSlider" name="slider_price">
                      <property name="cursor">
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
@@ -325,7 +325,7 @@ QPushButton:hover {
                     </widget>
                    </item>
                    <item>
-                    <widget class="QSlider" name="miles_slider">
+                    <widget class="QSlider" name="slider_miles">
                      <property name="cursor">
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
@@ -404,7 +404,7 @@ QToolBox::tab{
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>189</width>
+                        <width>228</width>
                         <height>303</height>
                        </rect>
                       </property>
@@ -1172,7 +1172,7 @@ QCheckBox::indicator:checked {
                <zorder>price_frame</zorder>
                <zorder>mile_frame</zorder>
                <zorder>drop_down_frame</zorder>
-               <zorder>submit_button</zorder>
+               <zorder>button_submit</zorder>
               </widget>
              </item>
             </layout>
@@ -1261,7 +1261,7 @@ QCheckBox::indicator:checked {
               <number>0</number>
              </property>
              <item alignment="Qt::AlignRight">
-              <widget class="QPushButton" name="filter_button">
+              <widget class="QPushButton" name="button_filter">
                <property name="minimumSize">
                 <size>
                  <width>38</width>
@@ -1324,7 +1324,7 @@ QPushButton:hover {
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="search_button">
+              <widget class="QPushButton" name="button_search">
                <property name="minimumSize">
                 <size>
                  <width>38</width>
@@ -1368,7 +1368,7 @@ QPushButton:hover {
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="refresh_button">
+              <widget class="QPushButton" name="button_refresh">
                <property name="minimumSize">
                 <size>
                  <width>38</width>
@@ -1412,7 +1412,7 @@ QPushButton:hover {
               </widget>
              </item>
              <item alignment="Qt::AlignRight|Qt::AlignTop">
-              <widget class="QPushButton" name="quit_button">
+              <widget class="QPushButton" name="button_quit">
                <property name="minimumSize">
                 <size>
                  <width>16</width>
