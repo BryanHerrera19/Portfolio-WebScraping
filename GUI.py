@@ -21,9 +21,7 @@ class MainScreen(QMainWindow):
         self.show()
 
     def gotoSearchScreen(self):
-        sScreen = FilterScreen()
-        widget.addWidget(sScreen)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
+        widget.setCurrentWidget(sc)
 
     def quit_func(self):
         sys.exit(app.exec())
@@ -35,6 +33,7 @@ class FilterScreen(QMainWindow):
         super(FilterScreen, self).__init__()
         loadUi("filter.ui", self)
         # Go to home screen
+        self.button_refresh.clicked.connect(self.refreshing_page)
         self.button_home.clicked.connect(self.gotoHomeScreen)
         self.button_quit.clicked.connect(self.quit_func)
 
@@ -147,9 +146,13 @@ class FilterScreen(QMainWindow):
 
     #Takes user to the homescreen
     def gotoHomeScreen(self):
-        hScreen = MainScreen()
-        widget.addWidget(hScreen)
+        widget.setCurrentWidget(mc)
+
+    def refreshing_page(self):
+        fc = FilterScreen()
+        widget.addWidget(fc)
         widget.setCurrentIndex(widget.currentIndex() + 1)
+
 
 class CarInfo(QMainWindow):
     def __init__(self):
@@ -173,6 +176,7 @@ widget = QStackedWidget()
 widget.addWidget(mc)
 widget.addWidget(sc)
 #widget.addWidget(ci)
+widget.setCurrentWidget(mc)
 widget.setFixedSize(1200, 700)
 
 # No windows bar/Status bar
