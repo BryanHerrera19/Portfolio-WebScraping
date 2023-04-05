@@ -55,6 +55,18 @@ def setPriceMileQuery(priceQuery, mileQuery, yearQuery, brandQuery):#Sets a quer
                                 { "price" : { "$gte" : 0 }},
                                 { "mileage" : { "$lt" : mileQuery }},
                                 { "mileage" : { "$gt" : 0 }}]}
+        elif(yearQuery == -1 and brandQuery != None):
+                myQuery = { "$and" : [{ "price" : { "$lte" : priceQuery }},
+                                { "price" : { "$gte" : 0 }},
+                                { "mileage" : { "$lt" : mileQuery }},
+                                { "mileage" : { "$gt" : 0 }},
+                                { "manufacturer" : brandQuery }]}
+        elif(yearQuery != -1 and brandQuery == None):
+                myQuery = { "$and" : [{ "price" : { "$lte" : priceQuery }},
+                                { "price" : { "$gte" : 0 }},
+                                { "mileage" : { "$lt" : mileQuery }},
+                                { "mileage" : { "$gt" : 0 }},
+                                { "year" : { "$eq" : year }}]}
         else:
              myQuery = { "$and" : [{ "price" : { "$lte" : priceQuery }},
                                 { "price" : { "$gte" : 0 }},

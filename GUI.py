@@ -152,10 +152,14 @@ class FilterScreen(QMainWindow):
 
     #Outputs the queried list from filter when clicking checkbox
     def filterChange(self):
+        if(self.buttonGroup_2.checkedButton() == None):
+            tempBrandQuery = None
+        else:
+            tempBrandQuery = self.buttonGroup_2.checkedButton().accessibleName()
         tempList = setPriceMileQuery(self.slider_price.value(),
                                      self.slider_miles.value(),
                                      self.buttonGroup.checkedId(),
-                                     self.buttonGroup_2.checkedButton().accessibleName())
+                                     tempBrandQuery)
         self.pasteCars(len(tempList), tempList)
         
     #Quits the application
