@@ -48,18 +48,19 @@ def getRecords():#Returns all records in the database
 def getRecordLimit(limitSize):#Set a limit on the number of records you want returned
         return list(carCol.find().limit(limitSize))
 
-def setPriceMileQuery(priceQuery, mileQuery):#Sets a query in order for use in queries
-        print("Reached Here!")
-        myQuery = { "$and" : [{"price" : { "$lte" : priceQuery }},
+def setPriceMileQuery(priceQuery, mileQuery, yearQuery):#Sets a query in order for use in queries
+        year = (abs(int(yearQuery)) + 8) + 2000
+        if(year >= 2010):
+                myQuery = { "$and" : [{"price" : { "$lte" : priceQuery }},
+                                {"price" : { "$gte" : 0 }},
+                                {"mileage" : { "$lt" : mileQuery }},
+                                {"mileage" : { "$gt" : 0 }},
+                                { "year" : { "$eq" : year }}]}
+        else:
+             myQuery = { "$and" : [{"price" : { "$lte" : priceQuery }},
                                 {"price" : { "$gte" : 0 }},
                                 {"mileage" : { "$lt" : mileQuery }},
                                 {"mileage" : { "$gt" : 0 }}]}
-        return list(carCol.find(myQuery))
-
-def setYearQuery(yearQuery):#Sets a query in order for use in queries
-        stringList = yearQuery.split()
-        myQuery = { "$and" : [{"year" : { "$lt" : int(stringList[1]) }},
-                                {"year" : { "$gt" : int(stringList[0]) }}]}
         return list(carCol.find(myQuery))
 
 def setBrandQuery(brandQuery):#Sets a query in order for use in queries

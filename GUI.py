@@ -151,29 +151,11 @@ class FilterScreen(QMainWindow):
 
     #Outputs the queried list from filter when clicking checkbox
     def filterChange(self):
-        tempList = setPriceMileQuery(self.slider_price.value(), self.slider_miles.value())
+        tempList = setPriceMileQuery(self.slider_price.value(), self.slider_miles.value(),
+                                     self.buttonGroup.checkedId())
         self.pasteCars(len(tempList), tempList)
-
-    '''def yearChange(self):
-        if(self.year_check1.checkState() == 0 or
-           self.year_check2.checkState() == 0 or
-           self.year_check3.checkState() == 0 or
-           self.year_check4.checkState() == 0):
-            self.pasteCars(5, None)
-        if(self.year_check1.checkState() == 2):
-            tempList = setYearQuery(self.year_check1.accessibleName())
-            self.pasteCars(len(tempList), tempList)
-        if(self.year_check2.checkState() == 2):
-            tempList = setYearQuery(self.year_check2.accessibleName())
-            self.pasteCars(len(tempList), tempList)
-        if(self.year_check3.checkState() == 2):
-            tempList = setYearQuery(self.year_check3.accessibleName())
-            self.pasteCars(len(tempList), tempList)
-        if(self.year_check4.checkState() == 2):
-            tempList = setYearQuery(self.year_check4.accessibleName())
-            self.pasteCars(len(tempList), tempList)
-
-    def brandChange(self):
+    
+    '''def brandChange(self):
         if(self.brand_check.checkState() == 0 or
            self.brand_check1.checkState() == 0 or
            self.brand_check2.checkState() == 0 or
