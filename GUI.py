@@ -11,6 +11,7 @@ from PyQt5 import *
 
 from mongoDB import *
 
+            
 # Main Screen
 class MainScreen(QMainWindow):
     def __init__(self):
@@ -18,7 +19,7 @@ class MainScreen(QMainWindow):
         loadUi("MainScreen.ui", self)
         self.GSbutton.clicked.connect(self.gotoSearchScreen)
         self.quit_button.clicked.connect(self.quit_func)
-        self.show()
+        # self.show()
 
     def gotoSearchScreen(self):
         sScreen = FilterScreen()
@@ -107,7 +108,7 @@ class FilterScreen(QMainWindow):
         except:
             pass
         self.button_submit.clicked.connect(lambda: self.filterChange())
-
+    
     #Pastes cars onto a table to view
     def pasteCars(self, startVal, queriedList):
         self.cdt.setRowCount(0)
@@ -128,15 +129,16 @@ class FilterScreen(QMainWindow):
         idx = 0;
         # Adding/Showing data to the table
         for x in records:
+
             r = requests.get(x['image'],stream=True)
             assert r.status_code == 200
-            img = QImage()
-            assert img.loadFromData(r.content)
-            pixel_img = img.scaled(160,120,Qt.KeepAspectRatio)
+            
+            pix = QPixmap()
+            pix.loadFromData(r.content)
+            
             w = QLabel()
-            w.setPixmap(QPixmap(pixel_img))
-
-            # Will have to change column names
+            w.setPixmap(pix.scaled(400,300,Qt.KeepAspectRatio))
+            
             self.cdt.setCellWidget(idx, 0, w)
             self.cdt.setItem(idx, 1, QtWidgets.QTableWidgetItem(x['manufacturer']))
             self.cdt.setItem(idx, 2, QtWidgets.QTableWidgetItem(x['modelName']))

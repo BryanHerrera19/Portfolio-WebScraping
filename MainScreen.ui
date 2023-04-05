@@ -203,7 +203,7 @@ QPushButton:hover{
         </property>
         <property name="styleSheet">
          <string notr="true">QLabel{
-	backgrouund-color: rgb(255, 123, 220);
+	background-color: rgb(255, 123, 220);
 	font-size: 150px; 
 	font-family: Segoe Print;
 	font-weight: bold; 
