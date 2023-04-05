@@ -72,7 +72,8 @@ class FilterScreen(QMainWindow):
             newWidth = 285
 
         else:
-            newWidth = 0;
+            newWidth = 0
+
 
         # Animation
         self.animation = QPropertyAnimation(self.left_main_frame, b"maximumWidth")
@@ -100,7 +101,7 @@ class FilterScreen(QMainWindow):
 	                                    "background-color:red;"
                                         "}")
         '''
-        
+
         try:
             self.button_submit.disconnect()
         except:

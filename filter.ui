@@ -55,7 +55,7 @@
          </property>
          <property name="maximumSize">
           <size>
-           <width>285</width>
+           <width>0</width>
            <height>16777215</height>
           </size>
          </property>
@@ -209,8 +209,21 @@ QPushButton:hover {
                <layout class="QVBoxLayout" name="verticalLayout_6">
                 <item>
                  <widget class="QPushButton" name="button_submit">
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
                   <property name="contextMenuPolicy">
                    <enum>Qt::NoContextMenu</enum>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
+	background-color: #B554D7;
+	border-radius: 5px; 
+	font-size: 26px;
+	font-weight: bold;
+	font-family: Open Sans; 
+	color:white
+}</string>
                   </property>
                   <property name="text">
                    <string>Filter</string>
@@ -397,14 +410,14 @@ QToolBox::tab{
 }</string>
                      </property>
                      <property name="currentIndex">
-                      <number>1</number>
+                      <number>0</number>
                      </property>
                      <widget class="QWidget" name="brand_title">
                       <property name="geometry">
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>228</width>
+                        <width>189</width>
                         <height>303</height>
                        </rect>
                       </property>
