@@ -417,7 +417,7 @@ QToolBox::tab{
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>228</width>
+                        <width>189</width>
                         <height>303</height>
                        </rect>
                       </property>
@@ -454,6 +454,9 @@ QToolBox::tab{
                             <property name="cursor">
                              <cursorShape>PointingHandCursor</cursorShape>
                             </property>
+                            <property name="accessibleName">
+                             <string>NISSAN</string>
+                            </property>
                             <property name="styleSheet">
                              <string notr="true">QCheckBox::indicator{ 
 	width:25px;
@@ -481,12 +484,18 @@ QCheckBox::indicator:checked {
                             <property name="text">
                              <string>Nissan</string>
                             </property>
+                            <attribute name="buttonGroup">
+                             <string notr="true">buttonGroup_2</string>
+                            </attribute>
                            </widget>
                           </item>
                           <item>
                            <widget class="QCheckBox" name="lex_check">
                             <property name="cursor">
                              <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="accessibleName">
+                             <string>LEXUS</string>
                             </property>
                             <property name="styleSheet">
                              <string notr="true">QCheckBox::indicator{ 
@@ -515,12 +524,18 @@ QCheckBox::indicator:checked {
                             <property name="text">
                              <string>Lexus</string>
                             </property>
+                            <attribute name="buttonGroup">
+                             <string notr="true">buttonGroup_2</string>
+                            </attribute>
                            </widget>
                           </item>
                           <item>
                            <widget class="QCheckBox" name="chev_check">
                             <property name="cursor">
                              <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="accessibleName">
+                             <string>CHEVROLET</string>
                             </property>
                             <property name="styleSheet">
                              <string notr="true">QCheckBox::indicator{ 
@@ -549,12 +564,18 @@ QCheckBox::indicator:checked {
                             <property name="text">
                              <string>Chevrolet</string>
                             </property>
+                            <attribute name="buttonGroup">
+                             <string notr="true">buttonGroup_2</string>
+                            </attribute>
                            </widget>
                           </item>
                           <item>
                            <widget class="QCheckBox" name="ford_check">
                             <property name="cursor">
                              <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="accessibleName">
+                             <string>FORD</string>
                             </property>
                             <property name="styleSheet">
                              <string notr="true">QCheckBox::indicator{ 
@@ -583,12 +604,18 @@ QCheckBox::indicator:checked {
                             <property name="text">
                              <string>Ford</string>
                             </property>
+                            <attribute name="buttonGroup">
+                             <string notr="true">buttonGroup_2</string>
+                            </attribute>
                            </widget>
                           </item>
                           <item>
                            <widget class="QCheckBox" name="tesla_check">
                             <property name="cursor">
                              <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="accessibleName">
+                             <string>TESLA</string>
                             </property>
                             <property name="styleSheet">
                              <string notr="true">QCheckBox::indicator{ 
@@ -617,12 +644,18 @@ QCheckBox::indicator:checked {
                             <property name="text">
                              <string>Tesla</string>
                             </property>
+                            <attribute name="buttonGroup">
+                             <string notr="true">buttonGroup_2</string>
+                            </attribute>
                            </widget>
                           </item>
                           <item>
                            <widget class="QCheckBox" name="bmw_check">
                             <property name="cursor">
                              <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="accessibleName">
+                             <string>BMW</string>
                             </property>
                             <property name="styleSheet">
                              <string notr="true">QCheckBox::indicator{ 
@@ -651,12 +684,18 @@ QCheckBox::indicator:checked {
                             <property name="text">
                              <string>BMW</string>
                             </property>
+                            <attribute name="buttonGroup">
+                             <string notr="true">buttonGroup_2</string>
+                            </attribute>
                            </widget>
                           </item>
                           <item>
                            <widget class="QCheckBox" name="cad_check">
                             <property name="cursor">
                              <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="accessibleName">
+                             <string>CADILLAC</string>
                             </property>
                             <property name="styleSheet">
                              <string notr="true">QCheckBox::indicator{ 
@@ -685,12 +724,18 @@ QCheckBox::indicator:checked {
                             <property name="text">
                              <string>Cadillac</string>
                             </property>
+                            <attribute name="buttonGroup">
+                             <string notr="true">buttonGroup_2</string>
+                            </attribute>
                            </widget>
                           </item>
                           <item>
                            <widget class="QCheckBox" name="honda_check">
                             <property name="cursor">
                              <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="accessibleName">
+                             <string>HONDA</string>
                             </property>
                             <property name="styleSheet">
                              <string notr="true">QCheckBox::indicator{ 
@@ -719,6 +764,9 @@ QCheckBox::indicator:checked {
                             <property name="text">
                              <string>Honda</string>
                             </property>
+                            <attribute name="buttonGroup">
+                             <string notr="true">buttonGroup_2</string>
+                            </attribute>
                            </widget>
                           </item>
                          </layout>
@@ -730,8 +778,8 @@ QCheckBox::indicator:checked {
                       <property name="geometry">
                        <rect>
                         <x>0</x>
-                        <y>-204</y>
-                        <width>228</width>
+                        <y>0</y>
+                        <width>132</width>
                         <height>443</height>
                        </rect>
                       </property>
@@ -1536,5 +1584,6 @@ QPushButton:hover {
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
