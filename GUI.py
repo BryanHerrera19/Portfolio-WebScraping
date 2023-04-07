@@ -22,7 +22,10 @@ class MainScreen(QMainWindow):
         # self.show()
 
     def gotoSearchScreen(self):
-        widget.setCurrentWidget(sc)
+        # widget.setCurrentWidget(sc)
+        sc = FilterScreen()
+        widget.addWidget(sc)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
 
     def quit_func(self):
         sys.exit(app.exec())
