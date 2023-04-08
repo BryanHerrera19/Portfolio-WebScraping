@@ -33,10 +33,9 @@ def alreadyExists(carURL): #checks if vehicle is in database
                 print("Car not in database")
                 return False
         
-def updateDB(carURL, newInfo): #updates database record with any new info
+def updateDB(carURL, newDoc): #updates database record with any new info
         myQuery = {'url': {"$in": [carURL]}}
-        newCarHist = {"$set": {"carHist": newInfo}}
-        carCol.update_one(myQuery, newCarHist)
+        carCol.replace_one(myQuery, newDoc)
 
 def getRecords():#Returns all records in the database
        return list(carCol.find())
