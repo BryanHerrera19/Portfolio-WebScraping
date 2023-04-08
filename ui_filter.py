@@ -30,6 +30,8 @@ class Ui_MainWindow(object):
         self.background_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.background_frame.setObjectName("background_frame")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.background_frame)
+        self.horizontalLayout.setContentsMargins(5, 5, 5, 5)
+        self.horizontalLayout.setSpacing(5)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.left_main_frame = QtWidgets.QFrame(self.background_frame)
         self.left_main_frame.setMinimumSize(QtCore.QSize(0, 0))

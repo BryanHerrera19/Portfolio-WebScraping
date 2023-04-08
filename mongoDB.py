@@ -2,10 +2,6 @@ import vehicle
 import pymongo
 from pymongo import MongoClient
 
-# from tkcalendar import *
-
-
-
 client = pymongo.MongoClient('mongodb+srv://bherrera:y3p1EcmoqsrtzLCj@webscrapingdatabase.6yrgtql.mongodb.net/?retryWrites=true&w=majority')
 wsdb = client["WebScrapingDB"]
 carCol = wsdb["Car_Info"]
@@ -25,7 +21,7 @@ def createCarInfoDict(vehicleInfo, vinDict): #gets a vehicle and turns it into a
 def createVINHistInfoDict(vehicleInfo): #gets new updated info from scraper
         tempVINHistDict = dict(numberOfOwners = vehicleInfo.num_owners, numberOfAccidents = vehicleInfo.accidents,
                                lastState = vehicleInfo.last_state, regularOilChanges = vehicleInfo.regular_oil_changes,
-                               usage = vehicleInfo.usage)
+                               usage = vehicleInfo.usage, vin = vehicleInfo.vin)
         return tempVINHistDict
 
 def alreadyExists(carURL): #checks if vehicle is in database
