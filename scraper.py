@@ -47,6 +47,7 @@ class Scraper(Automator):
 
         # Basic information
         self.browser.execute_script("window.scrollTo(0, 2194)") 
+        time.sleep(3)
         elems_li = self.browser.find_elements(By.CLASS_NAME, 'sc-4436f562-5')
         elems_li_texts = []
         for elem in elems_li:
@@ -68,14 +69,14 @@ class Scraper(Automator):
             color = color_text.split()[0]
         else:
             color = ''
-        
-        self.browser.execute_script("window.scrollTo(0, 2720)") 
-        time.sleep(2)
+        vin = ''
         try:
             vin_text = list(filter(lambda v: re.match(r'VIN: .*', v), elems_li_texts))[0]
             vin = re.findall(r'VIN: (.*)', vin_text)[0]
         except IndexError:
             pass
+        self.browser.execute_script("window.scrollTo(0, 2720)") 
+        time.sleep(2)
         elem_vin = self.browser.find_element(By.XPATH,'//a[contains(@data-analytics-id, "Specifications - Previous Use Disclaimer")]')
         vin_history_url = elem_vin.get_attribute("href")
         newVehicle.transmission_color_vinHistoryURL_vin_setter(transmission_type, color, vin_history_url, vin)
@@ -87,7 +88,7 @@ class Scraper(Automator):
     def scrape_vin_info(self, newVehicle):
         # manually click captcha
         self.browser.switch_to.window(self.browser.window_handles[1])
-        time.sleep(30)
+        time.sleep(20)
         elems_div = self.browser.find_elements(By.CLASS_NAME,'history-overview-cell')
         elems_div_texts = [x.text for x in elems_div]
 
