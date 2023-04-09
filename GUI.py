@@ -53,6 +53,11 @@ class FilterScreen(QMainWindow):
 
         self.pasteCars(5, None)
 
+        self.cdt.cellClicked.connect(self.gotoCarInfo)
+
+        
+        
+
     # Text for price slider
     def price_change(self):
         num_price = str(self.slider_price.value())
@@ -94,11 +99,11 @@ class FilterScreen(QMainWindow):
     def pasteCars(self, startVal, queriedList):
         self.cdt.setRowCount(0)
         if(queriedList == None):
-            records = getRecordLimit(startVal)
+            self.records = getRecordLimit(startVal)
         else:
-            records = queriedList
+            self.records = queriedList
 
-        row_count = len(records)
+        row_count = len(self.records)
         col_count = 7
 
         # Setting the number of rows and cols
@@ -109,7 +114,7 @@ class FilterScreen(QMainWindow):
 
         idx = 0;
         # Adding/Showing data to the table
-        for x in records:
+        for x in self.records:
 
             r = requests.get(x['image'],stream=True)
             assert r.status_code == 200
@@ -132,6 +137,8 @@ class FilterScreen(QMainWindow):
         #Resizing the rows and cols to match the information
         self.cdt.resizeRowsToContents()
         self.cdt.resizeColumnsToContents()
+
+        
 
     #Outputs the queried list from filter when clicking checkbox
     def filterChange(self):
@@ -158,6 +165,13 @@ class FilterScreen(QMainWindow):
         widget.addWidget(fc)
         widget.setCurrentIndex(widget.currentIndex() + 1)
 
+    def gotoCarInfo(self, row):
+        widget.setCurrentWidget(ci) 
+        print('clicked!', row)
+        print(self.records[row])
+
+
+
 
 class CarInfo(QMainWindow):
     def __init__(self):
@@ -174,13 +188,13 @@ class CarInfo(QMainWindow):
 app = QApplication(sys.argv)
 mc = MainScreen()
 sc = FilterScreen()
-#ci = CarInfo()
+ci = CarInfo()
 
 # Creat widgets to stores multiple windows/screens
 widget = QStackedWidget()
 widget.addWidget(mc)
 widget.addWidget(sc)
-#widget.addWidget(ci)
+widget.addWidget(ci)
 widget.setCurrentWidget(mc)
 widget.setFixedSize(1200, 700)
 
