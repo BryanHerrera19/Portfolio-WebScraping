@@ -193,7 +193,7 @@ class CarInfo(QMainWindow):
         super(CarInfo, self).__init__()
         loadUi("CarInfo.ui", self)
         # self.Hbutton.clicked.connect(self.gotoHomeScreen)
-        #self.quit_button.clicked.connect(self.quit_func)
+        self.quit_button.clicked.connect(self.quit_func)
 
 
     def quit_func(self):
