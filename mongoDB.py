@@ -76,16 +76,16 @@ def setBrandQuery(brandQuery):#Sets a query in order for use in queries
         return list(carCol.find(myQuery))
 
 def querySearchText(ylist, mlist, text):
+        myQuery = {}
+
         for x in text.split():
                 if (x in ylist):
-                        year = x
-                elif(x in mlist):
-                        manufacturer = x
-                else:
-                        model = x
+                        myQuery["year"] = int(x)
 
-        myQuery = { "$and" : [{ "year" : { "$eq" : int(year) }},
-                                { "manufacturer" : { "$eq": str(manufacturer)}},
-                                { "modelName" : { "$eq" : str(model)}}]}
+                elif(x in mlist):
+                        myQuery["manufacturer"] = str(x)
+                else:
+                        myQuery["modelName"] = str(x)
 
         return list(carCol.find(myQuery))
+      
