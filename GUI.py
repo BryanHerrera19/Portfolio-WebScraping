@@ -51,12 +51,25 @@ class FilterScreen(QMainWindow):
         self.slider_miles.valueChanged.connect(self.mile_change)
         self.button_filter.clicked.connect(self.show_filter)
 
+        self.button_search.clicked.connect(self.search)
+
         self.pasteCars(5, None)
 
         self.cdt.cellClicked.connect(self.gotoCarInfo)
 
-        
-        
+    def search(self):
+        years = []
+        manufacturers = []
+        for x in self.buttonGroup.buttons():
+            years.append(x.text())
+        for x in self.buttonGroup_2.buttons():
+            manufacturers.append(x.text().upper())
+    
+        search_text = self.search_bar.text().upper()
+        tempList = querySearchText(years, manufacturers, search_text)
+        self.pasteCars(len(tempList), tempList)
+
+
 
     # Text for price slider
     def price_change(self):
@@ -91,8 +104,10 @@ class FilterScreen(QMainWindow):
         # Enable filter
         try:
             self.button_submit.disconnect()
+            self.button_search.disconnect()
         except:
             pass
+        self.button_search.clicked.connect(lambda: self.search())
         self.button_submit.clicked.connect(lambda: self.filterChange())
     
     #Pastes cars onto a table to view

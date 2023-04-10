@@ -9,7 +9,7 @@ histCol = wsdb["Car_History"]
 ownerCol = wsdb["Owner_History"]
 
 def insertCarInfo(carInfoDict): #inserts a dictionary into database as a record
-        carInfo = carCol.insert_one(carInfoDict)
+        carCol.insert_one(carInfoDict)
 
 def createCarInfoDict(vehicleInfo, vinDict): #gets a vehicle and turns it into a dictionary
         tempCarDict = dict(manufacturer = vehicleInfo.company, modelName = vehicleInfo.model, vin = vehicleInfo.vin_history_url,
@@ -73,4 +73,19 @@ def setPriceMileQuery(priceQuery, mileQuery, yearQuery, brandQuery):#Sets a quer
 
 def setBrandQuery(brandQuery):#Sets a query in order for use in queries
         myQuery = { "manufacturer" : brandQuery }
+        return list(carCol.find(myQuery))
+
+def querySearchText(ylist, mlist, text):
+        for x in text.split():
+                if (x in ylist):
+                        year = x
+                elif(x in mlist):
+                        manufacturer = x
+                else:
+                        model = x
+
+        myQuery = { "$and" : [{ "year" : { "$eq" : int(year) }},
+                                { "manufacturer" : { "$eq": str(manufacturer)}},
+                                { "modelName" : { "$eq" : str(model)}}]}
+
         return list(carCol.find(myQuery))
