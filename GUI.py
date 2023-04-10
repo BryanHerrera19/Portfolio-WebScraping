@@ -193,9 +193,16 @@ class CarInfo(QMainWindow):
         super(CarInfo, self).__init__()
         loadUi("CarInfo.ui", self)
         # self.Hbutton.clicked.connect(self.gotoHomeScreen)
+        self.back_button.clicked.connect(self.gotoFilter)
         self.quit_button.clicked.connect(self.quit_func)
 
 
+        # Set Icon for buttons
+        self.back_button.setIcon(QtGui.QIcon("return.png"))
+
+
+    def gotoFilter(self):
+        widget.setCurrentWidget(sc)
     def quit_func(self):
         sys.exit(app.exec())
 
