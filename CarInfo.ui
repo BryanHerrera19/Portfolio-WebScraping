@@ -486,11 +486,17 @@ QPushButton:hover {
                  </widget>
                 </item>
                 <item>
-                 <widget class="QWidget" name="lower_left" native="true">
+                 <widget class="QFrame" name="lower_left">
                   <property name="styleSheet">
-                   <string notr="true">QWidget{
-	background-color: #D9D9D9;
+                   <string notr="true">QFrame {
+	background-color: rgb(87, 54, 103);
 }</string>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
                   </property>
                  </widget>
                 </item>

@@ -260,7 +260,7 @@ class CarInfo(FilterScreen):
         self.w.setPixmap(pix.scaled(576,408,Qt.KeepAspectRatio))
         self.lay.addWidget(self.w)
 
-        self.lay1 = QVBoxLayout()
+        self.lay1 = QVBoxLayout(self.lower_left)
 
         self.manu = QLabel("Manufacturer:" + " " + self.records[row]['manufacturer'])
         self.lay1.addWidget(self.manu)
@@ -274,32 +274,27 @@ class CarInfo(FilterScreen):
         self.color = QLabel("Color:" + " " + self.records[row]['color'])
         self.lay1.addWidget(self.color)
 
+        self.mile = QLabel("Miles Driven:" + " " + str(self.records[row]['mileage']))
+        self.lay1.addWidget(self.mile)
+
         self.fuel = QLabel("Fuel Type:" + " " + self.records[row]['fuelType'])
         self.lay1.addWidget(self.fuel)
 
-        self.vin = QLabel("Vin:" + " " + self.records[row]['vin'])
+        link = self.records[row]['vin']
+        urlLink = "<a href=\"link\">Click here</a>"
+        self.vin = QLabel("Vin:" + " " + urlLink )
+        self.vin.setOpenExternalLinks(True)
         self.lay1.addWidget(self.vin)
 
         self.trans = QLabel("TransType:" + " " + self.records[row]['transType'])
         self.lay1.addWidget(self.trans)
 
         self.price = QLabel("Price:" + " " + "$" + str(self.records[row]['price']))
+        self.price.setStyleSheet("font-size: 40px")
         self.lay1.addWidget(self.price)
 
-
-
-
-
-        self.mile = QLabel("Miles Driven:" + " " + str(self.records[row]['mileage']))
-        self.lay1.addWidget(self.mile)
-
-        self.lower_left.setLayout(self.lay1)
-
-
-
-
-
-
+        self.lower_left.setStyleSheet("QLabel {color:white;font-size:20px; }"
+                                      "QFrame {background-color: rgb(87, 54, 103);}")
 
 
 # Create application
