@@ -437,7 +437,7 @@ QToolBox::tab{
                       <property name="geometry">
                        <rect>
                         <x>0</x>
-                        <y>0</y>
+                        <y>-64</y>
                         <width>189</width>
                         <height>303</height>
                        </rect>
@@ -1364,7 +1364,7 @@ QCheckBox::indicator:checked {
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_2">
              <property name="spacing">
-              <number>8</number>
+              <number>3</number>
              </property>
              <property name="leftMargin">
               <number>0</number>
@@ -1378,9 +1378,15 @@ QCheckBox::indicator:checked {
              <property name="bottomMargin">
               <number>0</number>
              </property>
-             <item alignment="Qt::AlignRight">
+             <item>
               <widget class="QPushButton" name="button_filter">
                <property name="minimumSize">
+                <size>
+                 <width>38</width>
+                 <height>38</height>
+                </size>
+               </property>
+               <property name="maximumSize">
                 <size>
                  <width>38</width>
                  <height>38</height>
@@ -1428,6 +1434,12 @@ QPushButton:hover {
              </item>
              <item>
               <widget class="QLineEdit" name="search_bar">
+               <property name="maximumSize">
+                <size>
+                 <width>10000</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QLineEdit {
 	background-color: rgb(144,104,140);
@@ -1444,6 +1456,12 @@ QPushButton:hover {
              <item>
               <widget class="QPushButton" name="button_search">
                <property name="minimumSize">
+                <size>
+                 <width>38</width>
+                 <height>38</height>
+                </size>
+               </property>
+               <property name="maximumSize">
                 <size>
                  <width>38</width>
                  <height>38</height>
@@ -1493,6 +1511,12 @@ QPushButton:hover {
                  <height>38</height>
                 </size>
                </property>
+               <property name="maximumSize">
+                <size>
+                 <width>38</width>
+                 <height>38</height>
+                </size>
+               </property>
                <property name="sizeIncrement">
                 <size>
                  <width>16</width>
@@ -1529,7 +1553,58 @@ QPushButton:hover {
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignRight|Qt::AlignTop">
+             <item>
+              <widget class="QPushButton" name="button_update">
+               <property name="minimumSize">
+                <size>
+                 <width>38</width>
+                 <height>38</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>38</width>
+                 <height>38</height>
+                </size>
+               </property>
+               <property name="sizeIncrement">
+                <size>
+                 <width>16</width>
+                 <height>16</height>
+                </size>
+               </property>
+               <property name="baseSize">
+                <size>
+                 <width>16</width>
+                 <height>16</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+	background-color: rgb(181, 84, 215);
+	border-radius: 8px; 
+	font: 63 16pt &quot;Sitka Text Semibold&quot;;
+}
+
+QPushButton:hover {
+	background-color: rgba(181, 84, 215,150);
+}</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>32</width>
+                 <height>32</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item alignment="Qt::AlignTop">
               <widget class="QPushButton" name="button_quit">
                <property name="minimumSize">
                 <size>
@@ -1585,9 +1660,38 @@ QPushButton:hover {
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_3">
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
              <item>
-              <widget class="QTableWidget" name="cdt"/>
+              <widget class="QTableWidget" name="cdt">
+               <property name="maximumSize">
+                <size>
+                 <width>1000000</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="inventory">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>1165</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+              </widget>
              </item>
             </layout>
            </widget>
