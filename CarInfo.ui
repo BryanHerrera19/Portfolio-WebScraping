@@ -445,7 +445,7 @@ QPushButton:hover {
                     </widget>
                    </item>
                    <item>
-                    <widget class="QFrame" name="lower_left">
+                    <widget class="QFrame" name="right_main_frame">
                      <property name="maximumSize">
                       <size>
                        <width>16777215</width>
@@ -463,23 +463,34 @@ QPushButton:hover {
                      <property name="frameShadow">
                       <enum>QFrame::Raised</enum>
                      </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_6">
+                      <property name="spacing">
+                       <number>5</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>5</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>5</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>5</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>5</number>
+                      </property>
+                     </layout>
                     </widget>
                    </item>
                   </layout>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QFrame" name="right_main_frame">
+                 <widget class="QWidget" name="lower_left" native="true">
                   <property name="styleSheet">
-                   <string notr="true">QFrame{
+                   <string notr="true">QWidget{
 	background-color: #D9D9D9;
 }</string>
-                  </property>
-                  <property name="frameShape">
-                   <enum>QFrame::StyledPanel</enum>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Raised</enum>
                   </property>
                  </widget>
                 </item>

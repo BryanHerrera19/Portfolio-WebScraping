@@ -45,12 +45,14 @@ class FilterScreen(QMainWindow):
         self.button_filter.setIcon(QtGui.QIcon("filter.png"))
         self.button_search.setIcon(QtGui.QIcon("search.png"))
         self.button_refresh.setIcon(QtGui.QIcon("refresh.png"))
+        self.button_update.setIcon(QtGui.QIcon("package.png"))
 
         # Linked value to the slider
         self.slider_price.valueChanged.connect(self.price_change)
         self.slider_miles.valueChanged.connect(self.mile_change)
         self.button_filter.clicked.connect(self.show_filter)
-
+        #self.button_update.clicked.connect(self.show_filter1)
+        self.button_update.clicked.connect(self.show_filter2)
         self.button_search.clicked.connect(self.search)
 
         self.pasteCars(5, None)
@@ -82,6 +84,45 @@ class FilterScreen(QMainWindow):
         self.mile_label.setText(num_mile)
 
     # Side filter animation
+
+    def show_filter1(self):
+        cdt_width = self.cdt.width()
+
+
+        # For slide in and out
+        if cdt_width == 1165:
+            new_cdt_width = 0
+
+        else:
+            new_cdt_width = 1165
+
+
+
+        # Animation
+        self.animation = QPropertyAnimation(self.cdt, b"maximumWidth")
+        self.animation.setDuration(250)
+        self.animation.setStartValue(cdt_width)
+        self.animation.setEndValue(new_cdt_width)
+        self.animation.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
+        self.animation.start()
+
+    def show_filter2(self):
+        inven_width = self.inventory.width()
+
+        # For slide in and out
+        if inven_width == 0:
+            new_inven_width = 1165
+        else:
+            new_inven_width = 0
+
+
+        # Animation
+        self.animation = QPropertyAnimation(self.inventory, b"maximumWidth")
+        self.animation.setDuration(250)
+        self.animation.setStartValue(inven_width)
+        self.animation.setEndValue(new_inven_width)
+        self.animation.setEasingCurve(QtCore.QEasingCurve.InBack)
+        self.animation.start()
     def show_filter(self):
         width = self.left_main_frame.width()
 
@@ -204,19 +245,62 @@ class CarInfo(FilterScreen):
 
 
     def gotoFilter(self):
-        self.verticalLayout_4.removeWidget(self.w)
+        #self.lay.removeWidget(self.w)
         widget.setCurrentWidget(sc)
     def quit_func(self):
         sys.exit(app.exec())
 
     def gotoCarInfo(self, row):
+        self.lay = QHBoxLayout(self.upper_left)
         r = requests.get(self.records[row]['image'],stream=True)
         assert r.status_code == 200
         pix = QPixmap()
         pix.loadFromData(r.content)
         self.w = QLabel()
-        self.w.setPixmap(pix.scaled(400,300,Qt.KeepAspectRatio))
-        self.verticalLayout_4.addWidget(self.w)
+        self.w.setPixmap(pix.scaled(576,408,Qt.KeepAspectRatio))
+        self.lay.addWidget(self.w)
+
+        self.lay1 = QVBoxLayout()
+
+        self.manu = QLabel("Manufacturer:" + " " + self.records[row]['manufacturer'])
+        self.lay1.addWidget(self.manu)
+
+        self.mile = QLabel("Model Name:" + " " + self.records[row]['modelName'])
+        self.lay1.addWidget(self.mile)
+
+        self.year = QLabel("Year:" + " " + str(self.records[row]['year']))
+        self.lay1.addWidget(self.year)
+
+        self.color = QLabel("Color:" + " " + self.records[row]['color'])
+        self.lay1.addWidget(self.color)
+
+        self.fuel = QLabel("Fuel Type:" + " " + self.records[row]['fuelType'])
+        self.lay1.addWidget(self.fuel)
+
+        self.vin = QLabel("Vin:" + " " + self.records[row]['vin'])
+        self.lay1.addWidget(self.vin)
+
+        self.trans = QLabel("TransType:" + " " + self.records[row]['transType'])
+        self.lay1.addWidget(self.trans)
+
+        self.price = QLabel("Price:" + " " + "$" + str(self.records[row]['price']))
+        self.lay1.addWidget(self.price)
+
+
+
+
+
+        self.mile = QLabel("Miles Driven:" + " " + str(self.records[row]['mileage']))
+        self.lay1.addWidget(self.mile)
+
+        self.lower_left.setLayout(self.lay1)
+
+
+
+
+
+
+
 
 # Create application
 app = QApplication(sys.argv)

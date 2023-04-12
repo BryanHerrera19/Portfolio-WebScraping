@@ -1661,11 +1661,26 @@ QPushButton:hover {
              <enum>QFrame::Raised</enum>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <property name="spacing">
+              <number>5</number>
+             </property>
+             <property name="leftMargin">
+              <number>5</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>5</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
              <item>
               <widget class="QTableWidget" name="cdt">
                <property name="maximumSize">
                 <size>
-                 <width>1000000</width>
+                 <width>1165</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -1681,9 +1696,14 @@ QPushButton:hover {
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>1165</width>
+                 <width>0</width>
                  <height>16777215</height>
                 </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QFrame{
+	background-color: rgb(65, 37, 81);
+}</string>
                </property>
                <property name="frameShape">
                 <enum>QFrame::StyledPanel</enum>
@@ -1691,6 +1711,28 @@ QPushButton:hover {
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
                </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_4">
+                <item alignment="Qt::AlignHCenter">
+                 <widget class="QLabel" name="inven_label">
+                  <property name="maximumSize">
+                   <size>
+                    <width>1165</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	color:white;
+	font: 48pt &quot;Tw Cen MT Condensed Extra Bold&quot;;
+	text-align:center;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>This page is still under construction </string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
             </layout>
