@@ -182,29 +182,41 @@ class FilterScreen(QMainWindow):
 
     def gotoCarInfo(self, row):
         widget.setCurrentWidget(ci) 
+        
         print('clicked!', row)
         print(self.records[row])
+        return ci.gotoCarInfo(row)
 
 
 
 
-class CarInfo(QMainWindow):
+class CarInfo(FilterScreen):
     def __init__(self):
         super(CarInfo, self).__init__()
         loadUi("CarInfo.ui", self)
         # self.Hbutton.clicked.connect(self.gotoHomeScreen)
         self.back_button.clicked.connect(self.gotoFilter)
         self.quit_button.clicked.connect(self.quit_func)
-
+        
 
         # Set Icon for buttons
         self.back_button.setIcon(QtGui.QIcon("return.png"))
 
 
     def gotoFilter(self):
+        self.verticalLayout_4.removeWidget(self.w)
         widget.setCurrentWidget(sc)
     def quit_func(self):
         sys.exit(app.exec())
+
+    def gotoCarInfo(self, row):
+        r = requests.get(self.records[row]['image'],stream=True)
+        assert r.status_code == 200
+        pix = QPixmap()
+        pix.loadFromData(r.content)
+        self.w = QLabel()
+        self.w.setPixmap(pix.scaled(400,300,Qt.KeepAspectRatio))
+        self.verticalLayout_4.addWidget(self.w)
 
 # Create application
 app = QApplication(sys.argv)
