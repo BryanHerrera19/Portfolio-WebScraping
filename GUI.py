@@ -45,14 +45,13 @@ class FilterScreen(QMainWindow):
         self.button_filter.setIcon(QtGui.QIcon("filter.png"))
         self.button_search.setIcon(QtGui.QIcon("search.png"))
         self.button_refresh.setIcon(QtGui.QIcon("refresh.png"))
-        self.button_update.setIcon(QtGui.QIcon("package.png"))
 
         # Linked value to the slider
         self.slider_price.valueChanged.connect(self.price_change)
         self.slider_miles.valueChanged.connect(self.mile_change)
         self.button_filter.clicked.connect(self.show_filter)
+
         self.button_search.clicked.connect(self.search)
-        self.button_update.clicked.connect(self.show_filter1)
 
         self.pasteCars(5, None)
 
@@ -83,26 +82,6 @@ class FilterScreen(QMainWindow):
         self.mile_label.setText(num_mile)
 
     # Side filter animation
-    def show_filter1(self):
-        cdt_width = self.cdt.width()
-        inven_frame_width = self.inventory.width()
-        # For slide in and out
-        if (cdt_width == 0) & (inven_frame_width == 1165):
-            new_cdt_width = 1165
-            new_inven_width = 0
-        else:
-            new_cdt_width = 0
-            inven_frame_width = 1165
-
-        # Animation
-        self.animation = QPropertyAnimation(self.cdt, b"maximumWidth")
-        self.animation.setDuration(250)
-        self.animation.setStartValue(cdt_width)
-        self.animation.setStartValue(inven_frame_width)
-        self.animation.setEndValue(new_cdt_width)
-        self.animation.setEndValue(new_inven_width)
-        self.animation.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
-        self.animation.start()
     def show_filter(self):
         width = self.left_main_frame.width()
 
@@ -187,9 +166,7 @@ class FilterScreen(QMainWindow):
                                      self.buttonGroup.checkedId(),
                                      tempBrandQuery)
         self.pasteCars(len(tempList), tempList)
-
-
-
+        
     #Quits the application
     def quit_func(self):
         sys.exit(app.exec())
@@ -205,31 +182,41 @@ class FilterScreen(QMainWindow):
 
     def gotoCarInfo(self, row):
         widget.setCurrentWidget(ci) 
+        
         print('clicked!', row)
         print(self.records[row])
+        return ci.gotoCarInfo(row)
 
 
 
 
-class CarInfo(QMainWindow):
+class CarInfo(FilterScreen):
     def __init__(self):
         super(CarInfo, self).__init__()
         loadUi("CarInfo.ui", self)
         # self.Hbutton.clicked.connect(self.gotoHomeScreen)
         self.back_button.clicked.connect(self.gotoFilter)
         self.quit_button.clicked.connect(self.quit_func)
-
+        
 
         # Set Icon for buttons
         self.back_button.setIcon(QtGui.QIcon("return.png"))
 
-    def info_display(self):
-        pass
+
     def gotoFilter(self):
+        self.verticalLayout_4.removeWidget(self.w)
         widget.setCurrentWidget(sc)
     def quit_func(self):
         sys.exit(app.exec())
 
+    def gotoCarInfo(self, row):
+        r = requests.get(self.records[row]['image'],stream=True)
+        assert r.status_code == 200
+        pix = QPixmap()
+        pix.loadFromData(r.content)
+        self.w = QLabel()
+        self.w.setPixmap(pix.scaled(400,300,Qt.KeepAspectRatio))
+        self.verticalLayout_4.addWidget(self.w)
 
 # Create application
 app = QApplication(sys.argv)
@@ -238,7 +225,6 @@ sc = FilterScreen()
 ci = CarInfo()
 
 # Creat widgets to stores multiple windows/screens
-
 widget = QStackedWidget()
 widget.addWidget(mc)
 widget.addWidget(sc)
