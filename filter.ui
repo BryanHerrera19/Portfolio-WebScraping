@@ -70,7 +70,7 @@
          </property>
          <property name="maximumSize">
           <size>
-           <width>0</width>
+           <width>320</width>
            <height>16777215</height>
           </size>
          </property>
@@ -232,12 +232,16 @@ QPushButton:hover {
                   </property>
                   <property name="styleSheet">
                    <string notr="true">QPushButton {
-	background-color: #B554D7;
+	background-color: rgb(181, 84, 215);
 	border-radius: 5px; 
 	font-size: 26px;
 	font-weight: bold;
 	font-family: Open Sans; 
 	color:white
+}
+
+QPushButton::hover{
+	background-color: rgba(181, 84, 215,150);
 }</string>
                   </property>
                   <property name="text">
@@ -415,20 +419,20 @@ QPushButton:hover {
                      </property>
                      <property name="styleSheet">
                       <string notr="true">QToolBox {
-	background-color: #B554D7;
-	border-radius: 8px;
-	font-size:20pt; 
-	font-weight: bold;
-	font-family: Open Sans; 
-	color:white;
-	text-align: left;
+	background-color: rgb(105, 50, 126);
+	
 }
 
 QToolBox::tab{
-	border-radius: 5px;
-	background-color: white;
-	text-align: left;
-}</string>
+	background-color: #B554D7;
+	border-radius: 8px; 
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Open Sans; 
+	color:white;
+}
+
+</string>
                      </property>
                      <property name="currentIndex">
                       <number>0</number>
@@ -437,8 +441,8 @@ QToolBox::tab{
                       <property name="geometry">
                        <rect>
                         <x>0</x>
-                        <y>-64</y>
-                        <width>189</width>
+                        <y>0</y>
+                        <width>263</width>
                         <height>303</height>
                        </rect>
                       </property>
@@ -800,7 +804,7 @@ QCheckBox::indicator:checked {
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>132</width>
+                        <width>263</width>
                         <height>443</height>
                        </rect>
                       </property>
@@ -1442,7 +1446,8 @@ QPushButton:hover {
                </property>
                <property name="styleSheet">
                 <string notr="true">QLineEdit {
-	background-color: rgb(144,104,140);
+	background-color: rgb(154, 103, 180);
+	opacity: 0.5;
 	border-radius: 8px;
 	font-size: 30px;
 	color:white	;
@@ -1683,6 +1688,25 @@ QPushButton:hover {
                  <width>1165</width>
                  <height>16777215</height>
                 </size>
+               </property>
+               <property name="cursor" stdset="0">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QTableWidget{
+	background-color: #c0c0c0;
+	border: 1px solid rgb(129, 66, 255);
+	color:  rgb(93, 47, 163);
+	selection-background-color:  rgb(93, 47, 163);
+	selection-color: #FFF;
+	
+	font: 63 11pt &quot;Segoe UI Variable Display Semib&quot;;
+	font-weight:bold;
+}
+
+
+
+</string>
                </property>
               </widget>
              </item>

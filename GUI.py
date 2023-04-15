@@ -17,10 +17,9 @@ class MainScreen(QMainWindow):
     def __init__(self):
         super(MainScreen, self).__init__()
         loadUi("MainScreen.ui", self)
+
         self.GSbutton.clicked.connect(self.gotoSearchScreen)
         self.quit_button.clicked.connect(self.quit_func)
-        # self.show()
-
     def gotoSearchScreen(self):
         # widget.setCurrentWidget(sc)
         sc = FilterScreen()
@@ -39,6 +38,7 @@ class FilterScreen(QMainWindow):
         # Go to home screen
         self.button_refresh.clicked.connect(self.refreshing_page)
         self.button_home.clicked.connect(self.gotoHomeScreen)
+        #self.minimize_button.clicked.connect(self.minimize)
         self.button_quit.clicked.connect(self.quit_func)
 
         # Set Icon for buttons
@@ -51,7 +51,6 @@ class FilterScreen(QMainWindow):
         self.slider_price.valueChanged.connect(self.price_change)
         self.slider_miles.valueChanged.connect(self.mile_change)
         self.button_filter.clicked.connect(self.show_filter)
-        #self.button_update.clicked.connect(self.show_filter1)
         self.button_update.clicked.connect(self.show_filter2)
         self.button_search.clicked.connect(self.search)
 
@@ -71,8 +70,9 @@ class FilterScreen(QMainWindow):
         tempList = querySearchText(years, manufacturers, search_text)
         self.pasteCars(len(tempList), tempList)
 
-
-
+    def refreshing_page(self):
+        self.price_label.setText("$100000")
+        self.mile_label.setText("100000 Miles")
     # Text for price slider
     def price_change(self):
         num_price = str(self.slider_price.value())
@@ -95,8 +95,6 @@ class FilterScreen(QMainWindow):
 
         else:
             new_cdt_width = 1165
-
-
 
         # Animation
         self.animation = QPropertyAnimation(self.cdt, b"maximumWidth")
@@ -180,7 +178,16 @@ class FilterScreen(QMainWindow):
             
             w = QLabel()
             w.setPixmap(pix.scaled(400,300,Qt.KeepAspectRatio))
-            
+
+            ss = "::section{Background-color:#9126cf;" \
+                         "border-radius:1px;" \
+                         "font-weight:bold; " \
+                         "color: white;" \
+                         "text-decoration: underline;}"
+            self.cdt.horizontalHeader().setStyleSheet(ss)
+            self.cdt.verticalHeader().setStyleSheet(ss)
+
+
             self.cdt.setCellWidget(idx, 0, w)
             self.cdt.setItem(idx, 1, QtWidgets.QTableWidgetItem(x['manufacturer']))
             self.cdt.setItem(idx, 2, QtWidgets.QTableWidgetItem(x['modelName']))
@@ -216,10 +223,9 @@ class FilterScreen(QMainWindow):
     def gotoHomeScreen(self):
         widget.setCurrentWidget(mc)
 
-    def refreshing_page(self):
-        fc = FilterScreen()
-        widget.addWidget(fc)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
+    def minimize(self):
+        self.showMinimized()
+
 
     def gotoCarInfo(self, row):
         widget.setCurrentWidget(ci) 
@@ -245,7 +251,17 @@ class CarInfo(FilterScreen):
 
 
     def gotoFilter(self):
-        #self.lay.removeWidget(self.w)
+        self.lay.removeWidget(self.w)
+        self.lay1.removeWidget(self.manu)
+        self.lay1.removeWidget(self.model)
+        self.lay1.removeWidget(self.year)
+        self.lay1.removeWidget(self.color)
+        self.lay1.removeWidget(self.mile)
+        self.lay1.removeWidget(self.fuel)
+        self.lay1.removeWidget(self.vin)
+        self.lay1.removeWidget(self.trans)
+        self.lay1.removeWidget(self.price)
+
         widget.setCurrentWidget(sc)
     def quit_func(self):
         sys.exit(app.exec())
@@ -260,43 +276,60 @@ class CarInfo(FilterScreen):
         self.w.setPixmap(pix.scaled(576,408,Qt.KeepAspectRatio))
         self.lay.addWidget(self.w)
 
-        self.lay1 = QVBoxLayout(self.lower_left)
+        self.lay1 = QVBoxLayout(self.right_frame)
+        self.lay2 = QVBoxLayout(self.right_frame2)
+        spacing  = "          "
+        spacing1 = "                       "
+        spacing2 = "           "
+        spacing3 = "            "
+        spacing4 = "                "
+        spacing5 = "               "
 
-        self.manu = QLabel("Manufacturer:" + " " + self.records[row]['manufacturer'])
-        self.lay1.addWidget(self.manu)
+        self.title = QLabel("All of the Carvana related URL can be found below:")
+        self.lay2.addWidget(self.title)
 
-        self.mile = QLabel("Model Name:" + " " + self.records[row]['modelName'])
-        self.lay1.addWidget(self.mile)
-
-        self.year = QLabel("Year:" + " " + str(self.records[row]['year']))
-        self.lay1.addWidget(self.year)
-
-        self.color = QLabel("Color:" + " " + self.records[row]['color'])
-        self.lay1.addWidget(self.color)
-
-        self.mile = QLabel("Miles Driven:" + " " + str(self.records[row]['mileage']))
-        self.lay1.addWidget(self.mile)
-
-        self.fuel = QLabel("Fuel Type:" + " " + self.records[row]['fuelType'])
-        self.lay1.addWidget(self.fuel)
+        link1 = self.records[row]['url']
+        urlLink2 = "<a href=\"link1\">Car URL</a>"
+        self.url = QLabel("Car URL:" + " " + urlLink2)
+        self.url.setOpenExternalLinks(True)
+        self.lay2.addWidget(self.url)
 
         link = self.records[row]['vin']
-        urlLink = "<a href=\"link\">Click here</a>"
-        self.vin = QLabel("Vin:" + " " + urlLink )
+        urlLink = "<a href=\"link\">Vin URL</a>"
+        self.vin = QLabel("Vin:" + " " + urlLink)
         self.vin.setOpenExternalLinks(True)
-        self.lay1.addWidget(self.vin)
+        self.lay2.addWidget(self.vin)
 
-        self.trans = QLabel("TransType:" + " " + self.records[row]['transType'])
+        self.manu = QLabel( "Manufacturer:" + spacing + self.records[row]['manufacturer'])
+        self.lay1.addWidget(self.manu)
+
+        self.model = QLabel("Model Name:" + spacing2 + self.records[row]['modelName'])
+        self.lay1.addWidget(self.model)
+
+        self.year = QLabel("Year:" + spacing1 + str(self.records[row]['year']))
+        self.lay1.addWidget(self.year)
+
+        self.color = QLabel("Color:" + spacing1 + self.records[row]['color'])
+        self.lay1.addWidget(self.color)
+
+        self.mile = QLabel("Miles Driven:" + spacing3 + str(self.records[row]['mileage']))
+        self.lay1.addWidget(self.mile)
+
+        self.fuel = QLabel("Fuel Type:" + spacing4 + self.records[row]['fuelType'])
+        self.lay1.addWidget(self.fuel)
+
+        self.trans = QLabel("TransType:" + spacing5 + self.records[row]['transType'])
         self.lay1.addWidget(self.trans)
 
-        self.price = QLabel("Price:" + " " + "$" + str(self.records[row]['price']))
-        self.price.setStyleSheet("font-size: 40px")
+        self.price = QLabel("Price:" + spacing1 + "$" + str(self.records[row]['price']))
         self.lay1.addWidget(self.price)
 
-        self.lower_left.setStyleSheet("QLabel {color:white;font-size:20px; }"
+
+        self.right_frame.setStyleSheet("QLabel {color:white;font-size:20px; }"
                                       "QFrame {background-color: rgb(87, 54, 103);}")
 
-
+        self.right_frame2.setStyleSheet("QLabel {color:white;font-size:20px; }"
+                                       "QFrame {background-color: rgb(87, 54, 103);}")
 # Create application
 app = QApplication(sys.argv)
 mc = MainScreen()
@@ -311,7 +344,7 @@ widget.addWidget(ci)
 widget.setCurrentWidget(mc)
 widget.setFixedSize(1200, 700)
 
-# No windows bar/Status bar
+
 widget.setWindowFlag(QtCore.Qt.WindowType.FramelessWindowHint)
 widget.setAttribute(QtCore.Qt.WA_TranslucentBackground, True)
 widget.show()
