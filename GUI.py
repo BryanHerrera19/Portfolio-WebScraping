@@ -32,14 +32,28 @@ class MainScreen(QMainWindow):
 
 # Filter Screen
 class FilterScreen(QMainWindow):
+
     def __init__(self):
         super(FilterScreen, self).__init__()
         loadUi("filter.ui", self)
+
+        self.queryDict = {}
+
         # Go to home screen
         self.button_refresh.clicked.connect(self.refreshing_page)
         self.button_home.clicked.connect(self.gotoHomeScreen)
         #self.minimize_button.clicked.connect(self.minimize)
         self.button_quit.clicked.connect(self.quit_func)
+
+        #Search button and filter buttons
+        self.button_search.clicked.connect(lambda: self.search())
+        self.button_submit.clicked.connect(lambda: self.filterChange())
+
+        #setting query based on filter changes
+        self.slider_price.valueChanged.connect(lambda: self.price_filter_change())
+        self.slider_miles.valueChanged.connect(lambda: self.miles_filter_change())
+        self.buttonGroup.buttonClicked.connect(lambda: self.year_filter_change())
+        self.buttonGroup_2.buttonClicked.connect(lambda: self.brand_filter_change())
 
         # Set Icon for buttons
         self.button_filter.setIcon(QtGui.QIcon("filter.png"))
@@ -50,6 +64,8 @@ class FilterScreen(QMainWindow):
         # Linked value to the slider
         self.slider_price.valueChanged.connect(self.price_change)
         self.slider_miles.valueChanged.connect(self.mile_change)
+
+        #filter button
         self.button_filter.clicked.connect(self.show_filter)
         self.button_update.clicked.connect(self.show_filter2)
         self.button_search.clicked.connect(self.search)
@@ -121,6 +137,7 @@ class FilterScreen(QMainWindow):
         self.animation.setEndValue(new_inven_width)
         self.animation.setEasingCurve(QtCore.QEasingCurve.InBack)
         self.animation.start()
+
     def show_filter(self):
         width = self.left_main_frame.width()
 
@@ -138,16 +155,7 @@ class FilterScreen(QMainWindow):
         self.animation.setEndValue(newWidth)
         self.animation.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
         self.animation.start()
-
-
-        # Enable filter
-        try:
-            self.button_submit.disconnect()
-            self.button_search.disconnect()
-        except:
-            pass
-        self.button_search.clicked.connect(lambda: self.search())
-        self.button_submit.clicked.connect(lambda: self.filterChange())
+        
     
     #Pastes cars onto a table to view
     def pasteCars(self, startVal, queriedList):
@@ -201,19 +209,22 @@ class FilterScreen(QMainWindow):
         self.cdt.resizeRowsToContents()
         self.cdt.resizeColumnsToContents()
 
-        
-
-    #Outputs the queried list from filter when clicking checkbox
     def filterChange(self):
-        if(self.buttonGroup_2.checkedButton() == None):
-            tempBrandQuery = None
-        else:
-            tempBrandQuery = self.buttonGroup_2.checkedButton().accessibleName()
-        tempList = setPriceMileQuery(self.slider_price.value(),
-                                     self.slider_miles.value(),
-                                     self.buttonGroup.checkedId(),
-                                     tempBrandQuery)
+        print(self.queryDict)
+        tempList = filterQuery(self.queryDict)
         self.pasteCars(len(tempList), tempList)
+
+    def price_filter_change(self):
+        self.queryDict["price"] = {"$gte" : 0, "$lte" : self.slider_price.value()}
+
+    def miles_filter_change(self):
+        self.queryDict["mileage"] = {"$gte" : 0, "$lte" : self.slider_miles.value()}
+
+    def year_filter_change(self):
+        self.queryDict["year"] = int(self.buttonGroup.checkedButton().text())
+
+    def brand_filter_change(self):
+        self.queryDict["manufacturer"] = self.buttonGroup_2.checkedButton().accessibleName()
         
     #Quits the application
     def quit_func(self):

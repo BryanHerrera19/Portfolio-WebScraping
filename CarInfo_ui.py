@@ -33,42 +33,28 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setContentsMargins(5, 5, 5, 5)
         self.verticalLayout_2.setSpacing(5)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.quit_button = QtWidgets.QPushButton(self.bg_frame)
-        self.quit_button.setMaximumSize(QtCore.QSize(16, 16))
-        self.quit_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.quit_button.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(255, 11, 68);\n"
-"    border-radius: 8px; \n"
-"    border: none;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgba(255, 11, 68, 150);\n"
-"}\n"
-"    ")
-        self.quit_button.setText("")
-        self.quit_button.setObjectName("quit_button")
-        self.verticalLayout_2.addWidget(self.quit_button, 0, QtCore.Qt.AlignRight)
-        self.main_frame = QtWidgets.QFrame(self.bg_frame)
-        self.main_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.main_frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.main_frame.setObjectName("main_frame")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.main_frame)
-        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_3.setSpacing(0)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.outer_frame = QtWidgets.QFrame(self.main_frame)
-        self.outer_frame.setStyleSheet("QFrame{\n"
-"    background-color: #AC41D1;\n"
+        self.button_frame = QtWidgets.QFrame(self.bg_frame)
+        self.button_frame.setMaximumSize(QtCore.QSize(16777215, 40))
+        self.button_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.button_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.button_frame.setObjectName("button_frame")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.button_frame)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_2.setSpacing(0)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.frame_2 = QtWidgets.QFrame(self.button_frame)
+        self.frame_2.setMaximumSize(QtCore.QSize(38, 16777215))
+        self.frame_2.setStyleSheet("QFrame{\n"
+"    background-color: #27062D;\n"
 "}")
-        self.outer_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.outer_frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.outer_frame.setObjectName("outer_frame")
-        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.outer_frame)
-        self.verticalLayout_4.setContentsMargins(5, 5, 5, 5)
-        self.verticalLayout_4.setSpacing(5)
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.back_button = QtWidgets.QPushButton(self.outer_frame)
+        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_2.setObjectName("frame_2")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.frame_2)
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_3.setSpacing(0)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.back_button = QtWidgets.QPushButton(self.frame_2)
         self.back_button.setMinimumSize(QtCore.QSize(38, 38))
         self.back_button.setMaximumSize(QtCore.QSize(42, 38))
         self.back_button.setSizeIncrement(QtCore.QSize(16, 16))
@@ -88,7 +74,58 @@ class Ui_MainWindow(object):
         self.back_button.setIcon(icon)
         self.back_button.setIconSize(QtCore.QSize(38, 38))
         self.back_button.setObjectName("back_button")
-        self.verticalLayout_4.addWidget(self.back_button)
+        self.horizontalLayout_3.addWidget(self.back_button, 0, QtCore.Qt.AlignLeft)
+        self.horizontalLayout_2.addWidget(self.frame_2)
+        self.frame_3 = QtWidgets.QFrame(self.button_frame)
+        self.frame_3.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.frame_3.setStyleSheet("QFrame{\n"
+"    background-color: #27062D;\n"
+"}")
+        self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_3.setObjectName("frame_3")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.frame_3)
+        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_4.setSpacing(5)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.quit_button = QtWidgets.QPushButton(self.frame_3)
+        self.quit_button.setMinimumSize(QtCore.QSize(16, 16))
+        self.quit_button.setMaximumSize(QtCore.QSize(16, 16))
+        self.quit_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.quit_button.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(255, 11, 68);\n"
+"    border-radius: 8px; \n"
+"    border: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgba(255, 11, 68, 150);\n"
+"}\n"
+"    ")
+        self.quit_button.setText("")
+        self.quit_button.setObjectName("quit_button")
+        self.horizontalLayout_4.addWidget(self.quit_button, 0, QtCore.Qt.AlignTop)
+        self.horizontalLayout_2.addWidget(self.frame_3, 0, QtCore.Qt.AlignRight)
+        self.verticalLayout_2.addWidget(self.button_frame)
+        self.main_frame = QtWidgets.QFrame(self.bg_frame)
+        self.main_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.main_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.main_frame.setObjectName("main_frame")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.main_frame)
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_3.setSpacing(0)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.outer_frame = QtWidgets.QFrame(self.main_frame)
+        self.outer_frame.setStyleSheet("QFrame{\n"
+"    background-color: #AC41D1;\n"
+"}")
+        self.outer_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.outer_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.outer_frame.setObjectName("outer_frame")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.outer_frame)
+        self.verticalLayout_4.setContentsMargins(5, 5, 5, 5)
+        self.verticalLayout_4.setSpacing(5)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.inner_frame = QtWidgets.QFrame(self.outer_frame)
         self.inner_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.inner_frame.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -107,6 +144,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setSpacing(5)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.upper_left = QtWidgets.QFrame(self.left_main_frame)
+        self.upper_left.setMinimumSize(QtCore.QSize(550, 285))
+        self.upper_left.setMaximumSize(QtCore.QSize(576, 285))
         self.upper_left.setStyleSheet("QFrame{\n"
 "    background-color: #D9D9D9;\n"
 "}")
@@ -114,24 +153,23 @@ class Ui_MainWindow(object):
         self.upper_left.setFrameShadow(QtWidgets.QFrame.Raised)
         self.upper_left.setObjectName("upper_left")
         self.verticalLayout_5.addWidget(self.upper_left)
-        self.lower_left = QtWidgets.QFrame(self.left_main_frame)
-        self.lower_left.setMaximumSize(QtCore.QSize(16777215, 200))
-        self.lower_left.setStyleSheet("QFrame{\n"
-"    background-color: #D9D9D9;\n"
+        self.right_frame2 = QtWidgets.QFrame(self.left_main_frame)
+        self.right_frame2.setStyleSheet("QFrame {\n"
+"    background-color: rgb(87, 54, 103);\n"
 "}")
-        self.lower_left.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.lower_left.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.lower_left.setObjectName("lower_left")
-        self.verticalLayout_5.addWidget(self.lower_left)
+        self.right_frame2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.right_frame2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.right_frame2.setObjectName("right_frame2")
+        self.verticalLayout_5.addWidget(self.right_frame2)
         self.horizontalLayout.addWidget(self.left_main_frame)
-        self.right_main_frame = QtWidgets.QFrame(self.inner_frame)
-        self.right_main_frame.setStyleSheet("QFrame{\n"
-"    background-color: #D9D9D9;\n"
+        self.right_frame = QtWidgets.QFrame(self.inner_frame)
+        self.right_frame.setStyleSheet("QFrame {\n"
+"    background-color: rgb(87, 54, 103);\n"
 "}")
-        self.right_main_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.right_main_frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.right_main_frame.setObjectName("right_main_frame")
-        self.horizontalLayout.addWidget(self.right_main_frame)
+        self.right_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.right_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.right_frame.setObjectName("right_frame")
+        self.horizontalLayout.addWidget(self.right_frame)
         self.verticalLayout_4.addWidget(self.inner_frame)
         self.verticalLayout_3.addWidget(self.outer_frame)
         self.verticalLayout_2.addWidget(self.main_frame)
