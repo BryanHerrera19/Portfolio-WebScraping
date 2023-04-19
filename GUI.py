@@ -37,7 +37,7 @@ class FilterScreen(QMainWindow):
         super(FilterScreen, self).__init__()
         loadUi("filter.ui", self)
 
-        self.queryDict = {}
+        self.queryDict = {'mileage': {'$gte': 0, '$lte': 100000}, 'price': {'$gte': 0, '$lte': 100000}}
 
         # Go to home screen
         self.button_refresh.clicked.connect(self.refreshing_page)
