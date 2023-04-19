@@ -255,7 +255,9 @@ class CarInfo(FilterScreen):
         # self.Hbutton.clicked.connect(self.gotoHomeScreen)
         self.back_button.clicked.connect(self.gotoFilter)
         self.quit_button.clicked.connect(self.quit_func)
-        
+        self.lay = QHBoxLayout(self.upper_left)
+        self.lay1 = QVBoxLayout(self.right_frame)
+        self.lay2 = QVBoxLayout(self.right_frame2)
 
         # Set Icon for buttons
         self.back_button.setIcon(QtGui.QIcon("return.png"))
@@ -272,13 +274,16 @@ class CarInfo(FilterScreen):
         self.lay1.removeWidget(self.vin)
         self.lay1.removeWidget(self.trans)
         self.lay1.removeWidget(self.price)
+        self.lay2.removeWidget(self.title)
+        self.lay2.removeWidget(self.url)
+        self.lay2.removeWidget(self.vin)
 
         widget.setCurrentWidget(sc)
     def quit_func(self):
         sys.exit(app.exec())
 
     def gotoCarInfo(self, row):
-        self.lay = QHBoxLayout(self.upper_left)
+        
         r = requests.get(self.records[row]['image'],stream=True)
         assert r.status_code == 200
         pix = QPixmap()
@@ -286,9 +291,7 @@ class CarInfo(FilterScreen):
         self.w = QLabel()
         self.w.setPixmap(pix.scaled(576,408,Qt.KeepAspectRatio))
         self.lay.addWidget(self.w)
-
-        self.lay1 = QVBoxLayout(self.right_frame)
-        self.lay2 = QVBoxLayout(self.right_frame2)
+        
         spacing  = "          "
         spacing1 = "                       "
         spacing2 = "           "
