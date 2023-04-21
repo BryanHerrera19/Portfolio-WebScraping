@@ -52,6 +52,7 @@ class FilterScreen(QMainWindow):
         #setting query based on filter changes
         self.slider_price.valueChanged.connect(lambda: self.price_filter_change())
         self.slider_miles.valueChanged.connect(lambda: self.miles_filter_change())
+        self.owner_slider.valueChanged.connect(lambda: self.owner_change())
         #self.buttonGroup.buttonClicked.connect(lambda: self.year_filter_change())
         #self.buttonGroup_2.buttonClicked.connect(lambda: self.brand_filter_change())
 
@@ -99,6 +100,10 @@ class FilterScreen(QMainWindow):
         num_mile = str(self.slider_miles.value())
         self.mile_label.setText(num_mile)
 
+
+    def owner_change(self):
+        num_owner = str(self.owner_slider.value())
+        self.owner_label.setText(num_owner)
     # Side filter animation
 
     def show_filter1(self):
