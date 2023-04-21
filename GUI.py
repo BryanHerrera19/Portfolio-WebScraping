@@ -52,8 +52,8 @@ class FilterScreen(QMainWindow):
         #setting query based on filter changes
         self.slider_price.valueChanged.connect(lambda: self.price_filter_change())
         self.slider_miles.valueChanged.connect(lambda: self.miles_filter_change())
-        self.buttonGroup.buttonClicked.connect(lambda: self.year_filter_change())
-        self.buttonGroup_2.buttonClicked.connect(lambda: self.brand_filter_change())
+        #self.buttonGroup.buttonClicked.connect(lambda: self.year_filter_change())
+        #self.buttonGroup_2.buttonClicked.connect(lambda: self.brand_filter_change())
 
         # Set Icon for buttons
         self.button_filter.setIcon(QtGui.QIcon("filter.png"))
@@ -279,7 +279,7 @@ class CarInfo(FilterScreen):
         self.lay2.removeWidget(self.vin)
 
         widget.setCurrentWidget(sc)
-    def quit_func(self):
+    def quit_func(self): 
         sys.exit(app.exec())
 
     def gotoCarInfo(self, row):
@@ -302,15 +302,17 @@ class CarInfo(FilterScreen):
         self.title = QLabel("All of the Carvana related URL can be found below:")
         self.lay2.addWidget(self.title)
 
-        link1 = self.records[row]['url']
-        urlLink2 = "<a href=\"link1\">Car URL</a>"
-        self.url = QLabel("Car URL:" + " " + urlLink2)
+        link_format = '<a href={0}>{1}</a>'
+
+        link = self.records[row]['url']
+        carLink = link_format.format(link, 'Car URL')
+        self.url = QLabel("Car URL: " + carLink)
         self.url.setOpenExternalLinks(True)
         self.lay2.addWidget(self.url)
 
-        link = self.records[row]['vin']
-        urlLink = "<a href=\"link\">Vin URL</a>"
-        self.vin = QLabel("Vin:" + " " + urlLink)
+        link1 = self.records[row]['vin']
+        vinLink = link_format.format(link1, 'Vin URL')
+        self.vin = QLabel("Vin URL: " + vinLink)
         self.vin.setOpenExternalLinks(True)
         self.lay2.addWidget(self.vin)
 
