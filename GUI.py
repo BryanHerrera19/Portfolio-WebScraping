@@ -52,8 +52,9 @@ class FilterScreen(QMainWindow):
         #setting query based on filter changes
         self.slider_price.valueChanged.connect(lambda: self.price_filter_change())
         self.slider_miles.valueChanged.connect(lambda: self.miles_filter_change())
-        #self.buttonGroup.buttonClicked.connect(lambda: self.year_filter_change())
-        #self.buttonGroup_2.buttonClicked.connect(lambda: self.brand_filter_change())
+        self.buttonGroup.buttonClicked.connect(lambda: self.year_filter_change())
+        self.buttonGroup_2.buttonClicked.connect(lambda: self.brand_filter_change())
+        self.buttonGroup_3.buttonClicked.connect(lambda: self.fuel_type_filter_change())
 
         # Set Icon for buttons
         self.button_filter.setIcon(QtGui.QIcon("filter.png"))
@@ -225,6 +226,9 @@ class FilterScreen(QMainWindow):
 
     def brand_filter_change(self):
         self.queryDict["manufacturer"] = self.buttonGroup_2.checkedButton().accessibleName()
+
+    def fuel_type_filter_change(self):
+        self.queryDict["fuelType"] = self.buttonGroup_3.checkedButton().text()
         
     #Quits the application
     def quit_func(self):

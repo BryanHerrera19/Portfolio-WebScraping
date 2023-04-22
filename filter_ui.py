@@ -100,6 +100,8 @@ class Ui_MainWindow(object):
         self.inside_filter_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.inside_filter_frame.setObjectName("inside_filter_frame")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.inside_filter_frame)
+        self.verticalLayout_6.setContentsMargins(5, 5, 5, 5)
+        self.verticalLayout_6.setSpacing(7)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.button_submit = QtWidgets.QPushButton(self.inside_filter_frame)
         self.button_submit.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -120,7 +122,19 @@ class Ui_MainWindow(object):
         self.button_submit.setAutoRepeatInterval(0)
         self.button_submit.setObjectName("button_submit")
         self.verticalLayout_6.addWidget(self.button_submit)
-        self.price_frame = QtWidgets.QFrame(self.inside_filter_frame)
+        self.scrollArea = QtWidgets.QScrollArea(self.inside_filter_frame)
+        self.scrollArea.setStyleSheet("background-color: rgb(146, 91, 156);\n"
+"")
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -208, 289, 954))
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.price_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.price_frame.setMinimumSize(QtCore.QSize(271, 109))
+        self.price_frame.setMaximumSize(QtCore.QSize(16777215, 300))
         self.price_frame.setStyleSheet("QFrame {\n"
 "    background-color: rgb(105, 50, 126);\n"
 "}")
@@ -142,6 +156,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.addWidget(self.price_bar, 0, QtCore.Qt.AlignTop)
         self.slider_price = QtWidgets.QSlider(self.price_frame)
         self.slider_price.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.slider_price.setStyleSheet("background-color: rgb(105, 50, 126);")
         self.slider_price.setMaximum(100000)
         self.slider_price.setPageStep(1)
         self.slider_price.setSliderPosition(100000)
@@ -158,8 +173,10 @@ class Ui_MainWindow(object):
 "}")
         self.price_label.setObjectName("price_label")
         self.verticalLayout_9.addWidget(self.price_label)
-        self.verticalLayout_6.addWidget(self.price_frame)
-        self.mile_frame = QtWidgets.QFrame(self.inside_filter_frame)
+        self.verticalLayout_3.addWidget(self.price_frame)
+        self.mile_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.mile_frame.setMinimumSize(QtCore.QSize(271, 109))
+        self.mile_frame.setMaximumSize(QtCore.QSize(16777215, 200))
         self.mile_frame.setStyleSheet("QFrame {\n"
 "    background-color: rgb(105, 50, 126);\n"
 "}")
@@ -181,6 +198,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_10.addWidget(self.miles_bar, 0, QtCore.Qt.AlignTop)
         self.slider_miles = QtWidgets.QSlider(self.mile_frame)
         self.slider_miles.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.slider_miles.setStyleSheet("background-color: rgb(105, 50, 126);")
         self.slider_miles.setMaximum(100000)
         self.slider_miles.setPageStep(1)
         self.slider_miles.setSliderPosition(100000)
@@ -196,8 +214,261 @@ class Ui_MainWindow(object):
 "}")
         self.mile_label.setObjectName("mile_label")
         self.verticalLayout_10.addWidget(self.mile_label)
-        self.verticalLayout_6.addWidget(self.mile_frame)
-        self.drop_down_frame = QtWidgets.QFrame(self.inside_filter_frame)
+        self.verticalLayout_3.addWidget(self.mile_frame)
+        self.owner_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.owner_frame.setMinimumSize(QtCore.QSize(271, 109))
+        self.owner_frame.setStyleSheet("QFrame {\n"
+"    background-color: rgb(105, 50, 126);\n"
+"}")
+        self.owner_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.owner_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.owner_frame.setObjectName("owner_frame")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.owner_frame)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.owner_bar = QtWidgets.QLabel(self.owner_frame)
+        self.owner_bar.setMinimumSize(QtCore.QSize(53, 24))
+        self.owner_bar.setMaximumSize(QtCore.QSize(253, 24))
+        self.owner_bar.setStyleSheet("QLabel {\n"
+"    background-color: #B554D7;\n"
+"    border-radius: 8px; \n"
+"    font-size: 20px;\n"
+"    font-weight: bold;\n"
+"    font-family: Open Sans; \n"
+"    color:white;\n"
+"} ")
+        self.owner_bar.setObjectName("owner_bar")
+        self.verticalLayout_5.addWidget(self.owner_bar)
+        self.owner_slider = QtWidgets.QSlider(self.owner_frame)
+        self.owner_slider.setStyleSheet("background-color: rgb(105, 50, 126);")
+        self.owner_slider.setOrientation(QtCore.Qt.Horizontal)
+        self.owner_slider.setObjectName("owner_slider")
+        self.verticalLayout_5.addWidget(self.owner_slider)
+        self.owner_label = QtWidgets.QLabel(self.owner_frame)
+        self.owner_label.setStyleSheet("QLabel {\n"
+"    color:white;\n"
+"    font-size:20pt;\n"
+"    font-weight:bold;\n"
+"}")
+        self.owner_label.setObjectName("owner_label")
+        self.verticalLayout_5.addWidget(self.owner_label)
+        self.verticalLayout_3.addWidget(self.owner_frame)
+        self.accident_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.accident_frame.setMinimumSize(QtCore.QSize(271, 109))
+        self.accident_frame.setStyleSheet("QFrame {\n"
+"    background-color: rgb(105, 50, 126);\n"
+"}")
+        self.accident_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.accident_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.accident_frame.setObjectName("accident_frame")
+        self.verticalLayout_12 = QtWidgets.QVBoxLayout(self.accident_frame)
+        self.verticalLayout_12.setObjectName("verticalLayout_12")
+        self.accident_bar = QtWidgets.QLabel(self.accident_frame)
+        self.accident_bar.setMinimumSize(QtCore.QSize(253, 24))
+        self.accident_bar.setMaximumSize(QtCore.QSize(253, 24))
+        self.accident_bar.setStyleSheet("QLabel {\n"
+"    background-color: #B554D7;\n"
+"    border-radius: 8px; \n"
+"    font-size: 20px;\n"
+"    font-weight: bold;\n"
+"    font-family: Open Sans; \n"
+"    color:white;\n"
+"} ")
+        self.accident_bar.setObjectName("accident_bar")
+        self.verticalLayout_12.addWidget(self.accident_bar)
+        self.yes = QtWidgets.QCheckBox(self.accident_frame)
+        self.yes.setStyleSheet("QCheckBox::indicator{ \n"
+"    width:25px;\n"
+"    height:25px; \n"
+"    background-color:white;\n"
+"    border-radius: 8px; \n"
+"}\n"
+"\n"
+"QCheckBox {\n"
+"    font-size: 25px;\n"
+"    spacing:15px;\n"
+"    color:white;\n"
+"    background-color: rgb(105, 50, 126);\n"
+"    font-weight:bold;\n"
+"    font-family: Open Sans; \n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-color: white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color:rgb(255, 108, 235)\n"
+"}")
+        self.yes.setObjectName("yes")
+        self.buttonGroup_4 = QtWidgets.QButtonGroup(MainWindow)
+        self.buttonGroup_4.setObjectName("buttonGroup_4")
+        self.buttonGroup_4.addButton(self.yes)
+        self.verticalLayout_12.addWidget(self.yes)
+        self.no = QtWidgets.QCheckBox(self.accident_frame)
+        self.no.setStyleSheet("QCheckBox::indicator{ \n"
+"    width:25px;\n"
+"    height:25px; \n"
+"    background-color:white;\n"
+"    border-radius: 8px; \n"
+"}\n"
+"\n"
+"QCheckBox {\n"
+"    font-size: 25px;\n"
+"    spacing:15px;\n"
+"    color:white;\n"
+"    background-color: rgb(105, 50, 126);\n"
+"    font-weight:bold;\n"
+"    font-family: Open Sans; \n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-color: white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color:rgb(255, 108, 235)\n"
+"}")
+        self.no.setObjectName("no")
+        self.buttonGroup_4.addButton(self.no)
+        self.verticalLayout_12.addWidget(self.no)
+        self.verticalLayout_3.addWidget(self.accident_frame)
+        self.fuel_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.fuel_frame.setMinimumSize(QtCore.QSize(271, 170))
+        self.fuel_frame.setMaximumSize(QtCore.QSize(271, 170))
+        self.fuel_frame.setStyleSheet("QFrame {\n"
+"    background-color: rgb(105, 50, 126);\n"
+"}")
+        self.fuel_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.fuel_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.fuel_frame.setObjectName("fuel_frame")
+        self.verticalLayout_13 = QtWidgets.QVBoxLayout(self.fuel_frame)
+        self.verticalLayout_13.setObjectName("verticalLayout_13")
+        self.Label = QtWidgets.QLabel(self.fuel_frame)
+        self.Label.setMinimumSize(QtCore.QSize(253, 24))
+        self.Label.setMaximumSize(QtCore.QSize(253, 24))
+        self.Label.setStyleSheet("QLabel {\n"
+"    background-color: #B554D7;\n"
+"    border-radius: 8px; \n"
+"    font-size: 20px;\n"
+"    font-weight: bold;\n"
+"    font-family: Open Sans; \n"
+"    color:white;\n"
+"} ")
+        self.Label.setObjectName("Label")
+        self.verticalLayout_13.addWidget(self.Label)
+        self.Gas = QtWidgets.QCheckBox(self.fuel_frame)
+        self.Gas.setStyleSheet("QCheckBox::indicator{ \n"
+"    width:25px;\n"
+"    height:25px; \n"
+"    background-color:white;\n"
+"    border-radius: 8px; \n"
+"}\n"
+"\n"
+"QCheckBox {\n"
+"    font-size: 25px;\n"
+"    spacing:15px;\n"
+"    color:white;\n"
+"    background-color: rgb(105, 50, 126);\n"
+"    font-weight:bold;\n"
+"    font-family: Open Sans; \n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-color: white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color:rgb(255, 108, 235)\n"
+"}")
+        self.Gas.setObjectName("Gas")
+        self.buttonGroup_3 = QtWidgets.QButtonGroup(MainWindow)
+        self.buttonGroup_3.setObjectName("buttonGroup_3")
+        self.buttonGroup_3.addButton(self.Gas)
+        self.verticalLayout_13.addWidget(self.Gas)
+        self.Electric = QtWidgets.QCheckBox(self.fuel_frame)
+        self.Electric.setStyleSheet("QCheckBox::indicator{ \n"
+"    width:25px;\n"
+"    height:25px; \n"
+"    background-color:white;\n"
+"    border-radius: 8px; \n"
+"}\n"
+"\n"
+"QCheckBox {\n"
+"    font-size: 25px;\n"
+"    spacing:15px;\n"
+"    color:white;\n"
+"    background-color: rgb(105, 50, 126);\n"
+"    font-weight:bold;\n"
+"    font-family: Open Sans; \n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-color: white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color:rgb(255, 108, 235)\n"
+"}")
+        self.Electric.setObjectName("Electric")
+        self.buttonGroup_3.addButton(self.Electric)
+        self.verticalLayout_13.addWidget(self.Electric)
+        self.Diesel = QtWidgets.QCheckBox(self.fuel_frame)
+        self.Diesel.setStyleSheet("QCheckBox::indicator{ \n"
+"    width:25px;\n"
+"    height:25px; \n"
+"    background-color:white;\n"
+"    border-radius: 8px; \n"
+"}\n"
+"\n"
+"QCheckBox {\n"
+"    font-size: 25px;\n"
+"    spacing:15px;\n"
+"    color:white;\n"
+"    background-color: rgb(105, 50, 126);\n"
+"    font-weight:bold;\n"
+"    font-family: Open Sans; \n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-color: white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color:rgb(255, 108, 235)\n"
+"}")
+        self.Diesel.setObjectName("Diesel")
+        self.buttonGroup_3.addButton(self.Diesel)
+        self.verticalLayout_13.addWidget(self.Diesel)
+        self.Hybrid = QtWidgets.QCheckBox(self.fuel_frame)
+        self.Hybrid.setStyleSheet("QCheckBox::indicator{ \n"
+"    width:25px;\n"
+"    height:25px; \n"
+"    background-color:white;\n"
+"    border-radius: 8px; \n"
+"}\n"
+"\n"
+"QCheckBox {\n"
+"    font-size: 25px;\n"
+"    spacing:15px;\n"
+"    color:white;\n"
+"    background-color: rgb(105, 50, 126);\n"
+"    font-weight:bold;\n"
+"    font-family: Open Sans; \n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-color: white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color:rgb(255, 108, 235)\n"
+"}")
+        self.Hybrid.setObjectName("Hybrid")
+        self.buttonGroup_3.addButton(self.Hybrid)
+        self.verticalLayout_13.addWidget(self.Hybrid)
+        self.verticalLayout_3.addWidget(self.fuel_frame)
+        self.drop_down_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.drop_down_frame.setMinimumSize(QtCore.QSize(0, 300))
         self.drop_down_frame.setStyleSheet("QFrame {\n"
 "    background-color: rgb(105, 50, 126);\n"
 "}")
@@ -225,7 +496,7 @@ class Ui_MainWindow(object):
 "")
         self.year_brand_dropdown.setObjectName("year_brand_dropdown")
         self.brand_title = QtWidgets.QWidget()
-        self.brand_title.setGeometry(QtCore.QRect(0, 0, 263, 303))
+        self.brand_title.setGeometry(QtCore.QRect(0, 0, 236, 303))
         self.brand_title.setObjectName("brand_title")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.brand_title)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
@@ -458,7 +729,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addWidget(self.brand_check_frame)
         self.year_brand_dropdown.addItem(self.brand_title, "")
         self.year_title = QtWidgets.QWidget()
-        self.year_title.setGeometry(QtCore.QRect(0, 0, 263, 443))
+        self.year_title.setGeometry(QtCore.QRect(0, 0, 236, 443))
         self.year_title.setObjectName("year_title")
         self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.year_title)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
@@ -799,11 +1070,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.addWidget(self.year_frame)
         self.year_brand_dropdown.addItem(self.year_title, "")
         self.verticalLayout_16.addWidget(self.year_brand_dropdown)
-        self.verticalLayout_6.addWidget(self.drop_down_frame)
-        self.price_frame.raise_()
-        self.mile_frame.raise_()
-        self.drop_down_frame.raise_()
-        self.button_submit.raise_()
+        self.verticalLayout_3.addWidget(self.drop_down_frame)
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.verticalLayout_6.addWidget(self.scrollArea)
         self.verticalLayout_15.addWidget(self.inside_filter_frame)
         self.verticalLayout_2.addWidget(self.filter_frame)
         self.horizontalLayout.addWidget(self.left_main_frame)
@@ -1002,7 +1271,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.year_brand_dropdown.setCurrentIndex(0)
+        self.year_brand_dropdown.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -1014,6 +1283,18 @@ class Ui_MainWindow(object):
         self.price_label.setText(_translate("MainWindow", "$ 100000"))
         self.miles_bar.setText(_translate("MainWindow", " MILES DRIVEN"))
         self.mile_label.setText(_translate("MainWindow", "100000 Miles"))
+        self.owner_bar.setText(_translate("MainWindow", " Number of Owner"))
+        self.owner_label.setText(_translate("MainWindow", "0"))
+        self.accident_bar.setText(_translate("MainWindow", "Accident"))
+        self.yes.setAccessibleName(_translate("MainWindow", "True"))
+        self.yes.setText(_translate("MainWindow", "Yes"))
+        self.no.setAccessibleName(_translate("MainWindow", "False"))
+        self.no.setText(_translate("MainWindow", "No"))
+        self.Label.setText(_translate("MainWindow", " Fuel Type"))
+        self.Gas.setText(_translate("MainWindow", "Gas"))
+        self.Electric.setText(_translate("MainWindow", "Electric"))
+        self.Diesel.setText(_translate("MainWindow", "Diesel"))
+        self.Hybrid.setText(_translate("MainWindow", "Hybrid"))
         self.nis_check.setAccessibleName(_translate("MainWindow", "NISSAN"))
         self.nis_check.setText(_translate("MainWindow", "Nissan"))
         self.lex_check.setAccessibleName(_translate("MainWindow", "LEXUS"))
