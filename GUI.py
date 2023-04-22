@@ -100,6 +100,10 @@ class FilterScreen(QMainWindow):
         num_mile = str(self.slider_miles.value())
         self.mile_label.setText(num_mile)
 
+
+    def owner_change(self):
+        num_owner = str(self.owner_slider.value())
+        self.owner_label.setText(num_owner)
     # Side filter animation
 
     def show_filter1(self):
