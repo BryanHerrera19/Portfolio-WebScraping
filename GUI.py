@@ -262,8 +262,8 @@ class FilterScreen(QMainWindow):
         widget.setCurrentWidget(ci) 
         
         print('clicked!', row)
-        print(self.records[row])
-        return ci.gotoCarInfo(row)
+        record = self.records[row]
+        return ci.gotoCarInfo(record)
 
 
 
@@ -302,9 +302,9 @@ class CarInfo(FilterScreen):
     def quit_func(self): 
         sys.exit(app.exec())
 
-    def gotoCarInfo(self, row):
+    def gotoCarInfo(self, record):
         
-        r = requests.get(self.records[row]['image'],stream=True)
+        r = requests.get(record['image'],stream=True)
         assert r.status_code == 200
         pix = QPixmap()
         pix.loadFromData(r.content)
@@ -324,40 +324,40 @@ class CarInfo(FilterScreen):
 
         link_format = '<a href={0}>{1}</a>'
 
-        link = self.records[row]['url']
+        link = record['url']
         carLink = link_format.format(link, 'Car URL')
         self.url = QLabel("Car URL: " + carLink)
         self.url.setOpenExternalLinks(True)
         self.lay2.addWidget(self.url)
 
-        link1 = self.records[row]['vin']
+        link1 = record['vin']
         vinLink = link_format.format(link1, 'Vin URL')
         self.vin = QLabel("Vin URL: " + vinLink)
         self.vin.setOpenExternalLinks(True)
         self.lay2.addWidget(self.vin)
 
-        self.manu = QLabel( "Manufacturer:" + spacing + self.records[row]['manufacturer'])
+        self.manu = QLabel( "Manufacturer:" + spacing + record['manufacturer'])
         self.lay1.addWidget(self.manu)
 
-        self.model = QLabel("Model Name:" + spacing2 + self.records[row]['modelName'])
+        self.model = QLabel("Model Name:" + spacing2 + record['modelName'])
         self.lay1.addWidget(self.model)
 
-        self.year = QLabel("Year:" + spacing1 + str(self.records[row]['year']))
+        self.year = QLabel("Year:" + spacing1 + str(record['year']))
         self.lay1.addWidget(self.year)
 
-        self.color = QLabel("Color:" + spacing1 + self.records[row]['color'])
+        self.color = QLabel("Color:" + spacing1 + record['color'])
         self.lay1.addWidget(self.color)
 
-        self.mile = QLabel("Miles Driven:" + spacing3 + str(self.records[row]['mileage']))
+        self.mile = QLabel("Miles Driven:" + spacing3 + str(record['mileage']))
         self.lay1.addWidget(self.mile)
 
-        self.fuel = QLabel("Fuel Type:" + spacing4 + self.records[row]['fuelType'])
+        self.fuel = QLabel("Fuel Type:" + spacing4 + record['fuelType'])
         self.lay1.addWidget(self.fuel)
 
-        self.trans = QLabel("TransType:" + spacing5 + self.records[row]['transType'])
+        self.trans = QLabel("TransType:" + spacing5 + record['transType'])
         self.lay1.addWidget(self.trans)
 
-        self.price = QLabel("Price:" + spacing1 + "$" + str(self.records[row]['price']))
+        self.price = QLabel("Price:" + spacing1 + "$" + str(record['price']))
         self.lay1.addWidget(self.price)
 
 
