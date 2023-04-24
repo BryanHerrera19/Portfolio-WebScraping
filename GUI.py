@@ -56,6 +56,7 @@ class FilterScreen(QMainWindow):
         self.buttonGroup.buttonClicked.connect(lambda: self.year_filter_change())
         self.buttonGroup_2.buttonClicked.connect(lambda: self.brand_filter_change())
         self.buttonGroup_3.buttonClicked.connect(lambda: self.fuel_type_filter_change())
+        self.buttonGroup_4.buttonClicked.connect(lambda: self.accidents_filter_change())
 
         # Set Icon for buttons
         self.button_filter.setIcon(QtGui.QIcon("filter.png"))
@@ -66,6 +67,7 @@ class FilterScreen(QMainWindow):
         # Linked value to the slider
         self.slider_price.valueChanged.connect(self.price_change)
         self.slider_miles.valueChanged.connect(self.mile_change)
+        self.owner_slider.valueChanged.connect(self.owner_change)
 
         #filter button
         self.button_filter.clicked.connect(self.show_filter)
@@ -237,6 +239,12 @@ class FilterScreen(QMainWindow):
 
     def fuel_type_filter_change(self):
         self.queryDict["fuelType"] = self.buttonGroup_3.checkedButton().text()
+
+    def accidents_filter_change(self):
+        if(self.buttonGroup_4.checkedButton().text() == "yes"):
+            self.queryDict["VINHist.numberOfAccidents"] = True
+        else:
+            self.queryDict["VINHist.numberOfAccidents"] = False
         
     #Quits the application
     def quit_func(self):
