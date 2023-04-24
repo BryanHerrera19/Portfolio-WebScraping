@@ -52,6 +52,7 @@ class FilterScreen(QMainWindow):
         #setting query based on filter changes
         self.slider_price.valueChanged.connect(lambda: self.price_filter_change())
         self.slider_miles.valueChanged.connect(lambda: self.miles_filter_change())
+        self.owner_slider.valueChanged.connect(lambda: self.owners_filter_change())
         self.buttonGroup.buttonClicked.connect(lambda: self.year_filter_change())
         self.buttonGroup_2.buttonClicked.connect(lambda: self.brand_filter_change())
         self.buttonGroup_3.buttonClicked.connect(lambda: self.fuel_type_filter_change())
@@ -224,6 +225,9 @@ class FilterScreen(QMainWindow):
 
     def miles_filter_change(self):
         self.queryDict["mileage"] = {"$gte" : 0, "$lte" : self.slider_miles.value()}
+
+    def owners_filter_change(self):
+        self.queryDict["VINHist.numberOfOwners"] = {"$gte" : 0, "$lte" : self.owner_slider.value()}
 
     def year_filter_change(self):
         self.queryDict["year"] = int(self.buttonGroup.checkedButton().text())

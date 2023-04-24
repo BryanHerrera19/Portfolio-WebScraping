@@ -283,7 +283,7 @@ QPushButton::hover{
                    <property name="geometry">
                     <rect>
                      <x>0</x>
-                     <y>-208</y>
+                     <y>0</y>
                      <width>289</width>
                      <height>954</height>
                     </rect>
@@ -515,6 +515,9 @@ QPushButton::hover{
                         <widget class="QSlider" name="owner_slider">
                          <property name="styleSheet">
                           <string notr="true">background-color: rgb(105, 50, 126);</string>
+                         </property>
+                         <property name="maximum">
+                          <number>9</number>
                          </property>
                          <property name="orientation">
                           <enum>Qt::Horizontal</enum>
@@ -914,7 +917,7 @@ QToolBox::tab{
                            <rect>
                             <x>0</x>
                             <y>0</y>
-                            <width>236</width>
+                            <width>189</width>
                             <height>303</height>
                            </rect>
                           </property>
@@ -2247,8 +2250,8 @@ QPushButton:hover {
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroup_2"/>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_3"/>
   <buttongroup name="buttonGroup_4"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
