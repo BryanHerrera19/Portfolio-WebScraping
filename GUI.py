@@ -93,6 +93,7 @@ class FilterScreen(QMainWindow):
     def refreshing_page(self):
         self.price_label.setText("$100000")
         self.mile_label.setText("100000 Miles")
+
     # Text for price slider
     def price_change(self):
         num_price = str(self.slider_price.value())
@@ -259,7 +260,7 @@ class FilterScreen(QMainWindow):
 
 
     def gotoCarInfo(self, row):
-        widget.setCurrentWidget(ci) 
+        widget.setCurrentWidget(ci)
         
         print('clicked!', row)
         print(self.records[row])
