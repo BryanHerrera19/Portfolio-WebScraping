@@ -219,7 +219,6 @@ class FilterScreen(QMainWindow):
         self.cdt.resizeColumnsToContents()
 
     def filterChange(self):
-        print(self.queryDict)
         tempList = filterQuery(self.queryDict)
         self.pasteCars(len(tempList), tempList)
 
@@ -242,7 +241,7 @@ class FilterScreen(QMainWindow):
         self.queryDict["fuelType"] = self.buttonGroup_3.checkedButton().text()
 
     def accidents_filter_change(self):
-        if(self.buttonGroup_4.checkedButton().text() == "yes"):
+        if(self.buttonGroup_4.checkedButton().text() == "Yes"):
             self.queryDict["VINHist.numberOfAccidents"] = True
         else:
             self.queryDict["VINHist.numberOfAccidents"] = False
@@ -262,7 +261,6 @@ class FilterScreen(QMainWindow):
     def gotoCarInfo(self, row):
         widget.setCurrentWidget(ci)
         
-        print('clicked!', row)
         record = self.records[row]
         return ci.gotoCarInfo(record)
 
