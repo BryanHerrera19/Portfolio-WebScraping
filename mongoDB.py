@@ -45,18 +45,4 @@ def getRecordLimit(limitSize):#Set a limit on the number of records you want ret
 
 def filterQuery(myQuery):#Sets a query in order for use in queries
         return list(carCol.find(myQuery))
-
-def querySearchText(ylist, mlist, text):
-        myQuery = {}
-
-        for x in text.split():
-                if (x in ylist):
-                        myQuery["year"] = int(x)
-
-                elif(x in mlist):
-                        myQuery["manufacturer"] = str(x)
-                else:
-                        myQuery["modelName"] = str(x)
-
-        return list(carCol.find(myQuery))
       

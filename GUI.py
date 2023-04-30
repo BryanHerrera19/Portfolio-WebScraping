@@ -42,6 +42,7 @@ class FilterScreen(QMainWindow):
         # Go to home screen
         self.button_refresh.clicked.connect(self.refreshing_page)
         self.button_home.clicked.connect(self.gotoHomeScreen)
+
         #self.minimize_button.clicked.connect(self.minimize)
         self.button_quit.clicked.connect(self.quit_func)
 
@@ -232,20 +233,35 @@ class FilterScreen(QMainWindow):
         self.queryDict["VINHist.numberOfOwners"] = {"$gte" : 0, "$lte" : self.owner_slider.value()}
 
     def year_filter_change(self):
-        self.queryDict["year"] = int(self.buttonGroup.checkedButton().text())
+        self.buttonGroup.setExclusive(False)
+        if(self.buttonGroup.checkedButton() == None):
+            del self.queryDict["year"]
+        else:
+            self.queryDict["year"] = int(self.buttonGroup.checkedButton().text())
+        print(self.queryDict)
 
     def brand_filter_change(self):
-        self.queryDict["manufacturer"] = self.buttonGroup_2.checkedButton().accessibleName()
+        self.buttonGroup_2.setExclusive(False)
+        if(self.buttonGroup_2.checkedButton() == None):
+            del self.queryDict["manufacturer"]
+        else:
+            self.queryDict["manufacturer"] = self.buttonGroup_2.checkedButton().accessibleName()
+        print(self.queryDict)
 
     def fuel_type_filter_change(self):
-        self.queryDict["fuelType"] = self.buttonGroup_3.checkedButton().text()
+        self.buttonGroup_3.setExclusive(False)
+        if(self.buttonGroup_3.checkedButton() == None):
+            del self.queryDict["fuelType"]
+        else:
+            self.queryDict["fuelType"] = self.buttonGroup_3.checkedButton().text()
+        print(self.queryDict)
 
     def accidents_filter_change(self):
         if(self.buttonGroup_4.checkedButton().text() == "Yes"):
             self.queryDict["VINHist.numberOfAccidents"] = True
         else:
             self.queryDict["VINHist.numberOfAccidents"] = False
-        
+
     #Quits the application
     def quit_func(self):
         sys.exit(app.exec())

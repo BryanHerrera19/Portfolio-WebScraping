@@ -128,7 +128,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 289, 954))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -180, 289, 954))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
@@ -414,6 +414,7 @@ class Ui_MainWindow(object):
         self.buttonGroup_3.addButton(self.Electric)
         self.verticalLayout_13.addWidget(self.Electric)
         self.Diesel = QtWidgets.QCheckBox(self.fuel_frame)
+        self.Diesel.setEnabled(True)
         self.Diesel.setStyleSheet("QCheckBox::indicator{ \n"
 "    width:25px;\n"
 "    height:25px; \n"
@@ -497,7 +498,7 @@ class Ui_MainWindow(object):
 "")
         self.year_brand_dropdown.setObjectName("year_brand_dropdown")
         self.brand_title = QtWidgets.QWidget()
-        self.brand_title.setGeometry(QtCore.QRect(0, 0, 189, 303))
+        self.brand_title.setGeometry(QtCore.QRect(0, 0, 236, 303))
         self.brand_title.setObjectName("brand_title")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.brand_title)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
@@ -730,7 +731,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addWidget(self.brand_check_frame)
         self.year_brand_dropdown.addItem(self.brand_title, "")
         self.year_title = QtWidgets.QWidget()
-        self.year_title.setGeometry(QtCore.QRect(0, 0, 236, 443))
+        self.year_title.setGeometry(QtCore.QRect(0, 0, 132, 443))
         self.year_title.setObjectName("year_title")
         self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.year_title)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
@@ -1272,7 +1273,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.year_brand_dropdown.setCurrentIndex(1)
+        self.year_brand_dropdown.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
