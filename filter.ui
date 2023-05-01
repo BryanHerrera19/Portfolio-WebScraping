@@ -283,7 +283,7 @@ QPushButton::hover{
                    <property name="geometry">
                     <rect>
                      <x>0</x>
-                     <y>0</y>
+                     <y>-180</y>
                      <width>289</width>
                      <height>954</height>
                     </rect>
@@ -796,6 +796,9 @@ QCheckBox::indicator:checked {
                        </item>
                        <item>
                         <widget class="QCheckBox" name="Diesel">
+                         <property name="enabled">
+                          <bool>true</bool>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">QCheckBox::indicator{ 
 	width:25px;
@@ -910,14 +913,14 @@ QToolBox::tab{
 </string>
                          </property>
                          <property name="currentIndex">
-                          <number>1</number>
+                          <number>0</number>
                          </property>
                          <widget class="QWidget" name="brand_title">
                           <property name="geometry">
                            <rect>
                             <x>0</x>
                             <y>0</y>
-                            <width>189</width>
+                            <width>236</width>
                             <height>303</height>
                            </rect>
                           </property>
@@ -1279,7 +1282,7 @@ QCheckBox::indicator:checked {
                            <rect>
                             <x>0</x>
                             <y>0</y>
-                            <width>236</width>
+                            <width>132</width>
                             <height>443</height>
                            </rect>
                           </property>
@@ -2250,8 +2253,8 @@ QPushButton:hover {
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_3"/>
   <buttongroup name="buttonGroup_4"/>
-  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
