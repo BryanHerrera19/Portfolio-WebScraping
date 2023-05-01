@@ -6,7 +6,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QImage, QPixmap
 import requests
-
+import math
 from PyQt5 import *
 
 from mongoDB import *
@@ -91,8 +91,13 @@ class FilterScreen(QMainWindow):
         self.pasteCars(len(tempList), tempList)
 
     def refreshing_page(self):
-        self.price_label.setText("$100000")
+        self.price_label.setText("$ 100000")
         self.mile_label.setText("100000 Miles")
+        self.owner_label.setText("0")
+
+        
+
+
 
     # Text for price slider
     def price_change(self):
@@ -176,6 +181,10 @@ class FilterScreen(QMainWindow):
 
         row_count = len(self.records)
         col_count = 7
+
+        max_page = math.ceil((row_count / 5))
+        current_page = 1
+
 
         # Setting the number of rows and cols
         self.cdt.setRowCount(row_count)
