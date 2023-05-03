@@ -233,27 +233,38 @@ class FilterScreen(QMainWindow):
         self.queryDict["VINHist.numberOfOwners"] = {"$gte" : 0, "$lte" : self.owner_slider.value()}
 
     def year_filter_change(self):
+        #{ "year" : { $in : [2015, 2016]}}
         self.buttonGroup.setExclusive(False)
         if(self.buttonGroup.checkedButton() == None):
             del self.queryDict["year"]
         else:
-            self.queryDict["year"] = int(self.buttonGroup.checkedButton().text())
-        print(self.queryDict)
+            selectedYearList = []
+            for item in self.sender().buttons():
+                if item.isChecked():
+                    selectedYearList.append(int(item.text()))
+            self.queryDict["year"] = {"$in" : selectedYearList}
 
     def brand_filter_change(self):
         self.buttonGroup_2.setExclusive(False)
         if(self.buttonGroup_2.checkedButton() == None):
             del self.queryDict["manufacturer"]
         else:
-            self.queryDict["manufacturer"] = self.buttonGroup_2.checkedButton().accessibleName()
-        print(self.queryDict)
+            selectedBrandList = []
+            for item in self.sender().buttons():
+                if item.isChecked():
+                    selectedBrandList.append(item.accessibleName())
+            self.queryDict["manufacturer"] = {"$in" : selectedBrandList}
 
     def fuel_type_filter_change(self):
         self.buttonGroup_3.setExclusive(False)
         if(self.buttonGroup_3.checkedButton() == None):
             del self.queryDict["fuelType"]
         else:
-            self.queryDict["fuelType"] = self.buttonGroup_3.checkedButton().text()
+            selectedFuelList = []
+            for item in self.sender().buttons():
+                if item.isChecked():
+                    selectedFuelList.append(item.text())
+            self.queryDict["fuelType"] = {"$in" : selectedFuelList}
         print(self.queryDict)
 
     def accidents_filter_change(self):
