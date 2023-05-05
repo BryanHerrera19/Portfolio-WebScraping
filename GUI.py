@@ -21,10 +21,7 @@ class MainScreen(QMainWindow):
         self.GSbutton.clicked.connect(self.gotoSearchScreen)
         self.quit_button.clicked.connect(self.quit_func)
     def gotoSearchScreen(self):
-        # widget.setCurrentWidget(sc)
-        sc = FilterScreen()
-        widget.addWidget(sc)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
+        widget.setCurrentIndex(1)
 
     def quit_func(self):
         sys.exit(app.exec())
@@ -54,10 +51,10 @@ class FilterScreen(QMainWindow):
         self.slider_price.valueChanged.connect(lambda: self.price_filter_change())
         self.slider_miles.valueChanged.connect(lambda: self.miles_filter_change())
         self.owner_slider.valueChanged.connect(lambda: self.owners_filter_change())
-        self.buttonGroup.buttonClicked.connect(lambda: self.year_filter_change())
-        self.buttonGroup_2.buttonClicked.connect(lambda: self.brand_filter_change())
-        self.buttonGroup_3.buttonClicked.connect(lambda: self.fuel_type_filter_change())
-        self.buttonGroup_4.buttonClicked.connect(lambda: self.accidents_filter_change())
+        self.buttonGroup.buttonClicked.connect(lambda: self.year_filter_change())        # Year
+        self.buttonGroup_2.buttonClicked.connect(lambda: self.brand_filter_change())     # Brand
+        self.buttonGroup_3.buttonClicked.connect(lambda: self.fuel_type_filter_change()) # Fuel
+        self.buttonGroup_4.buttonClicked.connect(lambda: self.accidents_filter_change()) # Accident
 
         # Set Icon for buttons
         self.button_filter.setIcon(QtGui.QIcon("filter.png"))
@@ -76,7 +73,6 @@ class FilterScreen(QMainWindow):
         self.button_search.clicked.connect(self.search)
 
         self.pasteCars(5, None)
-
         self.cdt.cellClicked.connect(self.gotoCarInfo)
 
     def search(self):
@@ -92,13 +88,9 @@ class FilterScreen(QMainWindow):
         self.pasteCars(len(tempList), tempList)
 
     def refreshing_page(self):
-        self.price_label.setText("$ 100000")
-        self.mile_label.setText("100000 Miles")
-        self.owner_label.setText("0")
-
-        
-
-
+        ft = FilterScreen()
+        widget.addWidget(ft)
+        widget.setCurrentIndex(widget.currentIndex()+1)
 
     # Text for price slider
     def price_change(self):
@@ -158,7 +150,7 @@ class FilterScreen(QMainWindow):
 
         # For slide in and out
         if width == 0:
-            newWidth = 285
+            newWidth = 320
         else:
             newWidth = 0
 
@@ -270,6 +262,8 @@ class FilterScreen(QMainWindow):
             self.queryDict["VINHist.numberOfAccidents"] = True
         else:
             self.queryDict["VINHist.numberOfAccidents"] = False
+
+
 
     #Quits the application
     def quit_func(self):
@@ -402,7 +396,7 @@ widget.addWidget(mc)
 widget.addWidget(sc)
 widget.addWidget(ci)
 widget.setCurrentWidget(mc)
-widget.setFixedSize(1200, 700)
+widget.setFixedSize(1250, 720)
 
 
 widget.setWindowFlag(QtCore.Qt.WindowType.FramelessWindowHint)
