@@ -42,7 +42,12 @@ class MainScreen(QMainWindow):
         self.GSbutton.clicked.connect(self.gotoSearchScreen)
         self.quit_button.clicked.connect(self.quit_func)
     def gotoSearchScreen(self):
-        widget.setCurrentIndex(1)
+        try:
+            widget.setCurrentWidget(sc)
+        except:
+            print("Error")
+        else:
+           return sc.refreshing_page()
 
     def quit_func(self):
         sys.exit(app.exec())
@@ -108,11 +113,6 @@ class FilterScreen(QMainWindow):
         search_text = self.search_bar.text().upper()
         tempList = querySearchText(years, manufacturers, search_text)
         self.pasteCars(len(tempList), tempList)
-
-    def refreshing_page(self):
-        ft = FilterScreen()
-        widget.addWidget(ft)
-        widget.setCurrentIndex(widget.currentIndex()+1)
 
     # Text for price slider
     def price_change(self):
@@ -297,6 +297,13 @@ class FilterScreen(QMainWindow):
             self.queryDict["VINHist.numberOfAccidents"] = False
 
 
+    # Buttons functions
+    def refreshing_page(self):
+        ft = FilterScreen()
+        widget.addWidget(ft)
+        widget.setCurrentWidget(ft)
+        widget.removeWidget(sc)
+
 
     #Quits the application
     def quit_func(self):
@@ -312,7 +319,6 @@ class FilterScreen(QMainWindow):
 
     def gotoCarInfo(self, row):
         widget.setCurrentWidget(ci)
-        
         record = self.records[row]
         return ci.gotoCarInfo(record)
 
