@@ -70,7 +70,7 @@
          </property>
          <property name="maximumSize">
           <size>
-           <width>0</width>
+           <width>320</width>
            <height>16777215</height>
           </size>
          </property>
@@ -172,7 +172,7 @@ QPushButton:hover {
 </string>
                </property>
                <property name="text">
-                <string>UCR</string>
+                <string>UCS</string>
                </property>
               </widget>
              </item>
@@ -2219,7 +2219,7 @@ QPushButton:hover {
                   <property name="maximumSize">
                    <size>
                     <width>1165</width>
-                    <height>16777215</height>
+                    <height>1165</height>
                    </size>
                   </property>
                   <property name="styleSheet">

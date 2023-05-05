@@ -444,11 +444,11 @@ class CarInfo(FilterScreen):
 class Inventory(FilterScreen):
     def __init__(self):
         super(Inventory, self).__init__()
-        inventory_ui = resource_path("Inventory.ui")
+        inventory_ui = resource_path("ForGUI/Inventory.ui")
         loadUi(inventory_ui, self)
         self.back_button.clicked.connect(self.gotoFilter)
         self.quit_button.clicked.connect(self.quit_func)
-        self.back_button.setIcon(QtGui.QIcon(resource_path("return.png")))
+        self.back_button.setIcon(QtGui.QIcon(resource_path("ForGUI/return.png")))
         self.oldPos = self.pos()
 
     def center(self):
