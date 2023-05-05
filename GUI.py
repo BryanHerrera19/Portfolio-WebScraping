@@ -47,7 +47,7 @@ class MainScreen(QMainWindow):
         except:
             print("Error")
         else:
-           return sc.refreshing_page()
+            return sc.refreshing_page()
 
     def quit_func(self):
         sys.exit(app.exec())
@@ -302,7 +302,6 @@ class FilterScreen(QMainWindow):
         ft = FilterScreen()
         widget.addWidget(ft)
         widget.setCurrentWidget(ft)
-        widget.removeWidget(sc)
 
 
     #Quits the application
