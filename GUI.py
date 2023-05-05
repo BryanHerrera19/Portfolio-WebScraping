@@ -1,4 +1,5 @@
 import sys
+import os
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets, QtGui
 from PyQt5 import QtCore
@@ -11,12 +12,32 @@ from PyQt5 import *
 
 from mongoDB import *
 
-            
+# Needed for Wayland applications
+# Change the current dir to the temporary one created by PyInstaller
+try:
+    os.chdir(sys._MEIPASS)
+    print(sys._MEIPASS)
+except:
+    pass
+
+# Define function to import external files when using PyInstaller.
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
+
 # Main Screen
 class MainScreen(QMainWindow):
     def __init__(self):
         super(MainScreen, self).__init__()
-        loadUi("MainScreen.ui", self)
+        mainscreen_ui = resource_path("MainScreen.ui")
+        loadUi(mainscreen_ui, self)
 
         self.GSbutton.clicked.connect(self.gotoSearchScreen)
         self.quit_button.clicked.connect(self.quit_func)
@@ -32,7 +53,8 @@ class FilterScreen(QMainWindow):
 
     def __init__(self):
         super(FilterScreen, self).__init__()
-        loadUi("filter.ui", self)
+        filter_ui = resource_path("filter.ui")
+        loadUi(filter_ui, self)
 
         self.queryDict = {'mileage': {'$gte': 0, '$lte': 100000}, 'price': {'$gte': 0, '$lte': 100000}}
 
@@ -57,10 +79,10 @@ class FilterScreen(QMainWindow):
         self.buttonGroup_4.buttonClicked.connect(lambda: self.accidents_filter_change()) # Accident
 
         # Set Icon for buttons
-        self.button_filter.setIcon(QtGui.QIcon("filter.png"))
-        self.button_search.setIcon(QtGui.QIcon("search.png"))
-        self.button_refresh.setIcon(QtGui.QIcon("refresh.png"))
-        self.button_update.setIcon(QtGui.QIcon("package.png"))
+        self.button_filter.setIcon(QtGui.QIcon(resource_path("filter.png")))
+        self.button_search.setIcon(QtGui.QIcon(resource_path("search.png")))
+        self.button_refresh.setIcon(QtGui.QIcon(resource_path("refresh.png")))
+        self.button_update.setIcon(QtGui.QIcon(resource_path("package.png")))
 
         # Linked value to the slider
         self.slider_price.valueChanged.connect(self.price_change)
@@ -234,27 +256,38 @@ class FilterScreen(QMainWindow):
         self.queryDict["VINHist.numberOfOwners"] = {"$gte" : 0, "$lte" : self.owner_slider.value()}
 
     def year_filter_change(self):
+        #{ "year" : { $in : [2015, 2016]}}
         self.buttonGroup.setExclusive(False)
         if(self.buttonGroup.checkedButton() == None):
             del self.queryDict["year"]
         else:
-            self.queryDict["year"] = int(self.buttonGroup.checkedButton().text())
-        print(self.queryDict)
+            selectedYearList = []
+            for item in self.sender().buttons():
+                if item.isChecked():
+                    selectedYearList.append(int(item.text()))
+            self.queryDict["year"] = {"$in" : selectedYearList}
 
     def brand_filter_change(self):
         self.buttonGroup_2.setExclusive(False)
         if(self.buttonGroup_2.checkedButton() == None):
             del self.queryDict["manufacturer"]
         else:
-            self.queryDict["manufacturer"] = self.buttonGroup_2.checkedButton().accessibleName()
-        print(self.queryDict)
+            selectedBrandList = []
+            for item in self.sender().buttons():
+                if item.isChecked():
+                    selectedBrandList.append(item.accessibleName())
+            self.queryDict["manufacturer"] = {"$in" : selectedBrandList}
 
     def fuel_type_filter_change(self):
         self.buttonGroup_3.setExclusive(False)
         if(self.buttonGroup_3.checkedButton() == None):
             del self.queryDict["fuelType"]
         else:
-            self.queryDict["fuelType"] = self.buttonGroup_3.checkedButton().text()
+            selectedFuelList = []
+            for item in self.sender().buttons():
+                if item.isChecked():
+                    selectedFuelList.append(item.text())
+            self.queryDict["fuelType"] = {"$in" : selectedFuelList}
         print(self.queryDict)
 
     def accidents_filter_change(self):
@@ -289,7 +322,8 @@ class FilterScreen(QMainWindow):
 class CarInfo(FilterScreen):
     def __init__(self):
         super(CarInfo, self).__init__()
-        loadUi("CarInfo.ui", self)
+        carinfo_ui = resource_path("CarInfo.ui")
+        loadUi(carinfo_ui, self)
         # self.Hbutton.clicked.connect(self.gotoHomeScreen)
         self.back_button.clicked.connect(self.gotoFilter)
         self.quit_button.clicked.connect(self.quit_func)
@@ -298,7 +332,7 @@ class CarInfo(FilterScreen):
         self.lay2 = QVBoxLayout(self.right_frame2)
 
         # Set Icon for buttons
-        self.back_button.setIcon(QtGui.QIcon("return.png"))
+        self.back_button.setIcon(QtGui.QIcon(resource_path("return.png")))
 
 
     def gotoFilter(self):
