@@ -70,7 +70,7 @@
          </property>
          <property name="maximumSize">
           <size>
-           <width>320</width>
+           <width>0</width>
            <height>16777215</height>
           </size>
          </property>
@@ -283,7 +283,7 @@ QPushButton::hover{
                    <property name="geometry">
                     <rect>
                      <x>0</x>
-                     <y>-180</y>
+                     <y>0</y>
                      <width>289</width>
                      <height>954</height>
                     </rect>
@@ -1282,7 +1282,7 @@ QCheckBox::indicator:checked {
                            <rect>
                             <x>0</x>
                             <y>0</y>
-                            <width>132</width>
+                            <width>236</width>
                             <height>443</height>
                            </rect>
                           </property>
@@ -2163,7 +2163,7 @@ QPushButton:hover {
               <widget class="QTableWidget" name="cdt">
                <property name="maximumSize">
                 <size>
-                 <width>1165</width>
+                 <width>1000000</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -2188,55 +2188,6 @@ QPushButton:hover {
                </property>
               </widget>
              </item>
-             <item>
-              <widget class="QFrame" name="inventory">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>0</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QFrame{
-	background-color: rgb(65, 37, 81);
-}</string>
-               </property>
-               <property name="frameShape">
-                <enum>QFrame::StyledPanel</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
-               </property>
-               <layout class="QHBoxLayout" name="horizontalLayout_4">
-                <item alignment="Qt::AlignHCenter">
-                 <widget class="QLabel" name="inven_label">
-                  <property name="maximumSize">
-                   <size>
-                    <width>1165</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QLabel{
-	color:white;
-	font: 48pt &quot;Tw Cen MT Condensed Extra Bold&quot;;
-	text-align:center;
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>This page is still under construction </string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
             </layout>
            </widget>
           </item>
@@ -2252,9 +2203,9 @@ QPushButton:hover {
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
-  <buttongroup name="buttonGroup"/>
-  <buttongroup name="buttonGroup_3"/>
   <buttongroup name="buttonGroup_4"/>
+  <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup_3"/>
  </buttongroups>
 </ui>

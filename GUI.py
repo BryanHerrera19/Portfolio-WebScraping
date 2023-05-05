@@ -41,6 +41,23 @@ class MainScreen(QMainWindow):
 
         self.GSbutton.clicked.connect(self.gotoSearchScreen)
         self.quit_button.clicked.connect(self.quit_func)
+        self.oldPos = self.pos()
+
+
+    # Make window movable
+    def center(self):
+        qr = self.frameGeometry()
+        cp = QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
+    def mousePressEvent(self, event):
+        self.oldPos = event.globalPos()
+
+    def mouseMoveEvent(self, event):
+        delta = QPoint(event.globalPos() - self.oldPos)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.oldPos = event.globalPos()
+
     def gotoSearchScreen(self):
         try:
             widget.setCurrentWidget(sc)
@@ -96,12 +113,27 @@ class FilterScreen(QMainWindow):
 
         #filter button
         self.button_filter.clicked.connect(self.show_filter)
-        self.button_update.clicked.connect(self.show_filter2)
+        self.button_update.clicked.connect(self.gotoInventory)
         self.button_search.clicked.connect(self.search)
 
         self.pasteCars(5, None)
         self.cdt.cellClicked.connect(self.gotoCarInfo)
+        # Movable window
+        self.oldPos = self.pos()
 
+    def center(self):
+        qr = self.frameGeometry()
+        cp = QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
+
+    def mousePressEvent(self, event):
+        self.oldPos = event.globalPos()
+
+    def mouseMoveEvent(self, event):
+        delta = QPoint(event.globalPos() - self.oldPos)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.oldPos = event.globalPos()
     def search(self):
         years = []
         manufacturers = []
@@ -128,45 +160,9 @@ class FilterScreen(QMainWindow):
     def owner_change(self):
         num_owner = str(self.owner_slider.value())
         self.owner_label.setText(num_owner)
+
+
     # Side filter animation
-
-    def show_filter1(self):
-        cdt_width = self.cdt.width()
-
-
-        # For slide in and out
-        if cdt_width == 1165:
-            new_cdt_width = 0
-
-        else:
-            new_cdt_width = 1165
-
-        # Animation
-        self.animation = QPropertyAnimation(self.cdt, b"maximumWidth")
-        self.animation.setDuration(250)
-        self.animation.setStartValue(cdt_width)
-        self.animation.setEndValue(new_cdt_width)
-        self.animation.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
-        self.animation.start()
-
-    def show_filter2(self):
-        inven_width = self.inventory.width()
-
-        # For slide in and out
-        if inven_width == 0:
-            new_inven_width = 1165
-        else:
-            new_inven_width = 0
-
-
-        # Animation
-        self.animation = QPropertyAnimation(self.inventory, b"maximumWidth")
-        self.animation.setDuration(250)
-        self.animation.setStartValue(inven_width)
-        self.animation.setEndValue(new_inven_width)
-        self.animation.setEasingCurve(QtCore.QEasingCurve.InBack)
-        self.animation.start()
-
     def show_filter(self):
         width = self.left_main_frame.width()
 
@@ -312,6 +308,9 @@ class FilterScreen(QMainWindow):
     def gotoHomeScreen(self):
         widget.setCurrentWidget(mc)
 
+    def gotoInventory(self):
+        widget.setCurrentWidget(iv)
+
     def minimize(self):
         self.showMinimized()
 
@@ -339,6 +338,21 @@ class CarInfo(FilterScreen):
         # Set Icon for buttons
         self.back_button.setIcon(QtGui.QIcon(resource_path("return.png")))
 
+        self.oldPos = self.pos()
+
+    def center(self):
+        qr = self.frameGeometry()
+        cp = QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
+
+    def mousePressEvent(self, event):
+        self.oldPos = event.globalPos()
+
+    def mouseMoveEvent(self, event):
+        delta = QPoint(event.globalPos() - self.oldPos)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.oldPos = event.globalPos()
 
     def gotoFilter(self):
         self.lay.removeWidget(self.w)
@@ -423,17 +437,52 @@ class CarInfo(FilterScreen):
 
         self.right_frame2.setStyleSheet("QLabel {color:white;font-size:20px; }"
                                        "QFrame {background-color: rgb(87, 54, 103);}")
+
+
+
+
+class Inventory(FilterScreen):
+    def __init__(self):
+        super(Inventory, self).__init__()
+        inventory_ui = resource_path("Inventory.ui")
+        loadUi(inventory_ui, self)
+        self.back_button.clicked.connect(self.gotoFilter)
+        self.quit_button.clicked.connect(self.quit_func)
+        self.back_button.setIcon(QtGui.QIcon(resource_path("return.png")))
+        self.oldPos = self.pos()
+
+    def center(self):
+        qr = self.frameGeometry()
+        cp = QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
+
+    def mousePressEvent(self, event):
+            self.oldPos = event.globalPos()
+
+    def mouseMoveEvent(self, event):
+        delta = QPoint(event.globalPos() - self.oldPos)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.oldPos = event.globalPos()
+    def quit_func(self):
+        sys.exit(app.exec())
+
+    def gotoFilter(self):
+        widget.setCurrentWidget(sc)
+
 # Create application
 app = QApplication(sys.argv)
 mc = MainScreen()
 sc = FilterScreen()
 ci = CarInfo()
+iv = Inventory()
 
 # Creat widgets to stores multiple windows/screens
 widget = QStackedWidget()
 widget.addWidget(mc)
 widget.addWidget(sc)
 widget.addWidget(ci)
+widget.addWidget(iv)
 widget.setCurrentWidget(mc)
 widget.setFixedSize(1250, 720)
 
