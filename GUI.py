@@ -40,23 +40,7 @@ class MainScreen(QMainWindow):
 
         self.GSbutton.clicked.connect(self.gotoSearchScreen)
         self.quit_button.clicked.connect(self.quit_func)
-        self.oldPos = self.pos()
 
-
-    # Make window movable
-    def center(self):
-        qr = self.frameGeometry()
-        cp = QDesktopWidget().availableGeometry().center()
-        qr.moveCenter(cp)
-        self.move(qr.topLeft())
-
-    def mousePressEvent(self, event):
-        self.oldPos = event.globalPos()
-
-    def mouseMoveEvent(self, event):
-        delta = QPoint(event.globalPos() - self.oldPos)
-        self.move(self.x() + delta.x(), self.y() + delta.y())
-        self.oldPos = event.globalPos()
 
     def gotoSearchScreen(self):
         try:
@@ -118,22 +102,7 @@ class FilterScreen(QMainWindow):
 
         self.pasteCars(5, None)
         self.cdt.cellClicked.connect(self.gotoCarInfo)
-        # Movable window
-        self.oldPos = self.pos()
 
-    def center(self):
-        qr = self.frameGeometry()
-        cp = QDesktopWidget().availableGeometry().center()
-        qr.moveCenter(cp)
-        self.move(qr.topLeft())
-
-    def mousePressEvent(self, event):
-        self.oldPos = event.globalPos()
-
-    def mouseMoveEvent(self, event):
-        delta = QPoint(event.globalPos() - self.oldPos)
-        self.move(self.x() + delta.x(), self.y() + delta.y())
-        self.oldPos = event.globalPos()
     def search(self):
         years = []
         manufacturers = []
@@ -321,9 +290,6 @@ class FilterScreen(QMainWindow):
         record = self.records[row]
         return ci.gotoCarInfo(record)
 
-
-
-
 class CarInfo(FilterScreen):
     def __init__(self):
         super(CarInfo, self).__init__()
@@ -338,22 +304,6 @@ class CarInfo(FilterScreen):
 
         # Set Icon for buttons
         self.back_button.setIcon(QtGui.QIcon(resource_path("ForGUI/return.png")))
-
-        self.oldPos = self.pos()
-
-    def center(self):
-        qr = self.frameGeometry()
-        cp = QDesktopWidget().availableGeometry().center()
-        qr.moveCenter(cp)
-        self.move(qr.topLeft())
-
-    def mousePressEvent(self, event):
-        self.oldPos = event.globalPos()
-
-    def mouseMoveEvent(self, event):
-        delta = QPoint(event.globalPos() - self.oldPos)
-        self.move(self.x() + delta.x(), self.y() + delta.y())
-        self.oldPos = event.globalPos()
 
     def gotoFilter(self):
         self.lay.removeWidget(self.w)
@@ -370,7 +320,12 @@ class CarInfo(FilterScreen):
         self.lay2.removeWidget(self.url)
         self.lay2.removeWidget(self.vin)
 
-        widget.setCurrentWidget(sc)
+        try:
+            widget.setCurrentWidget(sc)
+        except:
+            print("Error")
+        else:
+            return sc.refreshing_page()
     def quit_func(self): 
         sys.exit(app.exec())
 
@@ -439,9 +394,6 @@ class CarInfo(FilterScreen):
         self.right_frame2.setStyleSheet("QLabel {color:white;font-size:20px; }"
                                        "QFrame {background-color: rgb(87, 54, 103);}")
 
-
-
-
 class Inventory(FilterScreen):
     def __init__(self):
         super(Inventory, self).__init__()
@@ -450,26 +402,18 @@ class Inventory(FilterScreen):
         self.back_button.clicked.connect(self.gotoFilter)
         self.quit_button.clicked.connect(self.quit_func)
         self.back_button.setIcon(QtGui.QIcon(resource_path("ForGUI/return.png")))
-        self.oldPos = self.pos()
 
-    def center(self):
-        qr = self.frameGeometry()
-        cp = QDesktopWidget().availableGeometry().center()
-        qr.moveCenter(cp)
-        self.move(qr.topLeft())
-
-    def mousePressEvent(self, event):
-            self.oldPos = event.globalPos()
-
-    def mouseMoveEvent(self, event):
-        delta = QPoint(event.globalPos() - self.oldPos)
-        self.move(self.x() + delta.x(), self.y() + delta.y())
-        self.oldPos = event.globalPos()
     def quit_func(self):
         sys.exit(app.exec())
 
     def gotoFilter(self):
-        widget.setCurrentWidget(sc)
+        try:
+            widget.setCurrentWidget(sc)
+        except:
+            print("Error")
+        else:
+            return sc.refreshing_page()
+
 
 # Create application
 app = QApplication(sys.argv)
@@ -485,7 +429,7 @@ widget.addWidget(sc)
 widget.addWidget(ci)
 widget.addWidget(iv)
 widget.setCurrentWidget(mc)
-widget.setFixedSize(10000, 10000)
+widget.setFixedSize(1250,720)
 
 
 widget.setWindowFlag(QtCore.Qt.WindowType.FramelessWindowHint)
