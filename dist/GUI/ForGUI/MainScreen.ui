@@ -146,20 +146,20 @@ QPushButton:hover{
        <property name="geometry">
         <rect>
          <x>240</x>
-         <y>280</y>
-         <width>141</width>
+         <y>270</y>
+         <width>400</width>
          <height>31</height>
         </rect>
        </property>
        <property name="styleSheet">
         <string notr="true">QLabel {
 	background-color: rgba(0,0,0,0);
-	font: 87 16pt &quot;Arial Black&quot;;
+	font: 87 14pt &quot;Arial Black&quot;;
 	color:white;
 }</string>
        </property>
        <property name="text">
-        <string>Welcome to </string>
+        <string>Welcome to Used Car Search</string>
        </property>
       </widget>
       <widget class="QLabel" name="label">
@@ -167,7 +167,7 @@ QPushButton:hover{
         <rect>
          <x>230</x>
          <y>290</y>
-         <width>331</width>
+         <width>400</width>
          <height>141</height>
         </rect>
        </property>

@@ -272,7 +272,7 @@ QPushButton::hover{
 }</string>
                   </property>
                   <property name="text">
-                   <string>Filter</string>
+                   <string>Click Filter</string>
                   </property>
                   <property name="autoRepeatDelay">
                    <number>500</number>
