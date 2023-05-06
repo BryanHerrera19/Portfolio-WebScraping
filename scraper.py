@@ -3,8 +3,10 @@ import vehicle
 from mongoDB import *
 import re
 import time
+import sys
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import ElementClickInterceptedException, TimeoutException
 
 # api key = OXSGUTEI6GOUXRLQZVFT2Z7HWXMDFWBW
 
@@ -20,12 +22,17 @@ class Scraper(Automator):
         fuels = self.fuels
         for i, url in enumerate(self.website_urls):
             self.scrape_no_vin_info(url, images[i], fuels[i])
+        self.browser.quit()
 
 
     def scrape_no_vin_info(self, url, image, fuel):
         newVehicle = vehicle.Vehicle(url, image, fuel)
-
-        self.browser.get(url)
+        try:
+            self.browser.get(url)
+        except TimeoutException as ex:
+            print(ex.message)
+            self.browser.quit()
+            sys.exit()
         self.browser.execute_script("window.scrollTo(0, 500)") 
         time.sleep(2)
         elems_p = self.browser.find_elements(By.TAG_NAME, 'p')
@@ -82,14 +89,24 @@ class Scraper(Automator):
         newVehicle.transmission_color_vinHistoryURL_vin_setter(transmission_type, color, vin_history_url, vin)
 
         # click the link to history
-        elem_vin.click()
+        try:
+            elem_vin.click()
+        except ElementClickInterceptedException as ec:
+            print("VIN history url not found")
+            self.browser.quit()
+            sys.exit()
         self.scrape_vin_info(newVehicle)
 
     def scrape_vin_info(self, newVehicle):
         # manually click captcha
         self.browser.switch_to.window(self.browser.window_handles[1])
         time.sleep(20)
-        elems_div = self.browser.find_elements(By.CLASS_NAME,'history-overview-cell')
+        try:
+            elems_div = self.browser.find_elements(By.CLASS_NAME,'history-overview-cell')
+        except TimeoutException as ex:
+            print(ex.message)
+            self.browser.quit()
+            sys.exit()
         elems_div_texts = [x.text for x in elems_div]
 
 
@@ -103,12 +120,18 @@ class Scraper(Automator):
                 num_owners = 1
             except IndexError:
                 num_owners = 0
-
-        accidents_text = list(filter(lambda v: re.match(r'.*accident.*', v), elems_div_texts))[0]
+    
+        try:
+            accidents_text = list(filter(lambda v: re.match(r'.*accident.*', v), elems_div_texts))[0]
+        except IndexError:
+            print("VIN History page not opened")
+            self.browser.quit()
+            sys.exit()
         if re.findall('No', accidents_text)[0]:
             accidents = False
         else: 
             accidents = True
+        
 
         try:
             last_state_text = list(filter(lambda v: re.match(r'Last owned in.*', v), elems_div_texts))[0]
@@ -163,3 +186,6 @@ for vehicle in Scraper.vehicles:
     else:
         updatedDict = createCarInfoDict(vehicle, createVINHistInfoDict(vehicle))
         updateDB(vehicle.url, updatedDict)
+print("Program Scraped All Cars")
+time.sleep(10)
+exit()
