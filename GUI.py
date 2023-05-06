@@ -50,6 +50,7 @@ class MainScreen(QMainWindow):
         cp = QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
         self.move(qr.topLeft())
+
     def mousePressEvent(self, event):
         self.oldPos = event.globalPos()
 
@@ -484,7 +485,7 @@ widget.addWidget(sc)
 widget.addWidget(ci)
 widget.addWidget(iv)
 widget.setCurrentWidget(mc)
-widget.setFixedSize(1250, 720)
+widget.setFixedSize(10000, 10000)
 
 
 widget.setWindowFlag(QtCore.Qt.WindowType.FramelessWindowHint)
