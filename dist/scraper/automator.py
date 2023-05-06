@@ -5,6 +5,8 @@ import re
 import sys
 from selenium.webdriver.support.relative_locator import locate_with
 from selenium.common.exceptions import TimeoutException
+import os.path
+from os import path
 
 class Automator:
     website_url = "https://www.carvana.com/cars"
@@ -20,8 +22,12 @@ class Automator:
     options.add_argument("--window-size=1920x1080")
 
     options.add_extension(r'.\ForScraper\extension.crx')
+    if path.exists("C:\Program Files\Google\Chrome\Application\chrome.exe"):
+        options.binary_location="C:\Program Files\Google\Chrome\Application\chrome.exe"
+    if path.exists("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"):
+        options.binary_location="C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
 
-    options.binary_location="C:\Program Files\Google\Chrome\Application\chrome.exe"
+
     browser = webdriver.Chrome(options=options)
     # setup value to act like human
     browser.execute_script("Object.defineProperty(navigator, 'language',{get: function() {return ['en-US','en']}})")
