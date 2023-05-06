@@ -298,13 +298,13 @@ QPushButton:hover {
             <property name="styleSheet">
              <string notr="true">QLabel {
 	background-color: rgba(0,0,0,0);
-	font: 87 40pt &quot;Arial Black&quot;;
+	font: 70 30pt &quot;Arial Black&quot;;
 	color:white;
 	text-align: center 
 }</string>
             </property>
             <property name="text">
-             <string>This page is still underconstruction </string>
+             <string>This feature is under construction.</string>
             </property>
            </widget>
           </item>

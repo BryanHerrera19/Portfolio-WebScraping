@@ -340,7 +340,7 @@ QPushButton::hover{
 } </string>
                          </property>
                          <property name="text">
-                          <string> PRICE</string>
+                          <string> Price</string>
                          </property>
                         </widget>
                        </item>
@@ -428,7 +428,7 @@ QPushButton::hover{
 } </string>
                          </property>
                          <property name="text">
-                          <string> MILES DRIVEN</string>
+                          <string> Miles</string>
                          </property>
                         </widget>
                        </item>
@@ -519,7 +519,7 @@ QPushButton::hover{
 } </string>
                          </property>
                          <property name="text">
-                          <string> Number of Owner</string>
+                          <string> Number of Owners</string>
                          </property>
                         </widget>
                        </item>
@@ -937,7 +937,7 @@ QToolBox::tab{
                            </rect>
                           </property>
                           <attribute name="label">
-                           <string>BRAND</string>
+                           <string>Brand</string>
                           </attribute>
                           <layout class="QVBoxLayout" name="verticalLayout_4">
                            <item>
@@ -1299,7 +1299,7 @@ QCheckBox::indicator:checked {
                            </rect>
                           </property>
                           <attribute name="label">
-                           <string>YEAR</string>
+                           <string>Year</string>
                           </attribute>
                           <layout class="QVBoxLayout" name="verticalLayout_8">
                            <item>
